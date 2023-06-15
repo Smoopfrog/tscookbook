@@ -19,7 +19,7 @@
   background-color: black;
 }
 
-.header-links {
+.menu-aside {
   position: absolute;
   top: 32px;
   left: 0;
@@ -27,8 +27,28 @@
   height: 100dvh;
   background-color: black;
   color: whitesmoke;
+  transition: all 0.3s;
+  transform: scale(1, 1);
+  transform-origin: 100% 50%;
+}
+
+.search-aside {
+  position: absolute;
+  top: 32px;
+  left: 0;
+  width: 100%;
+  height: 100dvh;
+  background-color: black;
+  color: whitesmoke;
+  transition: all 0.3s;
+  transform: scale(1, 1);
+  transform-origin: 0;
+}
+
+.hide-search {
+  transform: scale(0, 1);
 }
 
 .hide-menu {
-  display: none;
+  transform: scale(0, 1);
 }/*# sourceMappingURL=Header.css.map */

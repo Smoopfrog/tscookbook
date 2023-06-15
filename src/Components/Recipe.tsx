@@ -13,12 +13,20 @@ const Recipe = (props: { recipe: RecipeInfo }) => {
       );
     }
   );
+
+  const directionComponents: ReactNode = props.recipe.directions.map(
+    (direction) => {
+      return <li>{direction}</li>;
+    }
+  );
+  
   return (
     <article>
       <h1>{props.recipe.title}</h1>
       <h2>{props.recipe.category}</h2>
       <p>{props.recipe.description}</p>
       <ul>{ingredientComponents}</ul>
+      <ol>{directionComponents}</ol>
     </article>
   );
 };

@@ -7,6 +7,7 @@ export interface RecipeInfo {
   category: string;
   description: string;
   ingredients: { amount: number; measurement?: string; name: string }[];
+  directions: string[];
 }
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       { amount: 2, measurement: "cups", name: "flour" },
       { amount: 1, measurement: "cup", name: "butter" },
     ],
+    directions: ["Put ingredient in bowl", "Mix Bowl", "Cook bowl", "Eat"],
   };
 
   return (

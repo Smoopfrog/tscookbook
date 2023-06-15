@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./Components/Header";
+import Recipe from "./Components/Recipe";
+
+export interface RecipeInfo {
+  title: string;
+  category: string;
+  description: string;
+  ingredients: { amount: number; measurement?: string; name: string }[];
+}
 
 function App() {
+  const recipe: RecipeInfo = {
+    title: "chocolate chip cookie",
+    category: "Cookie",
+    description: "The best cookie in the world",
+    ingredients: [
+      { amount: 2, measurement: undefined, name: "eggs" },
+      { amount: 2, measurement: "cups", name: "flour" },
+      { amount: 1, measurement: "cup", name: "butter" },
+    ],
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Recipe recipe={recipe} />
     </div>
   );
 }

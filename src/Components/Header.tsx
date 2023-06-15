@@ -5,13 +5,28 @@ const Header = () => {
   const [showMenuAside, setShowMenuAside] = useState<Boolean>(false);
   const [showSearchAside, setShowSearchAside] = useState<Boolean>(false);
 
+  const handleMenuAside = (): void => {
+    if (showSearchAside) {
+      setShowSearchAside(false);
+    }
 
+    setShowMenuAside((prev) => !prev);
+  };
+
+  const handleSearchAside = (): void => {
+    if (showMenuAside) {
+      setShowMenuAside(false);
+    }
+
+    setShowSearchAside((prev) => !prev);
+  };
+  
   return (
     <header className="header">
       <div className="header-nav">
-        <button onClick={() => setShowSearchAside((prev) => !prev)}>Search</button>
+        <button onClick={handleSearchAside}>Search</button>
         <h1>TS Cookbook</h1>
-        <button onClick={() => setShowMenuAside((prev) => !prev)}>Menu</button>
+        <button onClick={handleMenuAside}>Menu</button>
       </div>
       <aside className={`menu-aside ${showMenuAside ? "" : "hide-menu"}`}>
         <ul className="nav-list">

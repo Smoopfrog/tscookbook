@@ -1,5 +1,8 @@
+import { useState, MouseEvent } from "react";
 import "./App.css";
 import Header from "./Components/Header";
+import HomePage from "./Components/HomePage/HomePage";
+import NewRecipeForm from "./Components/NewRecipeForm";
 import Recipe from "./Components/Recipe";
 
 export interface RecipeInfo {
@@ -11,6 +14,13 @@ export interface RecipeInfo {
 }
 
 function App() {
+  const [showRecipeForm, setShowRecipeForm] = useState<boolean>(false);
+
+  const handleShowRecipeForm = (e: MouseEvent<HTMLButtonElement>) => {
+    console.log("show form");
+    setShowRecipeForm(!showRecipeForm);
+  };
+
   const recipe: RecipeInfo = {
     title: "chocolate chip cookie",
     category: "Cookie",
@@ -26,7 +36,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Recipe recipe={recipe} />
+      <HomePage openForm={handleShowRecipeForm} />
+      <dialog open={showRecipeForm}>
+        <NewRecipeForm />
+      </dialog>
     </div>
   );
 }

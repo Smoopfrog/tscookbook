@@ -9,3 +9,19 @@ export const getRecipes: RequestHandler = async (req, res, next) => {
     next(error);
   }
 };
+
+export const createRecipe: RequestHandler = async (req, res, next) => {
+  const title = req.body.title;
+  const description = req.body.description;
+
+  try {
+    const newRecipe = await RecipeModel.create({
+      title: title,
+      description: description,
+    });
+
+    res.status(201).json(newRecipe);
+  } catch (error) {
+    next(error);
+  }
+};

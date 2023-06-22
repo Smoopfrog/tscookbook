@@ -6,6 +6,7 @@ import NewRecipeForm from "./Components/NewRecipeForm";
 import { Recipe as RecipeModel } from "./models/recipe";
 import Recipe from "./Components/Recipe";
 import * as RecipesApi from "./network/recipes_api";
+
 function App() {
   const [showRecipeForm, setShowRecipeForm] = useState<boolean>(false);
   const [recipes, setRecipes] = useState<RecipeModel[]>([]);
@@ -27,19 +28,6 @@ function App() {
     console.log("show form");
     setShowRecipeForm(!showRecipeForm);
   };
-
-  // const recipe: RecipeInfo = {
-  //   title: "chocolate chip cookie",
-  //   category: "Cookie",
-  
-  //   description: "The best cookie in the world",
-  //   ingredients: [
-  //     { amount: 2, measurement: undefined, name: "eggs" },
-  //     { amount: 2, measurement: "cups", name: "flour" },
-  //     { amount: 1, measurement: "cup", name: "butter" },
-  //   ],
-  //   directions: ["Put ingredient in bowl", "Mix Bowl", "Cook bowl", "Eat"],
-  // };
 
   return (
     <div className="App">

@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Recipe as RecipeModel } from "../models/recipe";
+import * as RecipesApi from "../network/recipes_api";
 
 interface RecipeProps {
   recipe: RecipeModel;
@@ -29,6 +30,7 @@ const Recipe = ({ recipe }: RecipeProps) => {
       <p>{recipe.description}</p>
       {ingredientComponents && <ul>{ingredientComponents}</ul>}
       {directionComponents && <ol>{directionComponents}</ol>}
+      <button onClick={() => RecipesApi.deleteRecipe(recipe._id)}>Delete</button>
     </article>
   );
 };

@@ -35,6 +35,6 @@ export const createRecipe = async (recipe: RecipeInput): Promise<Recipe> => {
   return response.json();
 };
 
-export const deleteNote = async (noteId: string) => {
-  await fetchData("/api/notes/" + noteId, { method: "DELETE" });
+export const deleteRecipe = async (recipeId: string) => {
+  await fetchData("/api/recipes/" + recipeId, { method: "DELETE" });
 }

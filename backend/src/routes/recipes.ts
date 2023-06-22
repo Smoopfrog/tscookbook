@@ -9,4 +9,6 @@ router.get("/:recipeId", RecipesController.getRecipe);
 
 router.post("/", RecipesController.createRecipe);
 
+router.delete("/:recipeId", RecipesController.deleteRecipe);
+
 export default router;

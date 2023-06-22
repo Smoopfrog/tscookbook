@@ -65,3 +65,25 @@ export const createRecipe: RequestHandler<
     next(error);
   }
 };
+
+export const deleteRecipe: RequestHandler = async (req, res, next) => {
+  const recipeId = req.params.recipeId;
+
+  try {
+    if (!mongoose.isValidObjectId(recipeId)) {
+      throw createHttpError(400, "Invalid recipe id");
+    }
+
+    const recipe = await RecipeModel.findById(recipeId).exec();
+
+    if (!recipe) {
+      throw createHttpError(404, "Recipe not found");
+    }
+
+    await recipe.deleteOne();
+
+    res.sendStatus(204);
+  } catch (error) {
+    next(error);
+  }
+};

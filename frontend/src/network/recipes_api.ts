@@ -31,6 +31,10 @@ export const createRecipe = async (recipe: RecipeInput): Promise<Recipe> => {
     },
     body: JSON.stringify(recipe),
   });
-  
+
   return response.json();
 };
+
+export const deleteNote = async (noteId: string) => {
+  await fetchData("/api/notes/" + noteId, { method: "DELETE" });
+}

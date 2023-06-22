@@ -10,6 +10,17 @@ export const getRecipes: RequestHandler = async (req, res, next) => {
   }
 };
 
+export const getRecipe: RequestHandler = async (req, res, next) => {
+  const recipeId = req.params.recipeId;
+
+  try {
+    const recipe = await RecipeModel.findById(recipeId).exec();
+    res.status(200).json(recipe);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const createRecipe: RequestHandler = async (req, res, next) => {
   const title = req.body.title;
   const description = req.body.description;

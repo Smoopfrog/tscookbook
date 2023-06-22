@@ -5,6 +5,8 @@ const router = express.Router();
 
 router.get("/", RecipesController.getRecipes);
 
+router.get("/:recipeId", RecipesController.getRecipe);
+
 router.post("/", RecipesController.createRecipe);
 
 export default router;

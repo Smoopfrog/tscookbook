@@ -1,8 +1,11 @@
 import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
 import recipesRoutes from "./routes/recipes";
+import morgan from "morgan";
 
 const app = express();
+
+app.use(morgan("dev"));
 
 app.use(express.json());
 

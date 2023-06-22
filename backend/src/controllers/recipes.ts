@@ -66,6 +66,55 @@ export const createRecipe: RequestHandler<
   }
 };
 
+interface UpdateRecipeParams {
+  recipeId: string;
+}
+
+interface UpdateRecipeBody {
+  title?: string;
+  description?: string;
+}
+
+export const updateRecipe: RequestHandler<
+  UpdateRecipeParams,
+  unknown,
+  UpdateRecipeBody,
+  unknown
+> = async (req, res, next) => {
+  const recipeId = req.params.recipeId;
+  const newTitle = req.body.title;
+  const newDescription = req.body.description;
+
+  try {
+    if (!mongoose.isValidObjectId(recipeId)) {
+      throw createHttpError(400, "Invalid recipe id");
+    }
+
+    if (!newTitle) {
+      throw createHttpError(400, "Recipe must have a title");
+    }
+
+    if (!newDescription) {
+      throw createHttpError(400, "Recipe must have a description");
+    }
+
+    const recipe = await RecipeModel.findById(recipeId).exec();
+
+    if (!recipe) {
+      throw createHttpError(404, "Recipe not found");
+    }
+
+    recipe.title = newTitle;
+    recipe.description = newDescription;
+
+    const updatedRecipe = await recipe.save();
+
+    res.status(200).json(updatedRecipe);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const deleteRecipe: RequestHandler = async (req, res, next) => {
   const recipeId = req.params.recipeId;
 

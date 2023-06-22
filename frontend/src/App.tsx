@@ -3,19 +3,17 @@ import "./App.css";
 import Header from "./Components/Header";
 import HomePage from "./Components/HomePage/HomePage";
 import NewRecipeForm from "./Components/NewRecipeForm";
-// import RecipeComponent from "./Components/RecipeComponent";
-import { Recipe } from "./models/recipe";
-import RecipeComponent from "./Components/RecipeComponent";
-
+import { Recipe as RecipeModel } from "./models/recipe";
+import Recipe from "./Components/Recipe";
+import * as RecipesApi from "./network/recipes_api";
 function App() {
   const [showRecipeForm, setShowRecipeForm] = useState<boolean>(false);
-  const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [recipes, setRecipes] = useState<RecipeModel[]>([]);
 
   useEffect(() => {
     const loadRecipes = async () => {
       try {
-        const response = await fetch("/api/recipes", { method: "GET" });
-        const recipes = await response.json();
+        const recipes = await RecipesApi.fetchRecipes();
         setRecipes(recipes);
       } catch (error) {
         console.log(error);
@@ -47,7 +45,7 @@ function App() {
       <Header />
       <HomePage openForm={handleShowRecipeForm} />
       {recipes.map((recipe) => {
-        return <RecipeComponent recipe={recipe} key={recipe._id}/>;
+        return <Recipe recipe={recipe} key={recipe._id} />;
       })}
       <dialog open={showRecipeForm}>
         <NewRecipeForm />

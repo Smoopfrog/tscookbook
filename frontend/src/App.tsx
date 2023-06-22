@@ -31,6 +31,7 @@ function App() {
   // const recipe: RecipeInfo = {
   //   title: "chocolate chip cookie",
   //   category: "Cookie",
+  
   //   description: "The best cookie in the world",
   //   ingredients: [
   //     { amount: 2, measurement: undefined, name: "eggs" },

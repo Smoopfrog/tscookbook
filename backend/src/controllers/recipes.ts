@@ -35,6 +35,11 @@ export const getRecipe: RequestHandler = async (req, res, next) => {
 interface CreateRecipeBody {
   title?: string;
   description?: string;
+  category?: string;
+  portion?: string;
+  cooktime?: string;
+  ingredients?: { amount: number; measurement?: string; name: string }[];
+  directions?: string[];
 }
 
 export const createRecipe: RequestHandler<
@@ -45,19 +50,24 @@ export const createRecipe: RequestHandler<
 > = async (req, res, next) => {
   const title = req.body.title;
   const description = req.body.description;
-
+  const category = req.body.category;
+  const portion = req.body.portion;
+  const cooktime = req.body.cooktime;
+  const ingredients = req.body.ingredients;
+  const directions = req.body.directions;
   try {
     if (!title) {
       throw createHttpError(400, "Recipe must have a title");
     }
 
-    if (!description) {
-      throw createHttpError(400, "Recipe must have a description");
-    }
-
     const newRecipe = await RecipeModel.create({
       title: title,
       description: description,
+      category: category,
+      portion: portion,
+      cooktime: cooktime,
+      ingredients: ingredients,
+      directions: directions,
     });
 
     res.status(201).json(newRecipe);
@@ -73,6 +83,11 @@ interface UpdateRecipeParams {
 interface UpdateRecipeBody {
   title?: string;
   description?: string;
+  category?: string;
+  portion?: string;
+  cooktime?: string;
+  ingredients?: { amount: number; measurement?: string; name: string }[];
+  directions?: string[];
 }
 
 export const updateRecipe: RequestHandler<

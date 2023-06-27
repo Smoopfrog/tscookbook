@@ -19,7 +19,7 @@ const Recipe = ({ recipe }: RecipeProps) => {
 
   const directionComponents: ReactNode = recipe.directions?.map(
     (direction, index) => {
-      return <li key={index}>{direction.direction}</li>;
+      return <li key={index}>{direction.text}</li>;
     }
   );
 

@@ -93,7 +93,7 @@ const NewRecipeForm = () => {
       <button
         type="button"
         onClick={() => {
-          directionAppend({ direction: "" });
+          directionAppend({ text: "" });
         }}
       >
         Add Direction

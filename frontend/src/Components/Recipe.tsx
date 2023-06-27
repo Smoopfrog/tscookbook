@@ -1,12 +1,23 @@
-import { ReactNode } from "react";
+import { ReactNode, MouseEvent } from "react";
 import { Recipe as RecipeModel } from "../models/recipe";
 import * as RecipesApi from "../network/recipes_api";
 
 interface RecipeProps {
   recipe: RecipeModel;
+  getRecipes: () => void;
 }
 
-const Recipe = ({ recipe }: RecipeProps) => {
+const Recipe = ({ recipe, getRecipes }: RecipeProps) => {
+  const deleteRecipe = async (e: MouseEvent<HTMLButtonElement>) => {
+    try {
+      await RecipesApi.deleteRecipe(recipe._id);
+      getRecipes();
+    } catch (error) {
+      alert(error);
+      console.log(error);
+    }
+  };
+
   const ingredientComponents: ReactNode = recipe.ingredients?.map(
     (ingredient, index) => {
       return (
@@ -32,9 +43,7 @@ const Recipe = ({ recipe }: RecipeProps) => {
       <p>{recipe.description}</p>
       {ingredientComponents && <ul>{ingredientComponents}</ul>}
       {directionComponents && <ol>{directionComponents}</ol>}
-      <button onClick={() => RecipesApi.deleteRecipe(recipe._id)}>
-        Delete
-      </button>
+      <button onClick={deleteRecipe}>Delete</button>
     </article>
   );
 };

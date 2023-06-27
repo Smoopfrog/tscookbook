@@ -24,6 +24,16 @@ function App() {
     loadRecipes();
   }, [showRecipeForm]);
 
+  const getRecipes = async () => {
+    try {
+      const recipes = await RecipesApi.fetchRecipes();
+      setRecipes(recipes);
+    } catch (error) {
+      console.log(error);
+      alert(error);
+    }
+  };
+
   const handleShowRecipeForm = (e: MouseEvent<HTMLButtonElement>) => {
     setShowRecipeForm(!showRecipeForm);
   };
@@ -37,7 +47,7 @@ function App() {
       <Header />
       <HomePage openForm={handleShowRecipeForm} />
       {recipes.map((recipe) => {
-        return <Recipe recipe={recipe} key={recipe._id} />;
+        return <Recipe recipe={recipe} key={recipe._id} getRecipes={getRecipes} />;
       })}
       <dialog open={showRecipeForm}>
         <NewRecipeForm handleClose={closeRecipeForm}/>

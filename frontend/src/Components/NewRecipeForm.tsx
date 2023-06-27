@@ -50,16 +50,18 @@ const NewRecipeForm = () => {
           return (
             <li key={ingredient.id}>
               <input
+                placeholder="amount"
                 {...register(`ingredients.${index}.amount`, { required: true })}
               />
-              <select>
-                <option>tsp</option>
-                <option>tbsp</option>
-                <option>cups</option>
-                <option>grams</option>
-                <option>none</option>
+              <select {...register(`ingredients.${index}.measurement`)}>
+                <option value="tsp">tsp</option>
+                <option value="tbsp">tbsp</option>
+                <option value="cup">cups</option>
+                <option value="g">grams</option>
+                <option value="">none</option>
               </select>
               <input
+                placeholder="ingredient"
                 type="text"
                 {...register(`ingredients.${index}.name`, { required: true })}
               />
@@ -82,7 +84,9 @@ const NewRecipeForm = () => {
         {directionFields.map((direction, index) => {
           return (
             <li key={direction.id}>
-              <input {...register(`directions.${index}`, { required: true })} />
+              <input
+                {...register(`directions.${index}.text`, { required: true })}
+              />
               <button type="button" onClick={() => directionRemove(index)}>
                 Delete
               </button>

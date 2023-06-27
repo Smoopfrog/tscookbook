@@ -39,7 +39,7 @@ interface CreateRecipeBody {
   portion?: string;
   cooktime?: string;
   ingredients?: { amount: number; measurement?: string; name: string }[];
-  directions?: string[];
+  directions?: { text: string }[];
 }
 
 export const createRecipe: RequestHandler<
@@ -87,7 +87,7 @@ interface UpdateRecipeBody {
   portion?: string;
   cooktime?: string;
   ingredients?: { amount: number; measurement?: string; name: string }[];
-  directions?: string[];
+  directions?: { text: string }[];
 }
 
 export const updateRecipe: RequestHandler<

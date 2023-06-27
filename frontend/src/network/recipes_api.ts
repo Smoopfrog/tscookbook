@@ -20,9 +20,14 @@ export const fetchRecipes = async (): Promise<Recipe[]> => {
 
 export interface RecipeInput {
   title: string;
-  decription: string;
+  description?: string;
+  portion?: string;
+  cooktime?: string;
+  category?: string;
+  ingredients?: { amount: number; measurement?: string; name: string }[];
+  directions?: {text: string}[];
 }
-
+ 
 export const createRecipe = async (recipe: RecipeInput): Promise<Recipe> => {
   const response = await fetchData("/api/recipes", {
     method: "POST",

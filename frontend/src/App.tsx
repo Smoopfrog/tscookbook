@@ -22,12 +22,15 @@ function App() {
       }
     };
     loadRecipes();
-  }, []);
+  }, [showRecipeForm]);
 
   const handleShowRecipeForm = (e: MouseEvent<HTMLButtonElement>) => {
-    console.log("show form");
     setShowRecipeForm(!showRecipeForm);
   };
+
+  const closeRecipeForm = () => {
+    setShowRecipeForm(false)
+  }
 
   return (
     <div className="App">
@@ -37,7 +40,7 @@ function App() {
         return <Recipe recipe={recipe} key={recipe._id} />;
       })}
       <dialog open={showRecipeForm}>
-        <NewRecipeForm />
+        <NewRecipeForm handleClose={closeRecipeForm}/>
       </dialog>
     </div>
   );

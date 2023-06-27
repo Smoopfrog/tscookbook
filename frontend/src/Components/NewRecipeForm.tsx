@@ -1,7 +1,12 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import { Recipe } from "../models/recipe";
+import * as RecipesApi from "../network/recipes_api";
 
-const NewRecipeForm = () => {
+interface ButtonProps {
+  handleClose: () => void;
+}
+
+const NewRecipeForm = ({ handleClose }: ButtonProps) => {
   const {
     register,
     formState: { errors },
@@ -27,7 +32,15 @@ const NewRecipeForm = () => {
     control,
   });
 
-  const onSubmit = (data: Recipe) => console.log("data", data);
+  const onSubmit = async (data: Recipe) => {
+    try {
+      await RecipesApi.createRecipe(data);
+      handleClose();
+    } catch (error) {
+      console.log(error);
+      alert(error);
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -37,13 +50,6 @@ const NewRecipeForm = () => {
       <input placeholder="description" {...register("description")} />
       <input placeholder="portion" {...register("portion")} />
       <input placeholder="cooktime" {...register("cooktime")} />
-      <select>
-        <option>Breakfast</option>
-        <option>Lunch</option>
-        <option>Dinner</option>
-        <option>Dessert</option>
-        <option>Sides</option>
-      </select>
       <h2>Ingredients</h2>
       <ul>
         {ingredientFields.map((ingredient, index) => {

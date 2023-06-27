@@ -8,18 +8,20 @@ interface RecipeProps {
 
 const Recipe = ({ recipe }: RecipeProps) => {
   const ingredientComponents: ReactNode = recipe.ingredients?.map(
-    (ingredient) => {
+    (ingredient, index) => {
       return (
-        <li>
+        <li key={index}>
           {ingredient.amount} {ingredient.measurement} {ingredient.name}
         </li>
       );
     }
   );
 
-  const directionComponents: ReactNode = recipe.directions?.map((direction) => {
-    return <li>{direction}</li>;
-  });
+  const directionComponents: ReactNode = recipe.directions?.map(
+    (direction, index) => {
+      return <li key={index}>{direction.direction}</li>;
+    }
+  );
 
   return (
     <article>
@@ -30,7 +32,9 @@ const Recipe = ({ recipe }: RecipeProps) => {
       <p>{recipe.description}</p>
       {ingredientComponents && <ul>{ingredientComponents}</ul>}
       {directionComponents && <ol>{directionComponents}</ol>}
-      <button onClick={() => RecipesApi.deleteRecipe(recipe._id)}>Delete</button>
+      <button onClick={() => RecipesApi.deleteRecipe(recipe._id)}>
+        Delete
+      </button>
     </article>
   );
 };

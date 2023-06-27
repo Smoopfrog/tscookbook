@@ -6,7 +6,7 @@ export interface Recipe {
   cooktime?: string;
   category?: string;
   ingredients?: { amount: number; measurement?: string; name: string }[];
-  directions?: string[];
+  directions?: {direction: string}[];
   createdAt: string;
   updatedAt: string;
 }

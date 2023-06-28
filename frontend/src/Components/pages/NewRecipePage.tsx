@@ -2,11 +2,8 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { Recipe } from "../../models/recipe";
 import * as RecipesApi from "../../network/recipes_api";
 
-interface ButtonProps {
-  handleClose: () => void;
-}
 
-const NewRecipeForm = ({ handleClose }: ButtonProps) => {
+const NewRecipePage = () => {
   const {
     register,
     formState: { errors },
@@ -35,7 +32,6 @@ const NewRecipeForm = ({ handleClose }: ButtonProps) => {
   const onSubmit = async (data: Recipe) => {
     try {
       await RecipesApi.createRecipe(data);
-      handleClose();
     } catch (error) {
       console.log(error);
       alert(error);
@@ -113,4 +109,4 @@ const NewRecipeForm = ({ handleClose }: ButtonProps) => {
   );
 };
 
-export default NewRecipeForm;
+export default NewRecipePage;

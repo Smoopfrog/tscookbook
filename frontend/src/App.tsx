@@ -5,7 +5,8 @@ import HomePage from "./Components/pages/HomePage";
 import { Recipe as RecipeModel } from "./models/recipe";
 import Recipe from "./Components/Recipe";
 import * as RecipesApi from "./network/recipes_api";
-
+import { Routes, Route } from "react-router-dom";
+import NewRecipePage from "./Components/pages/NewRecipePage";
 function App() {
   const [showRecipeForm, setShowRecipeForm] = useState<boolean>(false);
   const [recipes, setRecipes] = useState<RecipeModel[]>([]);
@@ -40,10 +41,13 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <HomePage openForm={handleShowRecipeForm} />
-      {/* {recipes.map((recipe) => {
-        return <Recipe recipe={recipe} key={recipe._id} getRecipes={getRecipes} />;
-      })} */}
+      <Routes>
+        <Route
+          path="/"
+          element={<HomePage openForm={handleShowRecipeForm} />}
+        />
+        <Route path="/newrecipe" element={<NewRecipePage />} />
+      </Routes>
     </div>
   );
 }

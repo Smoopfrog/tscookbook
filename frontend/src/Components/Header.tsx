@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../Styles/Header.css";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [showMenuAside, setShowMenuAside] = useState<Boolean>(false);
@@ -16,10 +17,13 @@ const Header = () => {
       </div>
       <aside className={`menu-aside ${showMenuAside ? "" : "hide-menu"}`}>
         <ul className="nav-list">
-          <button>My Recipes</button>
-          <button>New Recipe</button>
-          <button>Search</button>
-          
+          <Link to="/" onClick={handleMenuAside}>
+            My Recipes
+          </Link>
+          <Link to="/newrecipe" onClick={handleMenuAside}>
+            New Recipe
+          </Link>
+          <Link to="/">Search</Link>
         </ul>
       </aside>
     </header>

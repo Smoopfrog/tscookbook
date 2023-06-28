@@ -17,7 +17,7 @@ const Header = () => {
       </div>
       <aside className={`menu-aside ${showMenuAside ? "" : "hide-menu"}`}>
         <ul className="nav-list">
-          <Link to="/" onClick={handleMenuAside}>
+          <Link to="/myrecipes" onClick={handleMenuAside}>
             My Recipes
           </Link>
           <Link to="/newrecipe" onClick={handleMenuAside}>

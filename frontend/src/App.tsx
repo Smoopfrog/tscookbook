@@ -3,10 +3,12 @@ import "./App.css";
 import Header from "./Components/Header";
 import HomePage from "./Components/pages/HomePage";
 import { Recipe as RecipeModel } from "./models/recipe";
-import Recipe from "./Components/Recipe";
 import * as RecipesApi from "./network/recipes_api";
 import { Routes, Route } from "react-router-dom";
 import NewRecipePage from "./Components/pages/NewRecipePage";
+import MyRecipesPage from "./Components/pages/MyRecipesPage";
+import Recipe from "./Components/Recipe";
+
 function App() {
   const [showRecipeForm, setShowRecipeForm] = useState<boolean>(false);
   const [recipes, setRecipes] = useState<RecipeModel[]>([]);
@@ -46,7 +48,15 @@ function App() {
           path="/"
           element={<HomePage openForm={handleShowRecipeForm} />}
         />
+        <Route path="/myrecipes" element={<MyRecipesPage />} />
         <Route path="/newrecipe" element={<NewRecipePage />} />
+        <Route
+          element={<Recipe />}
+          path="myrecipes/:recipeId"
+          loader={async ({ params }) => {
+            return RecipesApi.fetchRecipe(`/api/recipes/${params.recipeId}`);
+          }}
+        />
       </Routes>
     </div>
   );

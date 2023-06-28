@@ -18,6 +18,11 @@ export const fetchRecipes = async (): Promise<Recipe[]> => {
   return response.json();
 };
 
+export const fetchRecipe = async (recipeId: string): Promise<Recipe> => {
+  const response = await fetchData(`/api/recipes/${recipeId}`, { method: "GET" });
+  return response.json();
+};
+
 export interface RecipeInput {
   title: string;
   description?: string;
@@ -25,9 +30,9 @@ export interface RecipeInput {
   cooktime?: string;
   category?: string;
   ingredients?: { amount: number; measurement?: string; name: string }[];
-  directions?: {text: string}[];
+  directions?: { text: string }[];
 }
- 
+
 export const createRecipe = async (recipe: RecipeInput): Promise<Recipe> => {
   const response = await fetchData("/api/recipes", {
     method: "POST",
@@ -42,4 +47,4 @@ export const createRecipe = async (recipe: RecipeInput): Promise<Recipe> => {
 
 export const deleteRecipe = async (recipeId: string) => {
   await fetchData("/api/recipes/" + recipeId, { method: "DELETE" });
-}
+};

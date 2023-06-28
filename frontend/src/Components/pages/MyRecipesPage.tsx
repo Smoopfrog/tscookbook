@@ -5,8 +5,6 @@ import { Recipe } from "../../models/recipe";
 const MyRecipesPage = () => {
   const recipes = useLoaderData() as Recipe[];
 
-  console.log(recipes);
-
   return (
     <section>
       <h1>My Recipes</h1>

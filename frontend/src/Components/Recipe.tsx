@@ -1,14 +1,16 @@
 import { ReactNode, MouseEvent } from "react";
 import { Recipe as RecipeModel } from "../models/recipe";
 import * as RecipesApi from "../network/recipes_api";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const Recipe = () => {
   const recipe = useLoaderData() as RecipeModel ;
+  const navigate = useNavigate();
 
   const deleteRecipe = async (e: MouseEvent<HTMLButtonElement>) => {
     try {
       await RecipesApi.deleteRecipe(recipe._id);
+      navigate('/myrecipes')
     } catch (error) {
       alert(error);
       console.log(error);

@@ -1,9 +1,12 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import { Recipe } from "../../models/recipe";
 import * as RecipesApi from "../../network/recipes_api";
+import { useNavigate } from "react-router-dom";
 
 
 const NewRecipePage = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     formState: { errors },
@@ -32,6 +35,7 @@ const NewRecipePage = () => {
   const onSubmit = async (data: Recipe) => {
     try {
       await RecipesApi.createRecipe(data);
+      navigate('/myrecipes')
     } catch (error) {
       console.log(error);
       alert(error);

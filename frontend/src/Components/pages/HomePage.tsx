@@ -1,12 +1,16 @@
 import { MouseEvent } from "react";
+
 interface ButtonProps {
   openForm: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 
-const HomePage = ({ openForm}: ButtonProps ) => {
+const HomePage = ({ openForm }: ButtonProps) => {
   return (
     <section>
-      <button onClick={openForm}>Add New Recipe</button>
+      <h1>TS Cookbook</h1>
+      <button>New Recipe</button>
+      <button>My Recipes</button>
+      <button>Search</button>
     </section>
   );
 };

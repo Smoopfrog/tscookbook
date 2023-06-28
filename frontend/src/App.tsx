@@ -1,8 +1,7 @@
 import { useState, MouseEvent, useEffect } from "react";
 import "./App.css";
 import Header from "./Components/Header";
-import HomePage from "./Components/HomePage/HomePage";
-import NewRecipeForm from "./Components/NewRecipeForm";
+import HomePage from "./Components/pages/HomePage";
 import { Recipe as RecipeModel } from "./models/recipe";
 import Recipe from "./Components/Recipe";
 import * as RecipesApi from "./network/recipes_api";
@@ -38,20 +37,13 @@ function App() {
     setShowRecipeForm(!showRecipeForm);
   };
 
-  const closeRecipeForm = () => {
-    setShowRecipeForm(false)
-  }
-
   return (
     <div className="App">
       <Header />
       <HomePage openForm={handleShowRecipeForm} />
-      {recipes.map((recipe) => {
+      {/* {recipes.map((recipe) => {
         return <Recipe recipe={recipe} key={recipe._id} getRecipes={getRecipes} />;
-      })}
-      <dialog open={showRecipeForm}>
-        <NewRecipeForm handleClose={closeRecipeForm}/>
-      </dialog>
+      })} */}
     </div>
   );
 }

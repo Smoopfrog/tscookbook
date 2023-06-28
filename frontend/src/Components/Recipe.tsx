@@ -4,8 +4,8 @@ import * as RecipesApi from "../network/recipes_api";
 import { useLoaderData } from "react-router-dom";
 
 const Recipe = () => {
-  const recipe: RecipeModel = useLoaderData();
-  console.log(recipe);
+  const recipe = useLoaderData() as RecipeModel ;
+
   const deleteRecipe = async (e: MouseEvent<HTMLButtonElement>) => {
     try {
       await RecipesApi.deleteRecipe(recipe._id);

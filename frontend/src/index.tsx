@@ -3,16 +3,46 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import NewRecipePage from "./Components/pages/NewRecipePage";
+import MyRecipesPage from "./Components/pages/MyRecipesPage";
+import Recipe from "./Components/Recipe";
+import * as RecipesApi from "./network/recipes_api";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/myrecipes",
+        element: <MyRecipesPage />,
+        loader: async () => {
+          return RecipesApi.fetchRecipes();
+        }
+      },
+      {
+        path: "/myrecipes/:recipeId",
+        element: <Recipe />,
+        loader: async ({ params }) => {
+          return RecipesApi.fetchRecipe(params.recipeId);
+        },
+      },
+      {
+        path: "/newrecipe",
+        element: <NewRecipePage />,
+      },
+    ],
+  },
+]);
+
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

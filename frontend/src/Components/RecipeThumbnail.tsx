@@ -1,16 +1,21 @@
 import { Link } from "react-router-dom";
+import { Recipe } from "../models/recipe";
 
-const RecipeThumbnail = () => {
+interface ThumbnailProps {
+  recipe: Recipe;
+}
+
+const RecipeThumbnail = ({ recipe }: ThumbnailProps) => {
   return (
-    <Link to="/myrecipes/649a6b450430b2b457631482">
-      <h1>Title</h1>
+    <Link to={`/myrecipes/${recipe._id}`}>
+      <h1>{recipe.title}</h1>
       <div>
         <span>Clock</span>
-        <span>Cooktime</span>
+        <span>{recipe.cooktime}</span>
       </div>
       <div>
         <span>fork</span>
-        <span>Yield</span>
+        <span>{recipe.portion}</span>
       </div>
     </Link>
   );

@@ -44,8 +44,19 @@ const RecipeForm = () => {
     }
   };
 
+  const onSave = async (data: Recipe) => {
+    try {
+      console.log(data)
+      await RecipesApi.updateRecipe(data);
+      navigate(`/myrecipes/${data._id}`);
+    } catch (error) {
+      console.log(error);
+      alert(error);
+    }
+  };
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSave)}>
       {recipe ? <h1>Edit Recipe</h1> : <h1>Add a new Recipe</h1>}
       <input placeholder="name" {...register("title", { required: true })} />
       {errors.title && <span>This field is required</span>}

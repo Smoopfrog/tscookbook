@@ -45,6 +45,22 @@ export const createRecipe = async (recipe: RecipeInput): Promise<Recipe> => {
   return response.json();
 };
 
+export interface UpdateRecipeInput {
+  
+}
+
+export const updateRecipe = async (recipe: Recipe): Promise<Recipe> => {
+  const response = await fetchData(`/api/recipes/${recipe._id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(recipe),
+  });
+
+  return response.json();
+};
+
 export const deleteRecipe = async (recipeId: string) => {
   await fetchData("/api/recipes/" + recipeId, { method: "DELETE" });
 };

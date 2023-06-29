@@ -1,18 +1,20 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import { Recipe } from "../../models/recipe";
 import * as RecipesApi from "../../network/recipes_api";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
-
-const NewRecipePage = () => {
+const RecipeForm = () => {
   const navigate = useNavigate();
-
+  const recipe = useLoaderData() as Recipe;
+  
   const {
     register,
     formState: { errors },
     control,
     handleSubmit,
-  } = useForm<Recipe>();
+  } = useForm<Recipe>({
+    defaultValues: recipe,
+  });
 
   const {
     fields: directionFields,
@@ -35,7 +37,7 @@ const NewRecipePage = () => {
   const onSubmit = async (data: Recipe) => {
     try {
       await RecipesApi.createRecipe(data);
-      navigate('/myrecipes')
+      navigate("/myrecipes");
     } catch (error) {
       console.log(error);
       alert(error);
@@ -44,7 +46,7 @@ const NewRecipePage = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <h1>Add a new Recipe</h1>
+      {recipe ? <h1>Edit Recipe</h1> : <h1>Add a new Recipe</h1>}
       <input placeholder="name" {...register("title", { required: true })} />
       {errors.title && <span>This field is required</span>}
       <input placeholder="description" {...register("description")} />
@@ -108,9 +110,13 @@ const NewRecipePage = () => {
       >
         Add Direction
       </button>
-      <button type="submit">Create Recipe</button>
+      {recipe ? (
+        <button>Save</button>
+      ) : (
+        <button type="submit">Create Recipe</button>
+      )}
     </form>
   );
 };
 
-export default NewRecipePage;
+export default RecipeForm;

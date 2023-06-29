@@ -1,14 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import NewRecipePage from "./Components/pages/NewRecipePage";
-import MyRecipesPage from "./Components/pages/MyRecipesPage";
 import Recipe from "./Components/Recipe";
+import RecipeForm from "./Components/pages/RecipeForm";
+import MyRecipesPage from "./Components/pages/MyRecipesPage";
 import * as RecipesApi from "./network/recipes_api";
-import EditRecipeForm from "./Components/EditRecipeForm";
+import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -35,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/myrecipes/:recipeId/edit",
-        element: <EditRecipeForm />,
+        element: <RecipeForm />,
 
         // Reuse previous loader somehow?
         loader: async ({ params }) => {
@@ -43,8 +42,9 @@ const router = createBrowserRouter([
         },
       },
       {
+        // Keeps data if edit recipe is open
         path: "/newrecipe",
-        element: <NewRecipePage />,
+        element: <RecipeForm />,
       },
     ],
   },

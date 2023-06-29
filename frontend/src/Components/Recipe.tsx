@@ -37,7 +37,6 @@ const Recipe = () => {
   return (
     <article>
       <h1>{recipe.title}</h1>
-      <h6>Category: {recipe.category}</h6>
       <h6>Yield: {recipe.portion}</h6>
       <h6>Cooktime: {recipe.cooktime}</h6>
       <p>{recipe.description}</p>

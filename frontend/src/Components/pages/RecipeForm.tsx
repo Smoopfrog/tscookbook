@@ -2,6 +2,7 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { Recipe } from "../../models/recipe";
 import * as RecipesApi from "../../network/recipes_api";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const RecipeForm = () => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const RecipeForm = () => {
   } = useForm<Recipe>({
     defaultValues: recipe,
   });
-
+  
   const {
     fields: directionFields,
     append: directionAppend,
@@ -34,6 +35,11 @@ const RecipeForm = () => {
     control,
   });
 
+  const handleReset = () => {
+    directionRemove();
+    ingredientRemove();
+  };
+
   const onSubmit = async (data: Recipe) => {
     try {
       await RecipesApi.createRecipe(data);
@@ -46,7 +52,6 @@ const RecipeForm = () => {
 
   const onSave = async (data: Recipe) => {
     try {
-      console.log(data);
       await RecipesApi.updateRecipe(data);
       navigate(`/myrecipes/${data._id}`);
     } catch (error) {
@@ -122,9 +127,14 @@ const RecipeForm = () => {
         Add Direction
       </button>
       {recipe ? (
-        <button>Save</button>
+        <button type="submit">Save</button>
       ) : (
-        <button type="submit">Create Recipe</button>
+        <div>
+          <button type="reset" onClick={handleReset}>
+            Clear
+          </button>
+          <button type="submit">Create Recipe</button>
+        </div>
       )}
     </form>
   );

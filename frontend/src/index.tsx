@@ -8,6 +8,7 @@ import NewRecipePage from "./Components/pages/NewRecipePage";
 import MyRecipesPage from "./Components/pages/MyRecipesPage";
 import Recipe from "./Components/Recipe";
 import * as RecipesApi from "./network/recipes_api";
+import EditRecipeForm from "./Components/EditRecipeForm";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -23,11 +24,20 @@ const router = createBrowserRouter([
         element: <MyRecipesPage />,
         loader: async () => {
           return RecipesApi.fetchRecipes();
-        }
+        },
       },
       {
         path: "/myrecipes/:recipeId",
         element: <Recipe />,
+        loader: async ({ params }) => {
+          return RecipesApi.fetchRecipe(params.recipeId);
+        },
+      },
+      {
+        path: "/myrecipes/:recipeId/edit",
+        element: <EditRecipeForm />,
+
+        // Reuse previous loader somehow?
         loader: async ({ params }) => {
           return RecipesApi.fetchRecipe(params.recipeId);
         },

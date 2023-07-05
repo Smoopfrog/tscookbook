@@ -16,14 +16,23 @@ const Header = () => {
         <button onClick={handleMenuAside}>Menu</button>
       </div>
       <aside className={`menu-aside ${showMenuAside ? "" : "hide-menu"}`}>
+        <h2>My Cookbook</h2>
         <ul className="nav-list">
-          <Link to="/myrecipes" onClick={handleMenuAside}>
+          <Link className="nav-item" to="/" onClick={handleMenuAside}>
+            Home
+          </Link>
+          <Link className="nav-item" to="/myrecipes" onClick={handleMenuAside}>
             My Recipes
           </Link>
-          <Link to="/newrecipe" onClick={handleMenuAside}>
+          <Link className="nav-item" to="/newrecipe" onClick={handleMenuAside}>
             New Recipe
           </Link>
-          <Link to="/">Search</Link>
+          <Link className="nav-item" to="/">
+            Search
+          </Link>
+          <Link className="nav-item" to="/">
+            Surprise Me!
+          </Link>
         </ul>
       </aside>
     </header>

@@ -1,5 +1,7 @@
 .header {
   position: relative;
+  height: 5%;
+  background-color: black;
 
   h1 {
     font-size: 16px;
@@ -17,12 +19,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 32px;
-  background-color: black;
+  height: 100%;
 }
 
 .menu-aside {
   position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 32px;
   top: 32px;
   left: 0;
   width: 100%;
@@ -35,6 +40,7 @@
 
   h2 {
     font-size: 32px;
+    padding-bottom: 32px;
   }
 }
 
@@ -49,10 +55,11 @@
   align-items: center;
   list-style-type: none;
   padding: 0;
+  width: 100%;
   // height: 100%;
 }
 
-.nav-item {
+.header-nav-item {
   text-decoration: none;
   padding: 6px;
   font-size: 24px;
@@ -62,10 +69,10 @@
   margin-bottom: 12px;
 }
 
-.nav-item:hover {
+.header-nav-item:hover {
   background-color: grey;
 }
 
-.nav-item:visited {
+.header-nav-item:visited {
   color: whitesmoke;
 }

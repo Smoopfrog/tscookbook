@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import HomePage from "./Components/pages/HomePage";
 import NewRecipePage from "./Components/pages/NewRecipePage";
 import MyRecipesPage from "./Components/pages/MyRecipesPage";
 import Recipe from "./Components/Recipe";
@@ -18,6 +19,11 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
+      {
+        path: "/home",
+        element: <HomePage />,
+
+      },
       {
         path: "/myrecipes",
         element: <MyRecipesPage />,

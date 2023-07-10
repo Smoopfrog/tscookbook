@@ -1,19 +1,22 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import { Recipe } from "../../models/recipe";
 import * as RecipesApi from "../../network/recipes_api";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
-
-const NewRecipePage = () => {
+const RecipeForm = () => {
   const navigate = useNavigate();
+  const recipe = useLoaderData() as Recipe;
 
   const {
     register,
     formState: { errors },
     control,
     handleSubmit,
-  } = useForm<Recipe>();
-
+  } = useForm<Recipe>({
+    defaultValues: recipe,
+  });
+  
   const {
     fields: directionFields,
     append: directionAppend,
@@ -32,10 +35,25 @@ const NewRecipePage = () => {
     control,
   });
 
+  const handleReset = () => {
+    directionRemove();
+    ingredientRemove();
+  };
+
   const onSubmit = async (data: Recipe) => {
     try {
       await RecipesApi.createRecipe(data);
-      navigate('/myrecipes')
+      navigate("/myrecipes");
+    } catch (error) {
+      console.log(error);
+      alert(error);
+    }
+  };
+
+  const onSave = async (data: Recipe) => {
+    try {
+      await RecipesApi.updateRecipe(data);
+      navigate(`/myrecipes/${data._id}`);
     } catch (error) {
       console.log(error);
       alert(error);
@@ -43,8 +61,8 @@ const NewRecipePage = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h1>Add a new Recipe</h1>
+    <form onSubmit={recipe ? handleSubmit(onSave) : handleSubmit(onSubmit)}>
+      {recipe ? <h1>Edit Recipe</h1> : <h1>Add a new Recipe</h1>}
       <input placeholder="name" {...register("title", { required: true })} />
       {errors.title && <span>This field is required</span>}
       <input placeholder="description" {...register("description")} />
@@ -108,9 +126,18 @@ const NewRecipePage = () => {
       >
         Add Direction
       </button>
-      <button type="submit">Create Recipe</button>
+      {recipe ? (
+        <button type="submit">Save</button>
+      ) : (
+        <div>
+          <button type="reset" onClick={handleReset}>
+            Clear
+          </button>
+          <button type="submit">Create Recipe</button>
+        </div>
+      )}
     </form>
   );
 };
 
-export default NewRecipePage;
+export default RecipeForm;

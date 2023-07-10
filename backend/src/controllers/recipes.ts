@@ -81,13 +81,17 @@ interface UpdateRecipeParams {
 }
 
 interface UpdateRecipeBody {
-  title?: string;
+  _id: string;
+  title: string;
   description?: string;
-  category?: string;
   portion?: string;
   cooktime?: string;
-  ingredients?: { amount: number; measurement?: string; name: string }[];
+  category?: string;
+  ingredients?: { amount?: string; measurement?: string; name?: string }[];
   directions?: { text: string }[];
+  createdAt: string;
+  updatedAt: string;
+  __v: string;
 }
 
 export const updateRecipe: RequestHandler<
@@ -99,18 +103,14 @@ export const updateRecipe: RequestHandler<
   const recipeId = req.params.recipeId;
   const newTitle = req.body.title;
   const newDescription = req.body.description;
+  const newPortion = req.body.portion;
+  const newCooktime = req.body.cooktime;
+  const newIngredients = req.body.ingredients!;
+  const newDirections = req.body.directions!;
 
   try {
     if (!mongoose.isValidObjectId(recipeId)) {
       throw createHttpError(400, "Invalid recipe id");
-    }
-
-    if (!newTitle) {
-      throw createHttpError(400, "Recipe must have a title");
-    }
-
-    if (!newDescription) {
-      throw createHttpError(400, "Recipe must have a description");
     }
 
     const recipe = await RecipeModel.findById(recipeId).exec();
@@ -121,6 +121,10 @@ export const updateRecipe: RequestHandler<
 
     recipe.title = newTitle;
     recipe.description = newDescription;
+    recipe.portion = newPortion;
+    recipe.cooktime = newCooktime;
+    recipe.ingredients = newIngredients;
+    recipe.directions = newDirections;
 
     const updatedRecipe = await recipe.save();
 

@@ -2,6 +2,7 @@ import { ReactNode, MouseEvent } from "react";
 import { Recipe as RecipeModel } from "../models/recipe";
 import * as RecipesApi from "../network/recipes_api";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Recipe = () => {
   const recipe = useLoaderData() as RecipeModel ;
@@ -36,13 +37,13 @@ const Recipe = () => {
   return (
     <article>
       <h1>{recipe.title}</h1>
-      <h6>Category: {recipe.category}</h6>
       <h6>Yield: {recipe.portion}</h6>
       <h6>Cooktime: {recipe.cooktime}</h6>
       <p>{recipe.description}</p>
       {ingredientComponents && <ul>{ingredientComponents}</ul>}
       {directionComponents && <ol>{directionComponents}</ol>}
       <button onClick={deleteRecipe}>Delete</button>
+      <Link to={`/myrecipes/${recipe._id}/edit`}>Edit</Link>
     </article>
   );
 };

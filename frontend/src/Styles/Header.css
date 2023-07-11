@@ -3,25 +3,29 @@
   height: 5%;
   background-color: black;
 }
-.header h1 {
-  font-size: 16px;
-  color: whitesmoke;
-}
-.header button {
-  border: none;
-  background-color: transparent;
-  color: whitesmoke;
-}
 
 .header-nav {
+  padding: 0 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 100%;
 }
+.header-nav h1 {
+  font-size: 16px;
+  color: whitesmoke;
+}
+.header-nav button {
+  height: 32px;
+  font-size: 32px;
+  border: none;
+  background-color: transparent;
+  color: whitesmoke;
+}
 
 .menu-aside {
   position: absolute;
+  z-index: 1;
   display: flex;
   align-items: center;
   flex-direction: column;

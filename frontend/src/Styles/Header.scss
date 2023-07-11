@@ -2,6 +2,14 @@
   position: relative;
   height: 5%;
   background-color: black;
+}
+
+.header-nav {
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
 
   h1 {
     font-size: 16px;
@@ -9,21 +17,17 @@
   }
 
   button {
+    height: 32px;
+    font-size: 32px;
     border: none;
     background-color: transparent;
     color: whitesmoke;
   }
 }
 
-.header-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-}
-
 .menu-aside {
   position: absolute;
+  z-index: 1;
   display: flex;
   align-items: center;
   flex-direction: column;

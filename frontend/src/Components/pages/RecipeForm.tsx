@@ -2,7 +2,6 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { Recipe } from "../../models/recipe";
 import * as RecipesApi from "../../network/recipes_api";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 const RecipeForm = () => {
   const navigate = useNavigate();

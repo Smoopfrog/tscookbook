@@ -1,0 +1,12 @@
+.my-recipes-page {
+  background-color: #868e96;
+
+
+  li:nth-child(odd) {
+    background-color: #343a40;
+  }
+
+  li:nth-child(even) {
+    background-color: #868e96;
+  }
+}

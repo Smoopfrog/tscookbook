@@ -1,0 +1,9 @@
+.my-recipes-page {
+  background-color: #868e96;
+}
+.my-recipes-page li:nth-child(odd) {
+  background-color: #343a40;
+}
+.my-recipes-page li:nth-child(even) {
+  background-color: #868e96;
+}/*# sourceMappingURL=MyRecipesPage.css.map */

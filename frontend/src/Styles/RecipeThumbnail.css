@@ -1,0 +1,22 @@
+.recipe-thumbnail {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: none;
+  text-decoration: none;
+}
+.recipe-thumbnail img {
+  width: 30%;
+  border-radius: 10%;
+  margin-right: 12px;
+}
+
+.recipe-thumbnail:visited {
+  color: whitesmoke;
+}
+
+.recipe-thumbnail-info-div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}/*# sourceMappingURL=RecipeThumbnail.css.map */

@@ -49,7 +49,6 @@ export const createRecipe: RequestHandler<
   CreateRecipeBody,
   unknown
 > = async (req, res, next) => {
-  console.log(req.body);
   const title = req.body.title;
   const description = req.body.description;
   const category = req.body.category;
@@ -58,7 +57,7 @@ export const createRecipe: RequestHandler<
   const imgURL = req.body.imgURL;
   const ingredients = req.body.ingredients;
   const directions = req.body.directions;
-  console.log(imgURL);
+
   try {
     if (!title) {
       throw createHttpError(400, "Recipe must have a title");

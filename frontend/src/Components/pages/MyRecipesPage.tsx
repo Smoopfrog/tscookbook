@@ -1,12 +1,13 @@
 import { useLoaderData } from "react-router-dom";
 import RecipeThumbnail from "../RecipeThumbnail";
 import { Recipe } from "../../models/recipe";
+import "../../Styles/MyRecipesPage.css"
 
 const MyRecipesPage = () => {
   const recipes = useLoaderData() as Recipe[];
 
   return (
-    <section>
+    <section className="my-recipes-page">
       <h1>My Recipes</h1>
       <ul>
         {recipes.map((recipe) => {

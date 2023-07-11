@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import { Recipe } from "../models/recipe";
+import "../Styles/RecipeThumbnail.css";
+import { FaRegClock } from "react-icons/fa6";
+import { PiForkKnife } from "react-icons/pi";
 
 interface ThumbnailProps {
   recipe: Recipe;
@@ -7,15 +10,18 @@ interface ThumbnailProps {
 
 const RecipeThumbnail = ({ recipe }: ThumbnailProps) => {
   return (
-    <Link to={`/myrecipes/${recipe._id}`}>
-      <h1>{recipe.title}</h1>
-      <div>
-        <span>Clock</span>
-        <span>{recipe.cooktime}</span>
-      </div>
-      <div>
-        <span>fork</span>
-        <span>{recipe.portion}</span>
+    <Link className="recipe-thumbnail" to={`/myrecipes/${recipe._id}`}>
+      <img src={recipe.imgURL} alt="Something" />
+      <div className="recipe-thumbnail-info">
+        <h1>{recipe.title}</h1>
+        <div className="recipe-thumbnail-info-div">
+          <FaRegClock />
+          <span>{recipe.cooktime}</span>
+        </div>
+        <div className="recipe-thumbnail-info-div">
+          <PiForkKnife />
+          <span>{recipe.portion}</span>
+        </div>
       </div>
     </Link>
   );

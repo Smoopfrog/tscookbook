@@ -1,0 +1,27 @@
+.recipe-thumbnail {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: none;
+  text-decoration: none;
+  // background-color: rgb(53, 52, 52);
+
+  img {
+    width: 30%;
+    border-radius: 10%;
+    margin-right: 12px;
+  }
+}
+
+.recipe-thumbnail:visited {
+  color: whitesmoke;
+}
+
+.recipe-thumbnail-info {
+}
+
+.recipe-thumbnail-info-div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

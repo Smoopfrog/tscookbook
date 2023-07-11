@@ -7,6 +7,7 @@ const recipeSchema = new Schema(
     category: [{ type: String }],
     portion: { type: String },
     cooktime: { type: String },
+    imgURL: { type: String },
     ingredients: [{ amount: String, measurement: String, name: String }],
     directions: [{ text: String }],
   },

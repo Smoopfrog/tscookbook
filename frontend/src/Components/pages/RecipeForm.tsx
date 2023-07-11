@@ -15,7 +15,7 @@ const RecipeForm = () => {
   } = useForm<Recipe>({
     defaultValues: recipe,
   });
-  
+
   const {
     fields: directionFields,
     append: directionAppend,
@@ -67,6 +67,7 @@ const RecipeForm = () => {
       <input placeholder="description" {...register("description")} />
       <input placeholder="portion" {...register("portion")} />
       <input placeholder="cooktime" {...register("cooktime")} />
+      <input placeholder="Image URL" {...register("imgURL")} />
       <h2>Ingredients</h2>
       <ul>
         {ingredientFields.map((ingredient, index) => {
@@ -103,6 +104,7 @@ const RecipeForm = () => {
       >
         Add Ingredient
       </button>
+      <h2>Directions</h2>
       <ol>
         {directionFields.map((direction, index) => {
           return (

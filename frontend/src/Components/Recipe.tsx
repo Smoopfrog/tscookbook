@@ -5,13 +5,13 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Recipe = () => {
-  const recipe = useLoaderData() as RecipeModel ;
+  const recipe = useLoaderData() as RecipeModel;
   const navigate = useNavigate();
 
   const deleteRecipe = async (e: MouseEvent<HTMLButtonElement>) => {
     try {
       await RecipesApi.deleteRecipe(recipe._id);
-      navigate('/myrecipes')
+      navigate("/myrecipes");
     } catch (error) {
       alert(error);
       console.log(error);
@@ -33,9 +33,10 @@ const Recipe = () => {
       return <li key={index}>{direction.text}</li>;
     }
   );
-
+  
   return (
     <article>
+      <img src={recipe.imgURL} alt="A meaning full alt tag" />
       <h1>{recipe.title}</h1>
       <h6>Yield: {recipe.portion}</h6>
       <h6>Cooktime: {recipe.cooktime}</h6>

@@ -38,6 +38,7 @@ interface CreateRecipeBody {
   category?: string;
   portion?: string;
   cooktime?: string;
+  imgURL?: string;
   ingredients?: { amount: number; measurement?: string; name: string }[];
   directions?: { text: string }[];
 }
@@ -48,13 +49,16 @@ export const createRecipe: RequestHandler<
   CreateRecipeBody,
   unknown
 > = async (req, res, next) => {
+  console.log(req.body);
   const title = req.body.title;
   const description = req.body.description;
   const category = req.body.category;
   const portion = req.body.portion;
   const cooktime = req.body.cooktime;
+  const imgURL = req.body.imgURL;
   const ingredients = req.body.ingredients;
   const directions = req.body.directions;
+  console.log(imgURL);
   try {
     if (!title) {
       throw createHttpError(400, "Recipe must have a title");
@@ -66,6 +70,7 @@ export const createRecipe: RequestHandler<
       category: category,
       portion: portion,
       cooktime: cooktime,
+      imgURL,
       ingredients: ingredients,
       directions: directions,
     });
@@ -87,6 +92,7 @@ interface UpdateRecipeBody {
   portion?: string;
   cooktime?: string;
   category?: string;
+  imgURL?: string;
   ingredients?: { amount?: string; measurement?: string; name?: string }[];
   directions?: { text: string }[];
   createdAt: string;
@@ -105,6 +111,7 @@ export const updateRecipe: RequestHandler<
   const newDescription = req.body.description;
   const newPortion = req.body.portion;
   const newCooktime = req.body.cooktime;
+  const newImgURL = req.body.imgURL;
   const newIngredients = req.body.ingredients!;
   const newDirections = req.body.directions!;
 
@@ -123,6 +130,7 @@ export const updateRecipe: RequestHandler<
     recipe.description = newDescription;
     recipe.portion = newPortion;
     recipe.cooktime = newCooktime;
+    recipe.imgURL = newImgURL;
     recipe.ingredients = newIngredients;
     recipe.directions = newDirections;
 

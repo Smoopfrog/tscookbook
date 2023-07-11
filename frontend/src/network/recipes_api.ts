@@ -19,7 +19,9 @@ export const fetchRecipes = async (): Promise<Recipe[]> => {
 };
 
 export const fetchRecipe = async (recipeId?: string): Promise<Recipe> => {
-  const response = await fetchData(`/api/recipes/${recipeId}`, { method: "GET" });
+  const response = await fetchData(`/api/recipes/${recipeId}`, {
+    method: "GET",
+  });
   return response.json();
 };
 
@@ -29,6 +31,7 @@ export interface RecipeInput {
   portion?: string;
   cooktime?: string;
   category?: string;
+  imgUrl?: string;
   ingredients?: { amount: number; measurement?: string; name: string }[];
   directions?: { text: string }[];
 }
@@ -45,9 +48,7 @@ export const createRecipe = async (recipe: RecipeInput): Promise<Recipe> => {
   return response.json();
 };
 
-export interface UpdateRecipeInput {
-  
-}
+export interface UpdateRecipeInput {}
 
 export const updateRecipe = async (recipe: Recipe): Promise<Recipe> => {
   const response = await fetchData(`/api/recipes/${recipe._id}`, {

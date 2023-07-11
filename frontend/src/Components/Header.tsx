@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../Styles/Header.css";
 import { Link } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
+import { FaHome, FaPlus, FaBook, FaSearch, FaDice } from "react-icons/fa";
 const Header = () => {
   const [showMenuAside, setShowMenuAside] = useState<Boolean>(false);
 
@@ -25,27 +26,32 @@ const Header = () => {
             to="/home"
             onClick={handleMenuAside}
           >
-            Home
+            <FaHome />
+            <span>Home</span>
           </Link>
           <Link
             className="header-nav-item"
             to="/newrecipe"
             onClick={handleMenuAside}
           >
-            New Recipe
+            <FaPlus />
+            <span>New Recipe</span>
           </Link>
           <Link
             className="header-nav-item"
             to="/myrecipes"
             onClick={handleMenuAside}
           >
-            My Recipes
+            <FaBook />
+            <span>My Recipes</span>
           </Link>
           <Link className="header-nav-item" to="/">
-            Search
+            <FaSearch />
+            <span>Search</span>
           </Link>
           <Link className="header-nav-item" to="/">
-            Surprise Me!
+            <FaDice />
+            <span>Surprise Me!</span>
           </Link>
         </ul>
       </aside>

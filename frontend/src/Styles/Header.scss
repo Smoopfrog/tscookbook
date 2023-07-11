@@ -71,6 +71,12 @@
   border-radius: 10px;
   width: 70%;
   margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+
+  span {
+    margin-left: 24px;
+  }
 }
 
 .header-nav-item:hover {

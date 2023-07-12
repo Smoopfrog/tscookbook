@@ -1,9 +1,9 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import { MouseEvent } from "react";
-
 import { Recipe } from "../../models/recipe";
 import * as RecipesApi from "../../network/recipes_api";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import "../../Styles/RecipeForm.css";
 
 const RecipeForm = () => {
   const navigate = useNavigate();
@@ -22,6 +22,7 @@ const RecipeForm = () => {
     fields: directionFields,
     append: directionAppend,
     remove: directionRemove,
+    move: directionMove,
   } = useFieldArray({
     name: "directions",
     control,
@@ -31,6 +32,7 @@ const RecipeForm = () => {
     fields: ingredientFields,
     append: ingredientAppend,
     remove: ingredientRemove,
+    move: ingredientMove,
   } = useFieldArray({
     name: "ingredients",
     control,
@@ -72,78 +74,130 @@ const RecipeForm = () => {
   };
 
   return (
-    <form onSubmit={recipe ? handleSubmit(onSave) : handleSubmit(onSubmit)}>
-      {recipe ? <h1>Edit Recipe</h1> : <h1>Add a new Recipe</h1>}
-      <input placeholder="name" {...register("title", { required: true })} />
-      {errors.title && <span>This field is required</span>}
-      <input placeholder="description" {...register("description")} />
-      <input placeholder="portion" {...register("portion")} />
-      <input placeholder="cooktime" {...register("cooktime")} />
-      <input placeholder="Image URL" {...register("imgURL")} />
-      <h2>Ingredients</h2>
-      <ul>
-        {ingredientFields.map((ingredient, index) => {
-          return (
-            <li key={ingredient.id}>
-              <input
-                placeholder="amount"
-                {...register(`ingredients.${index}.amount`, { required: true })}
-              />
-              <select {...register(`ingredients.${index}.measurement`)}>
-                <option value="tsp">tsp</option>
-                <option value="tbsp">tbsp</option>
-                <option value="cup">cups</option>
-                <option value="g">grams</option>
-                <option value="">none</option>
-              </select>
-              <input
-                placeholder="ingredient"
-                type="text"
-                {...register(`ingredients.${index}.name`, { required: true })}
-              />
-              <button type="button" onClick={() => ingredientRemove(index)}>
-                Delete
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-      <button
-        type="button"
-        onClick={() => {
-          ingredientAppend({ amount: 0, measurement: "", name: "" });
-        }}
-      >
-        Add Ingredient
-      </button>
-      <h2>Directions</h2>
-      <ol>
-        {directionFields.map((direction, index) => {
-          return (
-            <li key={direction.id}>
-              <input
-                {...register(`directions.${index}.text`, { required: true })}
-              />
-              <button type="button" onClick={() => directionRemove(index)}>
-                Delete
-              </button>
-            </li>
-          );
-        })}
-      </ol>
-      <button
-        type="button"
-        onClick={() => {
-          directionAppend({ text: "" });
-        }}
-      >
-        Add Direction
-      </button>
+    <form
+      className="recipe-form"
+      onSubmit={recipe ? handleSubmit(onSave) : handleSubmit(onSubmit)}
+    >
+      <div className="recipe-input-div">
+        <label>Name</label>
+        <input placeholder="name" {...register("title", { required: true })} />
+        {errors.title && <span>This field is required</span>}
+      </div>
+      <div className="recipe-input-div">
+        <label>Description</label>
+        <input placeholder="description" {...register("description")} />
+      </div>
+      <div className="recipe-input-div">
+        <label>Yield</label>
+        <input placeholder="portion" {...register("portion")} />
+      </div>
+      <div className="recipe-input-div">
+        <label>Cooktime</label>
+        <input placeholder="cooktime" {...register("cooktime")} />
+      </div>
+      <div className="recipe-input-div">
+        <label>Image URL</label>
+        <input placeholder="Image URL" {...register("imgURL")} />
+      </div>
+      <div className="recipe-form-ingredients">
+        <h2>Ingredients</h2>
+        <ul>
+          {ingredientFields.map((ingredient, index) => {
+            return (
+              <li className="recipe-form-ingredient" key={ingredient.id}>
+                <input
+                  placeholder="amount"
+                  {...register(`ingredients.${index}.amount`, {
+                    required: true,
+                  })}
+                />
+                <select {...register(`ingredients.${index}.measurement`)}>
+                  <option value="tsp">tsp</option>
+                  <option value="tbsp">tbsp</option>
+                  <option value="cup">cups</option>
+                  <option value="g">grams</option>
+                  <option value="">none</option>
+                </select>
+                <input
+                  placeholder="ingredient"
+                  type="text"
+                  {...register(`ingredients.${index}.name`, { required: true })}
+                />
+                <button type="button" onClick={() => ingredientRemove(index)}>
+                  Delete
+                </button>
+                <button
+                  onClick={() => {
+                    ingredientMove(index, index - 1);
+                  }}
+                >
+                  Up
+                </button>
+                <button
+                  onClick={() => {
+                    ingredientMove(index, index + 1);
+                  }}
+                >
+                  Down
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+        <button
+          type="button"
+          onClick={() => {
+            ingredientAppend({ amount: 0, measurement: "", name: "" });
+          }}
+        >
+          Add Ingredient
+        </button>
+      </div>
+      <div>
+        <h2>Directions</h2>
+        <ol>
+          {directionFields.map((direction, index) => {
+            return (
+              <li key={direction.id}>
+                <span>{index + 1}</span>
+                <input
+                  {...register(`directions.${index}.text`, { required: true })}
+                />
+                <button type="button" onClick={() => directionRemove(index)}>
+                  Delete
+                </button>
+                <button
+                  onClick={() => {
+                    directionMove(index, index - 1);
+                  }}
+                >
+                  Up
+                </button>
+                <button
+                  onClick={() => {
+                    directionMove(index, index + 1);
+                  }}
+                >
+                  Down
+                </button>
+              </li>
+            );
+          })}
+        </ol>
+        <button
+          type="button"
+          onClick={() => {
+            directionAppend({ text: "" });
+          }}
+        >
+          Add Direction
+        </button>
+      </div>
       {recipe ? (
-        <>
+        <div>
           <button type="submit">Save</button>
           <button onClick={deleteRecipe}>Delete</button>
-        </>
+        </div>
       ) : (
         <div>
           <button type="reset" onClick={handleReset}>

@@ -1,0 +1,125 @@
+.recipe-form {
+  background-color: #282828;
+  color: whitesmoke;
+}
+.recipe-form div:nth-child(even) {
+  background-color: #303030;
+}
+
+.recipe-input-div {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+
+  label {
+    margin-bottom: 4px;
+    color: whitesmoke;
+  }
+
+  input {
+    padding: 10px;
+    border-radius: 10px;
+  }
+}
+
+.recipe-form-ingredients {
+  padding: 12px 0;
+  h2 {
+  }
+}
+
+.recipe-form-list-header {
+  display: flex;
+  justify-content: center;
+  margin: 12px 0;
+}
+
+.recipe-form-ingredient {
+  background-color: grey;
+  padding: 12px;
+
+  input {
+    padding: 10px;
+    border-radius: 10px;
+  }
+}
+
+.recipe-form-directions {
+  background-color: #303030;
+
+
+  .recipe-form-direction:nth-child(odd) {
+    background-color: #282828;
+  }
+}
+
+.recipe-form-direction {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+
+  h2 {
+    margin-bottom: 12px;
+  }
+
+  textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+  }
+}
+
+.recipe-form-direction-delete {
+  position: absolute;
+  top: 12px;
+  right: 24px;
+  background-color: transparent;
+  color: whitesmoke;
+  border: none;
+}
+
+.recipe-form-direction-delete-icon {
+  height: 24px;
+  width: 24px;
+}
+
+.recipe-form-move-btns {
+  margin-bottom: 12px;
+  display: flex;
+  gap: 6px;
+
+  button {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.recipe-form-add-direction{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 124px;
+  
+  button {
+    color: whitesmoke;
+    background-color: transparent;
+    border: none;
+
+    .icon {
+      margin-bottom: 6px;
+      height: 32px;
+      width: 32px;
+    }
+
+    div {
+      font-size: 18px;
+    }
+
+  }
+}

@@ -2,6 +2,14 @@
   background-color: #282828;
   color: whitesmoke;
 }
+
+.recipe-form-err {
+  color: red;
+  font-size: 14px;
+  margin-left: 6px;
+  font-weight: 300;
+}
+
 .recipe-form div:nth-child(even) {
   background-color: #303030;
 }

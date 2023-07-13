@@ -32,7 +32,7 @@ export interface RecipeInput {
   cooktime?: string;
   category?: string;
   imgUrl?: string;
-  ingredients?: { amount: number; measurement?: string; name: string }[];
+  ingredients?: { amount?: string; name: string }[];
   directions?: { text: string }[];
 }
 

@@ -80,9 +80,14 @@ const RecipeForm = () => {
       onSubmit={recipe ? handleSubmit(onSave) : handleSubmit(onSubmit)}
     >
       <div className="recipe-input-div">
-        <label>Name</label>
+        <label>
+          Name
+          {errors.title && (
+            <span className="recipe-form-err">This field is required</span>
+          )}
+        </label>
+
         <input placeholder="name" {...register("title", { required: true })} />
-        {errors.title && <span>This field is required</span>}
       </div>
       <div className="recipe-input-div">
         <label>Description</label>
@@ -106,7 +111,7 @@ const RecipeForm = () => {
           <button
             type="button"
             onClick={() => {
-              ingredientAppend({ amount: 0, measurement: "", name: "" });
+              ingredientAppend({ amount: "", name: "" });
             }}
           >
             Add Ingredient
@@ -123,15 +128,8 @@ const RecipeForm = () => {
                       required: true,
                     })}
                   />
-                  <select {...register(`ingredients.${index}.measurement`)}>
-                    <option value="tsp">tsp</option>
-                    <option value="tbsp">tbsp</option>
-                    <option value="cup">cups</option>
-                    <option value="g">grams</option>
-                    <option value="">none</option>
-                  </select>
                   <input
-                    placeholder="ingredient"
+                    placeholder="Ingredient"
                     type="text"
                     {...register(`ingredients.${index}.name`, {
                       required: true,
@@ -208,7 +206,7 @@ const RecipeForm = () => {
               directionAppend({ text: "" });
             }}
           >
-            <BsPlusLg className="icon"/>
+            <BsPlusLg className="icon" />
             <div>Add a step</div>
           </button>
         </div>

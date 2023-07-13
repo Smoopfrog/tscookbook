@@ -14,7 +14,7 @@ const Recipe = () => {
       return (
         <li className="recipe-ingredient" key={index}>
           <span>{ingredient.amount} </span>
-          {ingredient.measurement} {ingredient.name}
+          {ingredient.name}
         </li>
       );
     }

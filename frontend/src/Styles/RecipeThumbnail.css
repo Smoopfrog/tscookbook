@@ -11,6 +11,10 @@
   margin-right: 12px;
 }
 
+.recipe-thumbnail:link {
+  color: whitesmoke;
+}
+
 .recipe-thumbnail:visited {
   color: whitesmoke;
 }

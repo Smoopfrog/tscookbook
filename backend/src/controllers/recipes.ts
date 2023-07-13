@@ -39,7 +39,7 @@ interface CreateRecipeBody {
   portion?: string;
   cooktime?: string;
   imgURL?: string;
-  ingredients?: { amount: number; measurement?: string; name: string }[];
+  ingredients?: { amount?: string;  name: string }[];
   directions?: { text: string }[];
 }
 
@@ -92,7 +92,7 @@ interface UpdateRecipeBody {
   cooktime?: string;
   category?: string;
   imgURL?: string;
-  ingredients?: { amount?: string; measurement?: string; name?: string }[];
+  ingredients?: { amount?: string; name?: string }[];
   directions?: { text: string }[];
   createdAt: string;
   updatedAt: string;

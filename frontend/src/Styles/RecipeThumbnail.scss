@@ -4,7 +4,6 @@
   padding: 10px;
   border: none;
   text-decoration: none;
-  // background-color: rgb(53, 52, 52);
 
   img {
     width: 30%;
@@ -12,7 +11,9 @@
     margin-right: 12px;
   }
 }
-
+.recipe-thumbnail:link {
+  color: whitesmoke;
+}
 .recipe-thumbnail:visited {
   color: whitesmoke;
 }

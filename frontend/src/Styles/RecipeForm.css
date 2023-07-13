@@ -10,10 +10,6 @@
   font-weight: 300;
 }
 
-.recipe-form div:nth-child(even) {
-  background-color: #303030;
-}
-
 .recipe-input-div {
   display: flex;
   flex-direction: column;
@@ -28,29 +24,92 @@
   border-radius: 10px;
 }
 
-.recipe-form-ingredients {
-  padding: 12px 0;
+.recipe-form-ingredients h1,
+.recipe-form-directions h1 {
+  text-align: center;
+  padding: 24px 0;
 }
-.recipe-form-list-header {
+.recipe-form-ingredients li:nth-child(odd),
+.recipe-form-directions li:nth-child(odd) {
+  background-color: rgb(62, 62, 62);
+}
+
+.recipe-form-ingredient-delete,
+.recipe-form-direction-delete {
+  position: absolute;
+  background-color: transparent;
+  color: whitesmoke;
+  border: none;
   display: flex;
+  align-items: center;
   justify-content: center;
-  margin: 12px 0;
+}
+
+.recipe-form-move-btns {
+  display: flex;
+  gap: 6px;
+}
+.recipe-form-move-btns button {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: none;
+}
+.recipe-form-move-btns button svg {
+  stroke-width: 2px;
+}
+.recipe-form-move-btns button:active {
+  background-color: bisque;
 }
 
 .recipe-form-ingredient {
-  background-color: grey;
   padding: 12px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 .recipe-form-ingredient input {
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 7px;
+  border: none;
+}
+.recipe-form-ingredient .recipe-form-ingredient-input:nth-child(1) {
+  width: 30%;
+}
+
+.recipe-form-ingredient-inputs {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.recipe-form-ingredient-input {
+  display: flex;
+  flex-direction: column;
+}
+.recipe-form-ingredient-input label {
+  margin-left: 7px;
+  margin-bottom: 2px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.recipe-form-ingredient-delete {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .recipe-form-directions {
   background-color: #303030;
-}
-.recipe-form-directions .recipe-form-direction:nth-child(odd) {
-  background-color: #282828;
 }
 
 .recipe-form-direction {
@@ -71,30 +130,13 @@
 }
 
 .recipe-form-direction-delete {
-  position: absolute;
   top: 12px;
-  right: 24px;
-  background-color: transparent;
-  color: whitesmoke;
-  border: none;
+  right: 12px;
 }
 
-.recipe-form-direction-delete-icon {
+.recipe-form-delete-icon {
   height: 24px;
   width: 24px;
-}
-
-.recipe-form-move-btns {
-  margin-bottom: 12px;
-  display: flex;
-  gap: 6px;
-}
-.recipe-form-move-btns button {
-  height: 32px;
-  width: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .recipe-form-add-direction {

@@ -106,40 +106,40 @@ const RecipeForm = () => {
         <input placeholder="Image URL" {...register("imgURL")} />
       </div>
       <div className="recipe-form-ingredients">
-        <div className="recipe-form-list-header">
-          <h2>Ingredients</h2>{" "}
-          <button
-            type="button"
-            onClick={() => {
-              ingredientAppend({ amount: "", name: "" });
-            }}
-          >
-            Add Ingredient
-          </button>
-        </div>
+        <h1>Ingredients</h1>
         <ul>
           {ingredientFields.map((ingredient, index) => {
             return (
               <li className="recipe-form-ingredient" key={ingredient.id}>
-                <div>
-                  <input
-                    placeholder="Amount"
-                    {...register(`ingredients.${index}.amount`, {
-                      required: true,
-                    })}
-                  />
-                  <input
-                    placeholder="Ingredient"
-                    type="text"
-                    {...register(`ingredients.${index}.name`, {
-                      required: true,
-                    })}
-                  />
-                </div>
-                <div>
-                  <button type="button" onClick={() => ingredientRemove(index)}>
-                    <BsTrash />
+                <div className="recipe-form-ingredient-inputs">
+                  <div className="recipe-form-ingredient-input">
+                    <label>Amount</label>
+                    <input
+                      placeholder="Amount"
+                      {...register(`ingredients.${index}.amount`, {
+                        required: true,
+                      })}
+                    />
+                  </div>
+                  <div className="recipe-form-ingredient-input">
+                    <label>Ingredient</label>
+                    <input
+                      placeholder="Ingredient"
+                      type="text"
+                      {...register(`ingredients.${index}.name`, {
+                        required: true,
+                      })}
+                    />
+                  </div>
+                  <button
+                    className="recipe-form-ingredient-delete"
+                    type="button"
+                    onClick={() => ingredientRemove(index)}
+                  >
+                    <BsTrash className="recipe-form-delete-icon" />
                   </button>
+                </div>
+                <div className="recipe-form-move-btns">
                   <button
                     onClick={() => {
                       ingredientMove(index, index - 1);
@@ -158,12 +158,21 @@ const RecipeForm = () => {
               </li>
             );
           })}
+          <li className="recipe-form-add-direction">
+            <button
+              type="button"
+              onClick={() => {
+                ingredientAppend({ amount: "", name: "" });
+              }}
+            >
+              <BsPlusLg className="icon" />
+              <div>Add Ingredient</div>
+            </button>
+          </li>
         </ul>
       </div>
       <div className="recipe-form-directions">
-        <div className="recipe-form-list-header">
-          <h2>Directions</h2>
-        </div>
+        <h1>Directions</h1>
         <ol>
           {directionFields.map((direction, index) => {
             return (
@@ -174,7 +183,7 @@ const RecipeForm = () => {
                   type="button"
                   onClick={() => directionRemove(index)}
                 >
-                  <BsTrash className="recipe-form-direction-delete-icon" />
+                  <BsTrash className="recipe-form-delete-icon" />
                 </button>
                 <textarea
                   {...register(`directions.${index}.text`, { required: true })}
@@ -198,18 +207,18 @@ const RecipeForm = () => {
               </li>
             );
           })}
+          <li className="recipe-form-add-direction">
+            <button
+              type="button"
+              onClick={() => {
+                directionAppend({ text: "" });
+              }}
+            >
+              <BsPlusLg className="icon" />
+              <div>Add a step</div>
+            </button>
+          </li>
         </ol>
-        <div className="recipe-form-add-direction">
-          <button
-            type="button"
-            onClick={() => {
-              directionAppend({ text: "" });
-            }}
-          >
-            <BsPlusLg className="icon" />
-            <div>Add a step</div>
-          </button>
-        </div>
       </div>
       {recipe ? (
         <div>

@@ -23,7 +23,7 @@ const Header = () => {
         <ul className="nav-list">
           <Link
             className="header-nav-item"
-            to="/home"
+            to=""
             onClick={handleMenuAside}
           >
             <FaHome />

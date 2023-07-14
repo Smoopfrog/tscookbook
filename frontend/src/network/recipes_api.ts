@@ -14,12 +14,12 @@ const fetchData = async (input: RequestInfo, init?: RequestInit) => {
 };
 
 export const fetchRecipes = async (): Promise<Recipe[]> => {
-  const response = await fetchData("/api/recipes", { method: "GET" });
+  const response = await fetchData("https://tscookbook-api.onrender.com/api/recipes", { method: "GET" });
   return response.json();
 };
 
 export const fetchRecipe = async (recipeId?: string): Promise<Recipe> => {
-  const response = await fetchData(`/api/recipes/${recipeId}`, {
+  const response = await fetchData(`https://tscookbook-api.onrender.com/api/recipes/${recipeId}`, {
     method: "GET",
   });
   return response.json();
@@ -37,7 +37,7 @@ export interface RecipeInput {
 }
 
 export const createRecipe = async (recipe: RecipeInput): Promise<Recipe> => {
-  const response = await fetchData("/api/recipes", {
+  const response = await fetchData("https://tscookbook-api.onrender.com/api/recipes", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -51,7 +51,7 @@ export const createRecipe = async (recipe: RecipeInput): Promise<Recipe> => {
 export interface UpdateRecipeInput {}
 
 export const updateRecipe = async (recipe: Recipe): Promise<Recipe> => {
-  const response = await fetchData(`/api/recipes/${recipe._id}`, {
+  const response = await fetchData(`https://tscookbook-api.onrender.com/api/recipes/${recipe._id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

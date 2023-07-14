@@ -3,12 +3,21 @@ import express, { NextFunction, Request, Response } from "express";
 import recipesRoutes from "./routes/recipes";
 import morgan from "morgan";
 import createHttpError, { isHttpError } from "http-errors";
+import cors from "cors";
 
 const app = express();
 
 app.use(morgan("dev"));
 
 app.use(express.json());
+
+const allowedOrigins = ["https://tscookbook-api.onrender.com/"];
+
+const options: cors.CorsOptions = {
+  origin: allowedOrigins,
+};
+
+app.use(cors<Request>(options));
 
 app.use("/api/recipes", recipesRoutes);
 
@@ -24,7 +33,7 @@ app.use((error: unknown, req: Request, res: Response, next: NextFunction) => {
 
   if (isHttpError(error)) {
     statusCode = error.status;
-    errorMessage  = error.message;
+    errorMessage = error.message;
   }
 
   res.status(statusCode).json({ error: errorMessage });

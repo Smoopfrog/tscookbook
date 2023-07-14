@@ -11,13 +11,13 @@ app.use(morgan("dev"));
 
 app.use(express.json());
 
-const allowedOrigins = ["https://tscookbook-api.onrender.com/"];
+const allowedOrigins = ["https://tscookbook.onrender.com"];
 
 const options: cors.CorsOptions = {
   origin: allowedOrigins,
 };
 
-app.use(cors<Request>(options));
+app.use(cors<Request>({ origin: "https://tscookbook.onrender.com" }));
 
 app.use("/api/recipes", recipesRoutes);
 

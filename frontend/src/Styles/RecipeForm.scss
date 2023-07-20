@@ -1,6 +1,7 @@
 .recipe-form {
   background-color: #282828;
   color: whitesmoke;
+  position: relative
 }
 
 .recipe-form-err {
@@ -32,7 +33,7 @@
     text-align: center;
     padding: 24px 0;
   }
-  
+
   li:nth-child(odd) {
     background-color: rgb(62, 62, 62);
   }

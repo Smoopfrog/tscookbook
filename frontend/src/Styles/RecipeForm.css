@@ -1,6 +1,7 @@
 .recipe-form {
   background-color: #282828;
   color: whitesmoke;
+  position: relative;
 }
 
 .recipe-form-err {

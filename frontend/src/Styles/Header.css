@@ -5,8 +5,14 @@
   z-index: 1;
 }
 
+.hide {
+  display: none;
+}
+
 .header-nav {
-  position: inherit;
+  position: sticky;
+  top: 0;
+  background-color: black;
   padding: 12px 16px;
   z-index: 2;
   display: flex;

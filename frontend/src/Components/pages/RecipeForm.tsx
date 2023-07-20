@@ -4,7 +4,14 @@ import { Recipe } from "../../models/recipe";
 import * as RecipesApi from "../../network/recipes_api";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import "../../Styles/RecipeForm.css";
-import { BsChevronUp, BsChevronDown, BsTrash, BsPlusLg } from "react-icons/bs";
+import {
+  BsChevronUp,
+  BsChevronDown,
+  BsTrash,
+  BsPlusLg,
+  BsCheckLg,
+  BsXLg,
+} from "react-icons/bs";
 
 const RecipeForm = () => {
   const navigate = useNavigate();
@@ -38,11 +45,6 @@ const RecipeForm = () => {
     name: "ingredients",
     control,
   });
-
-  const handleReset = () => {
-    directionRemove();
-    ingredientRemove();
-  };
 
   const onSubmit = async (data: Recipe) => {
     try {
@@ -79,6 +81,15 @@ const RecipeForm = () => {
       className="recipe-form"
       onSubmit={recipe ? handleSubmit(onSave) : handleSubmit(onSubmit)}
     >
+      <header className="header-nav">
+        <button className="header-menu-btn" onClick={() => navigate(-1)}>
+          <BsXLg />
+        </button>
+        <h1>TS Cookbook</h1>
+        <button className="header-menu-btn" type="submit">
+          <BsCheckLg />
+        </button>
+      </header>
       <div className="recipe-input-div">
         <label>
           Name
@@ -186,7 +197,9 @@ const RecipeForm = () => {
                   <BsTrash className="recipe-form-delete-icon" />
                 </button>
                 <textarea
-                  {...register(`directions.${index}.text`, { required: true })}
+                  {...register(`directions.${index}.text`, {
+                    required: true,
+                  })}
                 />
                 <div className="recipe-form-move-btns">
                   <button
@@ -220,19 +233,6 @@ const RecipeForm = () => {
           </li>
         </ol>
       </div>
-      {recipe ? (
-        <div>
-          <button type="submit">Save</button>
-          <button onClick={deleteRecipe}>Delete</button>
-        </div>
-      ) : (
-        <div>
-          <button type="reset" onClick={handleReset}>
-            Clear
-          </button>
-          <button type="submit">Create Recipe</button>
-        </div>
-      )}
     </form>
   );
 };

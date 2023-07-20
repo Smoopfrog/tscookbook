@@ -1,17 +1,18 @@
 import { useState } from "react";
 import "../Styles/Header.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import { FaHome, FaPlus, FaBook, FaSearch, FaDice } from "react-icons/fa";
 const Header = () => {
+  const path = useLocation().pathname;
+  console.log("path", path);
   const [showMenuAside, setShowMenuAside] = useState<Boolean>(false);
-
   const handleMenuAside = (): void => {
     setShowMenuAside((prev) => !prev);
   };
 
   return (
-    <header className="header">
+    <header className={`header ${path === '/newrecipe' && 'hide'}`}>
       <div className="header-nav">
         <h1>TS Cookbook</h1>
         <button className="header-menu-btn" onClick={handleMenuAside}>
@@ -21,11 +22,7 @@ const Header = () => {
       <aside className={`menu-aside ${showMenuAside ? "" : "hide-menu"}`}>
         <h2>My Cookbook</h2>
         <ul className="nav-list">
-          <Link
-            className="header-nav-item"
-            to=""
-            onClick={handleMenuAside}
-          >
+          <Link className="header-nav-item" to="" onClick={handleMenuAside}>
             <FaHome />
             <span>Home</span>
           </Link>

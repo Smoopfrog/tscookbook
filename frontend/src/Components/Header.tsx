@@ -5,8 +5,9 @@ import { FiMenu } from "react-icons/fi";
 import { FaHome, FaPlus, FaBook, FaSearch, FaDice } from "react-icons/fa";
 const Header = () => {
   const path = useLocation().pathname;
-  console.log("path", path);
+  
   const [showMenuAside, setShowMenuAside] = useState<Boolean>(false);
+
   const handleMenuAside = (): void => {
     setShowMenuAside((prev) => !prev);
   };

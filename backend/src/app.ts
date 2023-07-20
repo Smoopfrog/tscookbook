@@ -17,7 +17,7 @@ const options: cors.CorsOptions = {
   origin: allowedOrigins,
 };
 
-app.use(cors<Request>({ origin: "https://tscookbook.onrender.com" }));
+app.use(cors<Request>({ origin: "http://localhost:3000" }));
 
 app.use("/api/recipes", recipesRoutes);
 

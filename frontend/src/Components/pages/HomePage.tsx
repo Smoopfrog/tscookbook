@@ -12,8 +12,8 @@ const HomePage = () => {
         <Link className="nav-item" to="/newrecipe">
           New Recipe
         </Link>
-        <Link className="nav-item" to="/">
-          Search
+        <Link className="nav-item" to="/signup">
+          SignUp/Login
         </Link>
         <Link className="nav-item" to="/">
           Surprise Me!

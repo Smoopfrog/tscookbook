@@ -5,7 +5,12 @@ import { FiMenu } from "react-icons/fi";
 import { FaHome, FaPlus, FaBook, FaSearch, FaDice } from "react-icons/fa";
 const Header = () => {
   const path = useLocation().pathname;
+  let isEditPath = false;
   
+  if (path.substring(path.length - 4) === "edit") {
+    isEditPath = true;
+  }
+
   const [showMenuAside, setShowMenuAside] = useState<Boolean>(false);
 
   const handleMenuAside = (): void => {
@@ -13,7 +18,9 @@ const Header = () => {
   };
 
   return (
-    <header className={`header ${path === '/newrecipe' && 'hide'}`}>
+    <header
+      className={`header ${path === "/newrecipe" || (isEditPath && "hide")}`}
+    >
       <div className="header-nav">
         <h1>TS Cookbook</h1>
         <button className="header-menu-btn" onClick={handleMenuAside}>

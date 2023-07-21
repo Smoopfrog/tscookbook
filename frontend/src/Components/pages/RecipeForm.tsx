@@ -1,5 +1,4 @@
 import { useForm, useFieldArray } from "react-hook-form";
-import { MouseEvent } from "react";
 import { Recipe } from "../../models/recipe";
 import * as RecipesApi from "../../network/recipes_api";
 import { useLoaderData, useNavigate } from "react-router-dom";
@@ -53,16 +52,6 @@ const RecipeForm = () => {
     } catch (error) {
       console.log(error);
       alert(error);
-    }
-  };
-
-  const deleteRecipe = async (e: MouseEvent<HTMLButtonElement>) => {
-    try {
-      await RecipesApi.deleteRecipe(recipe._id);
-      navigate("/myrecipes");
-    } catch (error) {
-      alert(error);
-      console.log(error);
     }
   };
 

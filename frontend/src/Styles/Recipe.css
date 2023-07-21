@@ -18,14 +18,24 @@
   padding: 12px;
 }
 
-.recipe-edit-icon {
+.recipe-edit-icon,
+.recipe-delete-icon {
   padding: 4px;
   text-decoration: none;
   color: white;
   position: absolute;
   top: 8px;
-  right: 8px;
   font-size: 24px;
+}
+
+.recipe-edit-icon {
+  right: 8px;
+}
+
+.recipe-delete-icon {
+  border: none;
+  background-color: transparent;
+  left: 8px;
 }
 
 .recipe-info-subtitles {

@@ -12,7 +12,6 @@
   color: white;
   padding: 16px;
   position: relative;
-  // z-index: 0;
 
   h1 {
     text-align: center;
@@ -21,14 +20,24 @@
   }
 }
 
-.recipe-edit-icon {
+.recipe-edit-icon,
+.recipe-delete-icon {
   padding: 4px;
   text-decoration: none;
   color: white;
   position: absolute;
   top: 8px;
-  right: 8px;
   font-size: 24px;
+}
+
+.recipe-edit-icon {
+  right: 8px;
+}
+
+.recipe-delete-icon {
+  border: none;
+  background-color: transparent;
+  left: 8px;
 }
 
 .recipe-info-subtitles {
@@ -71,7 +80,6 @@
 }
 
 .recipe-directions {
-
   h2 {
     padding: 12px;
     text-align: center;
@@ -95,4 +103,3 @@
   font-size: 20px;
   margin-right: 16px;
 }
-

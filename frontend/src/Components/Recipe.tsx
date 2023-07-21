@@ -1,13 +1,16 @@
 import { ReactNode } from "react";
 import { Recipe as RecipeModel } from "../models/recipe";
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, Link, useNavigate } from "react-router-dom";
 import { FaRegClock } from "react-icons/fa6";
 import { PiForkKnife } from "react-icons/pi";
-import { BiEdit } from "react-icons/bi";
+import { BiEdit, BiTrash } from "react-icons/bi";
+import * as RecipesApi from "../network/recipes_api";
+import { MouseEvent } from "react";
 import "../Styles/Recipe.css";
 
 const Recipe = () => {
   const recipe = useLoaderData() as RecipeModel;
+  const navigate = useNavigate()
 
   const ingredientComponents: ReactNode = recipe.ingredients?.map(
     (ingredient, index) => {
@@ -31,6 +34,16 @@ const Recipe = () => {
     }
   );
 
+  const deleteRecipe = async (e: MouseEvent<HTMLButtonElement>) => {
+    try {
+      await RecipesApi.deleteRecipe(recipe._id);
+      navigate("/myrecipes");
+    } catch (error) {
+      alert(error);
+      console.log(error);
+    }
+  };
+
   return (
     <article className="recipe">
       <img src={recipe.imgURL} alt="A meaning full alt tag" />
@@ -47,6 +60,9 @@ const Recipe = () => {
           </div>
         </div>
         <p className="recipe-description">{recipe.description}</p>
+        <button className="recipe-delete-icon" onClick={deleteRecipe}>
+          <BiTrash />
+        </button>
         <Link className="recipe-edit-icon" to={`/myrecipes/${recipe._id}/edit`}>
           <BiEdit />
         </Link>

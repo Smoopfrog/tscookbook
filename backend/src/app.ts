@@ -2,10 +2,12 @@ import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
 import recipesRoutes from "./routes/recipes";
 import userRoutes from "./routes/users";
-
 import morgan from "morgan";
 import createHttpError, { isHttpError } from "http-errors";
 import cors from "cors";
+import session from "express-session";
+import env from "./util/validateEnv";
+import MongoStore from "connect-mongo";
 
 const app = express();
 
@@ -21,8 +23,22 @@ const options: cors.CorsOptions = {
 
 app.use(cors<Request>({ origin: "http://localhost:3000" }));
 
-app.use("/api/users", userRoutes);
+app.use(
+  session({
+    secret: env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 60 * 60 * 1000,
+    },
+    rolling: true,
+    store: MongoStore.create({
+      mongoUrl: env.MONGO_DB_CONNECTION,
+    }),
+  })
+);
 
+app.use("/api/users", userRoutes);
 app.use("/api/recipes", recipesRoutes);
 
 app.use((req, res, next) => {

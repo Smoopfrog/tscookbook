@@ -2,7 +2,17 @@ import { useState } from "react";
 import "../Styles/Header.css";
 import { Link, useLocation } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
-import { FaHome, FaPlus, FaBook, FaSearch, FaDice } from "react-icons/fa";
+import {
+  FaHome,
+  FaPlus,
+  FaBook,
+  FaSearch,
+  FaDice,
+  FaRegUser,
+  FaSignOutAlt,
+} from "react-icons/fa";
+import * as UsersApi from "../network/users_api";
+
 const Header = () => {
   const path = useLocation().pathname;
   let isEditPath = false;
@@ -58,6 +68,14 @@ const Header = () => {
           <Link className="header-nav-item" to="/">
             <FaDice />
             <span>Surprise Me!</span>
+          </Link>
+          <Link className="header-nav-item" to="/">
+            <FaRegUser />
+            <span>Account</span>
+          </Link>
+          <Link className="header-nav-item" onClick={UsersApi.logout} to="/">
+            <FaSignOutAlt />
+            <span>Sign Out</span>
           </Link>
         </ul>
       </aside>

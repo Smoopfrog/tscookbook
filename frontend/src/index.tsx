@@ -10,6 +10,7 @@ import MyRecipesPage from "./Components/pages/MyRecipesPage";
 import HomePage from "./Components/pages/HomePage";
 import * as RecipesApi from "./network/recipes_api";
 import reportWebVitals from "./reportWebVitals";
+import LoginPage from "./Components/pages/LoginPage";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <HomePage />,
+        element: <LoginPage />,
       },
       {
         path: "/signup",

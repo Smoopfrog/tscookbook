@@ -4,8 +4,6 @@ import createHttpError from "http-errors";
 import mongoose from "mongoose";
 
 export const getRecipes: RequestHandler = async (req, res, next) => {
-  console.log('hello')
-  
   try {
     const recipes = await RecipeModel.find().exec();
     res.status(200).json(recipes);

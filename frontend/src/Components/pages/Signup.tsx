@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import * as UsersApi from "../../network/users_api";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface User {
   username: string;
@@ -19,7 +20,6 @@ const Signup = () => {
 
   const handleSignup = async (data: User) => {
     try {
-      console.log("User data", data);
       await UsersApi.createUser(data);
       navigate("/myrecipes");
     } catch (error) {
@@ -44,6 +44,7 @@ const Signup = () => {
         <input placeholder="Password" {...register("password")} />
       </div>
       <button type="submit">Sign Up</button>
+      <Link to="/login">Already have an account? Log in here</Link>
     </form>
   );
 };

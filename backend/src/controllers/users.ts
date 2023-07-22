@@ -94,18 +94,21 @@ export const login: RequestHandler<
   const username = req.body.username;
   const password = req.body.password;
 
+  console.log("password", password);
   try {
     if (!username || !password) {
       throw createHttpError(400, "Parameters missing");
     }
 
     const user = await UserModel.findOne({ username: username })
-      .select("+passowrd +email")
+      .select("+password +email")
       .exec();
 
     if (!user) {
       throw createHttpError(401, "Invalid credentials");
     }
+
+    console.log("user", user);
 
     const passwordMatch = await bcrypt.compare(password, user.password);
 

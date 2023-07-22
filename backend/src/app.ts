@@ -8,7 +8,7 @@ import cors from "cors";
 import session from "express-session";
 import env from "./util/validateEnv";
 import MongoStore from "connect-mongo";
-import { requiresAuth } from "../middleware/auth";
+import { requiresAuth } from "./middleware/auth";
 
 const app = express();
 

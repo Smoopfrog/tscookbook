@@ -8,6 +8,7 @@ import cors from "cors";
 import session from "express-session";
 import env from "./util/validateEnv";
 import MongoStore from "connect-mongo";
+import { requiresAuth } from "../middleware/auth";
 
 const app = express();
 
@@ -39,7 +40,7 @@ app.use(
 );
 
 app.use("/api/users", userRoutes);
-app.use("/api/recipes", recipesRoutes);
+app.use("/api/recipes", requiresAuth, recipesRoutes);
 
 app.use((req, res, next) => {
   next(createHttpError(404, "Endpoint not found"));

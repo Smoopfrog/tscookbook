@@ -2,6 +2,7 @@ import { InferSchemaType, Schema, model } from "mongoose";
 
 const recipeSchema = new Schema(
   {
+    userId: { type: Schema.Types.ObjectId, required: true },
     title: { type: String, required: true },
     description: { type: String },
     category: [{ type: String }],

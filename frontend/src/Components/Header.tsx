@@ -6,7 +6,7 @@ import { FaHome, FaPlus, FaBook, FaSearch, FaDice } from "react-icons/fa";
 const Header = () => {
   const path = useLocation().pathname;
   let isEditPath = false;
-  
+
   if (path.substring(path.length - 4) === "edit") {
     isEditPath = true;
   }
@@ -19,9 +19,10 @@ const Header = () => {
 
   return (
     <header
-      className={`header ${path === "/newrecipe" || (isEditPath && "hide")}`}
+      className={`header ${(path === "/newrecipe" || isEditPath) && "hide"}`}
     >
       <div className="header-nav">
+        <div> </div>
         <h1>TS Cookbook</h1>
         <button className="header-menu-btn" onClick={handleMenuAside}>
           <FiMenu />

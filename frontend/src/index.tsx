@@ -11,6 +11,8 @@ import HomePage from "./Components/pages/HomePage";
 import * as RecipesApi from "./network/recipes_api";
 import reportWebVitals from "./reportWebVitals";
 import LoginPage from "./Components/pages/LoginPage";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -67,7 +69,9 @@ const router = createBrowserRouter([
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
 

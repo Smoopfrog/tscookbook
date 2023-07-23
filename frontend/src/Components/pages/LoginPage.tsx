@@ -36,7 +36,7 @@ const LoginPage = () => {
       </div>
       <div>
         <label>Password</label>
-        <input placeholder="password" {...register("password")} />
+        <input placeholder="password" type="password" {...register("password")} />
       </div>
       <button type="submit">Log in</button>
       <Link to="/signup">Don't have an account? Sign up here</Link>

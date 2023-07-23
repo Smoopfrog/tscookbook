@@ -73,7 +73,14 @@ const Header = () => {
             <FaRegUser />
             <span>Account</span>
           </Link>
-          <Link className="header-nav-item" onClick={UsersApi.logout} to="/">
+          <Link
+            className="header-nav-item"
+            onClick={() => {
+              UsersApi.logout();
+              handleMenuAside();
+            }}
+            to="/"
+          >
             <FaSignOutAlt />
             <span>Sign Out</span>
           </Link>

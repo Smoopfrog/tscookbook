@@ -70,7 +70,8 @@ export const signUp: RequestHandler<
 
     req.session.userId = newUser._id;
 
-    res.status(201).json(newUser);
+    console.log(newUser);
+    res.status(201).json({ username: newUser.username, email: newUser.email });
   } catch (error) {
     next(error);
   }
@@ -112,9 +113,9 @@ export const login: RequestHandler<
     }
 
     req.session.userId = user._id;
-    
+
     const userData = { username: user.username, email: user.email };
-    
+
     res.status(201).json(userData);
   } catch (error) {
     next(error);

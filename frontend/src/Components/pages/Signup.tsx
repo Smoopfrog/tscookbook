@@ -2,7 +2,8 @@ import { useForm } from "react-hook-form";
 import * as UsersApi from "../../network/users_api";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import { useAppDispatch } from "../../hooks";
+import { login } from "../../slices/userSlice";
 interface User {
   username: string;
   email: string;
@@ -11,16 +12,17 @@ interface User {
 
 const Signup = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm<User>();
-
   const handleSignup = async (data: User) => {
     try {
-      await UsersApi.createUser(data);
+      const userData = await UsersApi.createUser(data);
+      dispatch(login(userData));
       navigate("/myrecipes");
     } catch (error) {
       console.log(error);

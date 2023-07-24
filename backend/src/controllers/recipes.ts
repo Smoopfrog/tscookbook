@@ -12,7 +12,6 @@ export const getRecipes: RequestHandler = async (req, res, next) => {
     const recipes = await RecipeModel.find({
       userId: authenticatedUserId,
     }).exec();
-    console.log(recipes)
     res.status(200).json(recipes);
   } catch (error) {
     next(error);

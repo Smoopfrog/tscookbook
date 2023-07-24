@@ -90,7 +90,6 @@ export const login: RequestHandler<
   const username = req.body.username;
   const password = req.body.password;
 
-  console.log("password", password);
   try {
     if (!username || !password) {
       throw createHttpError(400, "Parameters missing");
@@ -113,8 +112,10 @@ export const login: RequestHandler<
     }
 
     req.session.userId = user._id;
-
-    res.status(201).json(user);
+    
+    const userData = { username: user.username, email: user.email };
+    
+    res.status(201).json(userData);
   } catch (error) {
     next(error);
   }

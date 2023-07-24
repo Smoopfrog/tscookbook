@@ -16,10 +16,10 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action: PayloadAction<UserState>) => {
-      state = action.payload;
+      return state = action.payload;
     },
     logout: (state) => {
-      state = {
+      return state = {
         username: "",
         email: "",
       };

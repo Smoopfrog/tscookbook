@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as UsersApi from "../../network/users_api";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../hooks";
+import { login } from "../../slices/userSlice";
 
 interface User {
   username: string;
@@ -10,6 +12,7 @@ interface User {
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const {
     register,
@@ -17,9 +20,10 @@ const LoginPage = () => {
     handleSubmit,
   } = useForm<User>();
 
-  const login = async (data: User) => {
+  const handleLogin = async (data: User) => {
     try {
-      await UsersApi.login(data);
+      const userData = await UsersApi.login(data);
+      dispatch(login(userData));
       navigate("/myrecipes");
     } catch (error) {
       console.log(error);
@@ -28,7 +32,7 @@ const LoginPage = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(login)}>
+    <form onSubmit={handleSubmit(handleLogin)}>
       <h1>Login</h1>
       <div>
         <label>Username</label>
@@ -36,7 +40,11 @@ const LoginPage = () => {
       </div>
       <div>
         <label>Password</label>
-        <input placeholder="password" type="password" {...register("password")} />
+        <input
+          placeholder="password"
+          type="password"
+          {...register("password")}
+        />
       </div>
       <button type="submit">Log in</button>
       <Link to="/signup">Don't have an account? Sign up here</Link>

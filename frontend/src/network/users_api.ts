@@ -19,6 +19,8 @@ export const getLoggedInUser = async (): Promise<User> => {
     credentials: "include",
   });
 
+  console.log(response)
+
   return response.json();
 };
 
@@ -55,7 +57,7 @@ export const login = async (credentials: LoginCredentials): Promise<User> => {
     },
     body: JSON.stringify(credentials),
   });
-
+  
   return response.json();
 };
 

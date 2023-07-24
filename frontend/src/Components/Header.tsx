@@ -20,6 +20,7 @@ const Header = () => {
   const user = useAppSelector(selectUser);
   const path = useLocation().pathname;
   let isEditPath = false;
+  
   const handleLogout = () => {
     UsersApi.logout();
     handleMenuAside();

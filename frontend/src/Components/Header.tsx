@@ -20,7 +20,7 @@ const Header = () => {
   const user = useAppSelector(selectUser);
   const path = useLocation().pathname;
   let isEditPath = false;
-  
+
   const handleLogout = () => {
     UsersApi.logout();
     handleMenuAside();
@@ -73,15 +73,7 @@ const Header = () => {
                 <FaBook />
                 <span>My Recipes</span>
               </Link>
-              <Link className="header-nav-item" to="/">
-                <FaSearch />
-                <span>Search</span>
-              </Link>
-              <Link className="header-nav-item" to="/">
-                <FaDice />
-                <span>Surprise Me!</span>
-              </Link>
-              <Link className="header-nav-item" to="/">
+              <Link className="header-nav-item" to="/account">
                 <FaRegUser />
                 <span>Account</span>
               </Link>

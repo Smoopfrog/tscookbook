@@ -13,6 +13,7 @@ import reportWebVitals from "./reportWebVitals";
 import LoginPage from "./Components/pages/LoginPage";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import AccountPage from "./Components/pages/AccountPage";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/account",
+        element: <AccountPage />,
       },
       {
         path: "/myrecipes",

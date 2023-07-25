@@ -14,6 +14,8 @@ import {
 import * as UsersApi from "../network/users_api";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { logout, selectUser } from "../slices/userSlice";
+import { BsPersonPlusFill } from "react-icons/bs";
+import { BiLogIn } from "react-icons/bi";
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -89,14 +91,16 @@ const Header = () => {
                 onClick={handleMenuAside}
                 to="/login"
               >
-                Log In
+                <BiLogIn />
+                <span>Log In</span>
               </Link>
               <Link
                 className="header-nav-item"
                 onClick={handleMenuAside}
                 to="/signup"
               >
-                Sign Up
+                <BsPersonPlusFill />
+                <span>Sign Up</span>
               </Link>
             </>
           )}

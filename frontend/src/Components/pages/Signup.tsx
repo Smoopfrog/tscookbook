@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../hooks";
 import { login } from "../../slices/userSlice";
+import "../../Styles/LoginPage.css";
+
 interface User {
   username: string;
   email: string;
@@ -31,22 +33,22 @@ const Signup = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(handleSignup)}>
+    <form onSubmit={handleSubmit(handleSignup)} className="login-form">
       <h1>Sign Up</h1>
-      <div className="user-input-div">
+      <div className="login-form-input">
         <label>Username</label>
         <input placeholder="Username" {...register("username")} />
       </div>
-      <div className="user-input-div">
+      <div className="login-form-input">
         <label>Email</label>
         <input placeholder="Email" {...register("email")} />
       </div>
-      <div className="user-input-div">
+      <div className="login-form-input">
         <label>Password</label>
         <input placeholder="Password" {...register("password")} />
       </div>
       <button type="submit">Sign Up</button>
-      <Link to="/login">Already have an account? Log in here</Link>
+      <Link className="login-link" to="/login">Already have an account? Log in here</Link>
     </form>
   );
 };

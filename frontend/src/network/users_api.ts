@@ -14,7 +14,7 @@ const fetchData = async (input: RequestInfo, init?: RequestInit) => {
 };
 
 export const getLoggedInUser = async (): Promise<User> => {
-  const response = await fetchData("/api/users", {
+  const response = await fetchData("https://tscookbook-api.onrender.com/api/users", {
     method: "GET",
     credentials: "include",
   });
@@ -33,7 +33,7 @@ interface SignUpCredentials {
 export const createUser = async (
   credentials: SignUpCredentials
 ): Promise<User> => {
-  const response = await fetchData("/api/users/signup", {
+  const response = await fetchData("https://tscookbook-api.onrender.com/api/users/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -50,7 +50,7 @@ interface LoginCredentials {
 }
 
 export const login = async (credentials: LoginCredentials): Promise<User> => {
-  const response = await fetchData("/api/users/login", {
+  const response = await fetchData("https://tscookbook-api.onrender.com/api/users/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -62,5 +62,5 @@ export const login = async (credentials: LoginCredentials): Promise<User> => {
 };
 
 export const logout = async () => {
-  await fetchData("/api/users/logout", { method: "POST" });
+  await fetchData("https://tscookbook-api.onrender.com/api/users/logout", { method: "POST" });
 };

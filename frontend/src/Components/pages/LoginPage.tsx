@@ -4,6 +4,7 @@ import * as UsersApi from "../../network/users_api";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../hooks";
 import { login } from "../../slices/userSlice";
+import "../../Styles/LoginPage.css"
 
 interface User {
   username: string;
@@ -32,13 +33,13 @@ const LoginPage = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(handleLogin)}>
+    <form onSubmit={handleSubmit(handleLogin)} className="login-form">
       <h1>Login</h1>
-      <div>
+      <div className="login-form-input">
         <label>Username</label>
         <input placeholder="username" {...register("username")} />
       </div>
-      <div>
+      <div className="login-form-input">
         <label>Password</label>
         <input
           placeholder="password"
@@ -47,7 +48,7 @@ const LoginPage = () => {
         />
       </div>
       <button type="submit">Log in</button>
-      <Link to="/signup">Don't have an account? Sign up here</Link>
+      <Link className="login-link" to="/signup">Don't have an account? Sign up here</Link>
     </form>
   );
 };

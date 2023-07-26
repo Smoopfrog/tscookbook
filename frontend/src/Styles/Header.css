@@ -78,6 +78,7 @@
   margin-bottom: 12px;
   display: flex;
   align-items: center;
+  color: whitesmoke;
 }
 .header-nav-item span {
   margin-left: 24px;

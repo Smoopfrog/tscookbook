@@ -75,7 +75,11 @@ const Header = () => {
                 <FaBook />
                 <span>My Recipes</span>
               </Link>
-              <Link className="header-nav-item" to="/account">
+              <Link
+                className="header-nav-item"
+                to="/account"
+                onClick={handleMenuAside}
+              >
                 <FaRegUser />
                 <span>Account</span>
               </Link>

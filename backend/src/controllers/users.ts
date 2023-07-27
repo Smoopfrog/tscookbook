@@ -70,7 +70,6 @@ export const signUp: RequestHandler<
 
     req.session.userId = newUser._id;
 
-    console.log(newUser);
     res.status(201).json({ username: newUser.username, email: newUser.email });
   } catch (error) {
     next(error);
@@ -103,8 +102,6 @@ export const login: RequestHandler<
     if (!user) {
       throw createHttpError(401, "Invalid credentials");
     }
-
-    console.log("user", user);
 
     const passwordMatch = await bcrypt.compare(password, user.password);
 

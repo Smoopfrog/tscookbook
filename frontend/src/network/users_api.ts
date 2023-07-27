@@ -14,12 +14,15 @@ const fetchData = async (input: RequestInfo, init?: RequestInit) => {
 };
 
 export const getLoggedInUser = async (): Promise<User> => {
-  const response = await fetchData("https://tscookbook-api.onrender.com/api/users", {
-    method: "GET",
-    credentials: "include",
-  });
+  const response = await fetchData(
+    "https://tscookbook-api.onrender.com/api/users",
+    {
+      method: "GET",
+      credentials: "include",
+    }
+  );
 
-  console.log(response)
+  console.log(response);
 
   return response.json();
 };
@@ -33,13 +36,17 @@ interface SignUpCredentials {
 export const createUser = async (
   credentials: SignUpCredentials
 ): Promise<User> => {
-  const response = await fetchData("https://tscookbook-api.onrender.com/api/users/signup", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  });
+  const response = await fetchData(
+    "https://tscookbook-api.onrender.com/api/users/signup",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(credentials),
+      credentials: "include",
+    }
+  );
 
   return response.json();
 };
@@ -50,17 +57,23 @@ interface LoginCredentials {
 }
 
 export const login = async (credentials: LoginCredentials): Promise<User> => {
-  const response = await fetchData("https://tscookbook-api.onrender.com/api/users/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  });
-  
+  const response = await fetchData(
+    "https://tscookbook-api.onrender.com/api/users/login",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(credentials),
+      credentials: "include",
+    }
+  );
+
   return response.json();
 };
 
 export const logout = async () => {
-  await fetchData("https://tscookbook-api.onrender.com/api/users/logout", { method: "POST" });
+  await fetchData("https://tscookbook-api.onrender.com/api/users/logout", {
+    method: "POST",
+  });
 };

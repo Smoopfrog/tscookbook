@@ -16,6 +16,7 @@ const fetchData = async (input: RequestInfo, init?: RequestInit) => {
 export const getLoggedInUser = async (): Promise<User> => {
   const response = await fetchData("https://tscookbook-api.onrender.com/api/users", {
     method: "GET",
+    credentials: "include",
   });
 
   console.log(response)

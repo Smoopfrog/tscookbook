@@ -23,6 +23,7 @@ const allowedOrigins = [
 
 const options: cors.CorsOptions = {
   origin: allowedOrigins,
+  credentials: true,
 };
 
 app.use(cors<Request>({ origin: "https://tscookbook.onrender.com" }));

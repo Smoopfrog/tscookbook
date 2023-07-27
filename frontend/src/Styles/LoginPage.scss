@@ -21,6 +21,11 @@
     color: white;
     text-transform: uppercase;
   }
+
+  button:hover {
+    cursor: pointer;
+    background-color: #15abbfb4;
+  }
 }
 
 .login-form-input {

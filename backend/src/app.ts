@@ -26,7 +26,12 @@ const options: cors.CorsOptions = {
   credentials: true,
 };
 
-app.use(cors<Request>({ origin: "https://tscookbook.onrender.com" }));
+app.use(
+  cors<Request>({
+    origin: "https://tscookbook.onrender.com",
+    credentials: true,
+  })
+);
 
 app.use(
   session({

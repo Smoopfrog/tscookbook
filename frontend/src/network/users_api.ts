@@ -60,12 +60,12 @@ export const login = async (credentials: LoginCredentials): Promise<User> => {
   const response = await fetchData(
     "https://tscookbook-api.onrender.com/api/users/login",
     {
+      credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(credentials),
-      credentials: "include",
     }
   );
 

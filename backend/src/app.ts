@@ -30,8 +30,6 @@ app.use(express.json());
 app.use(
   cors<Request>({
     origin: "https://tscookbook.onrender.com",
-    methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
-    credentials: true,
   })
 );
 

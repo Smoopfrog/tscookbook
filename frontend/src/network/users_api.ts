@@ -18,7 +18,7 @@ export const getLoggedInUser = async (): Promise<User> => {
     "https://tscookbook-api.onrender.com/api/users",
     {
       method: "GET",
-      credentials: "include",
+      // credentials: "include",
     }
   );
 
@@ -44,7 +44,6 @@ export const createUser = async (
         "Content-Type": "application/json",
       },
       body: JSON.stringify(credentials),
-      credentials: "include",
     }
   );
 
@@ -60,7 +59,6 @@ export const login = async (credentials: LoginCredentials): Promise<User> => {
   const response = await fetchData(
     "https://tscookbook-api.onrender.com/api/users/login",
     {
-      credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json",

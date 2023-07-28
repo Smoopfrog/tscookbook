@@ -17,13 +17,17 @@ const fetchData = async (input: RequestInfo, init?: RequestInit) => {
 };
 
 export const fetchRecipes = async (): Promise<Recipe[]> => {
-  const response = await fetchData(`${localApi}/api//api/recipes`, { method: "GET" });
+  const response = await fetchData(`${localApi}/api/recipes`, {
+    method: "GET",
+    credentials: "include",
+  });
   return response.json();
 };
 
 export const fetchRecipe = async (recipeId?: string): Promise<Recipe> => {
   const response = await fetchData(`${localApi}/api/recipes/${recipeId}`, {
     method: "GET",
+    credentials: "include",
   });
   return response.json();
 };
@@ -46,6 +50,7 @@ export const createRecipe = async (recipe: RecipeInput): Promise<Recipe> => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(recipe),
+    credentials: "include",
   });
 
   return response.json();
@@ -60,11 +65,15 @@ export const updateRecipe = async (recipe: Recipe): Promise<Recipe> => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(recipe),
+    credentials: "include",
   });
 
   return response.json();
 };
 
 export const deleteRecipe = async (recipeId: string) => {
-  await fetchData(`${localApi}/api/recipes/` + recipeId, { method: "DELETE" });
+  await fetchData(`${localApi}/api/recipes/` + recipeId, {
+    method: "DELETE",
+    credentials: "include",
+  });
 };

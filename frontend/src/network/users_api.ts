@@ -19,10 +19,8 @@ const fetchData = async (input: RequestInfo, init?: RequestInit) => {
 export const getLoggedInUser = async (): Promise<User> => {
   const response = await fetchData(`${localApi}/api/users`, {
     method: "GET",
-    // credentials: "include",
+    credentials: "include",
   });
-
-  console.log(response);
 
   return response.json();
 };
@@ -42,6 +40,7 @@ export const createUser = async (
       "Content-Type": "application/json",
     },
     body: JSON.stringify(credentials),
+    credentials: "include",
   });
 
   return response.json();
@@ -59,6 +58,7 @@ export const login = async (credentials: LoginCredentials): Promise<User> => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(credentials),
+    credentials: "include",
   });
 
   return response.json();

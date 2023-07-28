@@ -25,7 +25,7 @@ const LoginPage = () => {
     try {
       const userData = await UsersApi.login(data);
       dispatch(login(userData));
-      navigate("/myrecipes");
+      navigate("/");
     } catch (error) {
       console.log(error);
       alert(error);

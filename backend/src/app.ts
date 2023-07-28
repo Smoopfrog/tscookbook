@@ -7,8 +7,9 @@ import createHttpError, { isHttpError } from "http-errors";
 import cors from "cors";
 import session from "express-session";
 import env from "./util/validateEnv";
-import MongoStore from "connect-mongo";
+// import MongoStore from "connect-mongo";
 import { requiresAuth } from "./middleware/auth";
+import { default as connectMongoDBSession } from "connect-mongodb-session";
 
 const app = express();
 
@@ -21,17 +22,20 @@ const allowedOrigins = [
   "http://localhost:3000",
 ];
 
-const options: cors.CorsOptions = {
-  origin: allowedOrigins,
-  methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
-  credentials: true,
-};
+// const options: cors.CorsOptions = {
+//   origin: allowedOrigins,
+//   methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
+//   credentials: true,
+// };
 
-app.use(
-  cors<Request>({
-    origin: allowedOrigins,
-  })
-);
+
+
+const MongoDBStore = connectMongoDBSession(session);
+
+const store = new MongoDBStore({
+  uri: env.MONGO_DB_CONNECTION,
+  collection: "mySessions",
+});
 
 app.use(
   session({
@@ -39,18 +43,28 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: 60 * 60 * 1000,
-      secure: true,
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+      // secure: process.env.NODE_ENV === 'development' ? false : true,
+      // httpOnly: process.env.NODE_ENV === 'development' ? false : true,
+      // sameSite: process.env.NODE_ENV === 'development' ? false : 'none',
     },
     rolling: true,
-    store: MongoStore.create({
-      mongoUrl: env.MONGO_DB_CONNECTION,
-    }),
+    store: store,
   })
 );
 
+app.use(
+  cors<Request>({
+    preflightContinue: true,
+
+    credentials: true,
+    origin: allowedOrigins,
+  })
+);
+
+app.enable('trust proxy');
 app.use("/api/users", userRoutes);
-app.use("/api/recipes", requiresAuth, recipesRoutes);
+app.use("/api/recipes", recipesRoutes);
 
 app.use((req, res, next) => {
   next(createHttpError(404, "Endpoint not found"));

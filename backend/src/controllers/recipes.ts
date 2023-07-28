@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import { assertIsDefined } from "../util/assertIsDefined";
 
 export const getRecipes: RequestHandler = async (req, res, next) => {
+  console.log("recipe userid", req.session.userId);
   const authenticatedUserId = req.session.userId;
 
   try {

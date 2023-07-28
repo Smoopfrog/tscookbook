@@ -4,7 +4,8 @@ import UserModel from "../models/user";
 import bcrypt from "bcrypt";
 
 export const getAuthenticatedUser: RequestHandler = async (req, res, next) => {
-  const authenticatedUserId = req.session.userId;
+  const authenticatedUserId = req.session.userId; 
+  console.log('authenticatedUserId', authenticatedUserId)
 
   try {
     const user = await UserModel.findById(authenticatedUserId)
@@ -103,13 +104,16 @@ export const login: RequestHandler<
       throw createHttpError(401, "Invalid credentials");
     }
 
+    console.log("user", user);
+
     const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (!passwordMatch) {
       throw createHttpError(401, "Invalid credentials");
     }
-
+    console.log("user._id", user._id);
     req.session.userId = user._id;
+    console.log("req.session.userId", req.session.userId);
 
     const userData = { username: user.username, email: user.email };
 

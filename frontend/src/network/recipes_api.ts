@@ -17,7 +17,7 @@ const fetchData = async (input: RequestInfo, init?: RequestInit) => {
 };
 
 export const fetchRecipes = async (): Promise<Recipe[]> => {
-  const response = await fetchData(`${localApi}/api/recipes`, {
+  const response = await fetchData(`${server}/api/recipes`, {
     method: "GET",
     credentials: "include",
   });
@@ -25,7 +25,7 @@ export const fetchRecipes = async (): Promise<Recipe[]> => {
 };
 
 export const fetchRecipe = async (recipeId?: string): Promise<Recipe> => {
-  const response = await fetchData(`${localApi}/api/recipes/${recipeId}`, {
+  const response = await fetchData(`${server}/api/recipes/${recipeId}`, {
     method: "GET",
     credentials: "include",
   });
@@ -44,7 +44,7 @@ export interface RecipeInput {
 }
 
 export const createRecipe = async (recipe: RecipeInput): Promise<Recipe> => {
-  const response = await fetchData(`${localApi}/api/recipes`, {
+  const response = await fetchData(`${server}/api/recipes`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -59,7 +59,7 @@ export const createRecipe = async (recipe: RecipeInput): Promise<Recipe> => {
 export interface UpdateRecipeInput {}
 
 export const updateRecipe = async (recipe: Recipe): Promise<Recipe> => {
-  const response = await fetchData(`${localApi}/api/recipes/${recipe._id}`, {
+  const response = await fetchData(`${server}/api/recipes/${recipe._id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -72,7 +72,7 @@ export const updateRecipe = async (recipe: Recipe): Promise<Recipe> => {
 };
 
 export const deleteRecipe = async (recipeId: string) => {
-  await fetchData(`${localApi}/api/recipes/` + recipeId, {
+  await fetchData(`${server}/api/recipes/` + recipeId, {
     method: "DELETE",
     credentials: "include",
   });

@@ -5,7 +5,6 @@ import bcrypt from "bcrypt";
 
 export const getAuthenticatedUser: RequestHandler = async (req, res, next) => {
   const authenticatedUserId = req.session.userId; 
-  console.log('authenticatedUserId', authenticatedUserId)
 
   try {
     const user = await UserModel.findById(authenticatedUserId)

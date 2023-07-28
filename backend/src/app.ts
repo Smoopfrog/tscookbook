@@ -44,9 +44,9 @@ app.use(
     saveUninitialized: false,
     cookie: {
       maxAge: 7 * 24 * 60 * 60 * 1000,
-      // secure: process.env.NODE_ENV === 'development' ? false : true,
-      // httpOnly: process.env.NODE_ENV === 'development' ? false : true,
-      // sameSite: process.env.NODE_ENV === 'development' ? false : 'none',
+      secure: process.env.NODE_ENV === 'development' ? false : true,
+      httpOnly: process.env.NODE_ENV === 'development' ? false : true,
+      sameSite: process.env.NODE_ENV === 'development' ? false : 'none',
     },
     rolling: true,
     store: store,
@@ -55,8 +55,6 @@ app.use(
 
 app.use(
   cors<Request>({
-    preflightContinue: true,
-
     credentials: true,
     origin: allowedOrigins,
   })

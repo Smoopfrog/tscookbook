@@ -1,5 +1,8 @@
 import { Recipe } from "../models/recipe";
 
+const localApi = "http://localhost:5000";
+const server = "https://tscookbook-api.onrender.com";
+
 const fetchData = async (input: RequestInfo, init?: RequestInit) => {
   const response = await fetch(input, init);
 
@@ -14,12 +17,12 @@ const fetchData = async (input: RequestInfo, init?: RequestInit) => {
 };
 
 export const fetchRecipes = async (): Promise<Recipe[]> => {
-  const response = await fetchData("https://tscookbook-api.onrender.com/api/recipes", { method: "GET" });
+  const response = await fetchData(`${localApi}/api//api/recipes`, { method: "GET" });
   return response.json();
 };
 
 export const fetchRecipe = async (recipeId?: string): Promise<Recipe> => {
-  const response = await fetchData(`https://tscookbook-api.onrender.com/api/recipes/${recipeId}`, {
+  const response = await fetchData(`${localApi}/api/recipes/${recipeId}`, {
     method: "GET",
   });
   return response.json();
@@ -37,7 +40,7 @@ export interface RecipeInput {
 }
 
 export const createRecipe = async (recipe: RecipeInput): Promise<Recipe> => {
-  const response = await fetchData("https://tscookbook-api.onrender.com/api/recipes", {
+  const response = await fetchData(`${localApi}/api/recipes`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -51,7 +54,7 @@ export const createRecipe = async (recipe: RecipeInput): Promise<Recipe> => {
 export interface UpdateRecipeInput {}
 
 export const updateRecipe = async (recipe: Recipe): Promise<Recipe> => {
-  const response = await fetchData(`https://tscookbook-api.onrender.com/api/recipes/${recipe._id}`, {
+  const response = await fetchData(`${localApi}/api/recipes/${recipe._id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -63,5 +66,5 @@ export const updateRecipe = async (recipe: Recipe): Promise<Recipe> => {
 };
 
 export const deleteRecipe = async (recipeId: string) => {
-  await fetchData("/api/recipes/" + recipeId, { method: "DELETE" });
+  await fetchData(`${localApi}/api/recipes/` + recipeId, { method: "DELETE" });
 };

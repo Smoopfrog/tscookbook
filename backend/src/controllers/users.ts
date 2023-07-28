@@ -68,7 +68,7 @@ export const signUp: RequestHandler<
       password: passwordHashed,
     });
 
-    // req.session.userId = newUser._id;
+    req.session.userId = newUser._id;
 
     res.status(201).json({ username: newUser.username, email: newUser.email });
   } catch (error) {
@@ -109,7 +109,7 @@ export const login: RequestHandler<
       throw createHttpError(401, "Invalid credentials");
     }
 
-    // req.session.userId = user._id;
+    req.session.userId = user._id;
 
     const userData = { username: user.username, email: user.email };
 

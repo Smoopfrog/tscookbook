@@ -1,5 +1,8 @@
 import { User } from "../models/user";
 
+const localApi = "http://localhost:5000";
+const server = "https://tscookbook-api.onrender.com";
+
 const fetchData = async (input: RequestInfo, init?: RequestInit) => {
   const response = await fetch(input, init);
 
@@ -14,13 +17,10 @@ const fetchData = async (input: RequestInfo, init?: RequestInit) => {
 };
 
 export const getLoggedInUser = async (): Promise<User> => {
-  const response = await fetchData(
-    "https://tscookbook-api.onrender.com/api/users",
-    {
-      method: "GET",
-      // credentials: "include",
-    }
-  );
+  const response = await fetchData(`${localApi}/api/users`, {
+    method: "GET",
+    // credentials: "include",
+  });
 
   console.log(response);
 
@@ -36,16 +36,13 @@ interface SignUpCredentials {
 export const createUser = async (
   credentials: SignUpCredentials
 ): Promise<User> => {
-  const response = await fetchData(
-    "https://tscookbook-api.onrender.com/api/users/signup",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(credentials),
-    }
-  );
+  const response = await fetchData(`${localApi}/api/users/signup`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(credentials),
+  });
 
   return response.json();
 };
@@ -56,22 +53,19 @@ interface LoginCredentials {
 }
 
 export const login = async (credentials: LoginCredentials): Promise<User> => {
-  const response = await fetchData(
-    "https://tscookbook-api.onrender.com/api/users/login",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(credentials),
-    }
-  );
+  const response = await fetchData(`${localApi}/api/users/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(credentials),
+  });
 
   return response.json();
 };
 
 export const logout = async () => {
-  await fetchData("https://tscookbook-api.onrender.com/api/users/logout", {
+  await fetchData(`${localApi}/api/users/logout`, {
     method: "POST",
   });
 };

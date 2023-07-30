@@ -7,8 +7,6 @@ import createHttpError, { isHttpError } from "http-errors";
 import cors from "cors";
 import session from "express-session";
 import env from "./util/validateEnv";
-// import MongoStore from "connect-mongo";
-import { requiresAuth } from "./middleware/auth";
 import { default as connectMongoDBSession } from "connect-mongodb-session";
 
 const app = express();

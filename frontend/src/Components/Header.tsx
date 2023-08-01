@@ -14,7 +14,7 @@ import {
 import * as UsersApi from "../network/users_api";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { logout, selectUser } from "../slices/userSlice";
-import { BsPersonPlusFill } from "react-icons/bs";
+import { BsPersonPlusFill, BsDoorOpen } from "react-icons/bs";
 import { BiLogIn } from "react-icons/bi";
 
 const Header = () => {
@@ -44,11 +44,17 @@ const Header = () => {
       className={`header ${(path === "/newrecipe" || isEditPath) && "hide"}`}
     >
       <div className="header-nav">
-        <div> </div>
-        <h1>TS Cookbook</h1>
-        <button className="header-menu-btn" onClick={handleMenuAside}>
-          <FiMenu />
-        </button>
+        <div></div>
+        <Link className="header-title-link" to="/">TS Cookbook</Link>
+        {user.username ? (
+          <button className="header-menu-btn" onClick={handleMenuAside}>
+            <FiMenu />
+          </button>
+        ) : (
+          <Link className="header-menu-btn" to="/signup">
+            <BsDoorOpen />
+          </Link>
+        )}
       </div>
       <aside className={`menu-aside ${showMenuAside ? "" : "hide-menu"}`}>
         <h2>My Cookbook</h2>
@@ -57,57 +63,35 @@ const Header = () => {
             <FaHome />
             <span>Home</span>
           </Link>
-          {user.username ? (
-            <>
-              <Link
-                className="header-nav-item"
-                to="/newrecipe"
-                onClick={handleMenuAside}
-              >
-                <FaPlus />
-                <span>New Recipe</span>
-              </Link>
-              <Link
-                className="header-nav-item"
-                to="/myrecipes"
-                onClick={handleMenuAside}
-              >
-                <FaBook />
-                <span>My Recipes</span>
-              </Link>
-              <Link
-                className="header-nav-item"
-                to="/account"
-                onClick={handleMenuAside}
-              >
-                <FaRegUser />
-                <span>Account</span>
-              </Link>
-              <Link className="header-nav-item" onClick={handleLogout} to="/">
-                <FaSignOutAlt />
-                <span>Sign Out</span>
-              </Link>
-            </>
-          ) : (
-            <>
-              <Link
-                className="header-nav-item"
-                onClick={handleMenuAside}
-                to="/login"
-              >
-                <BiLogIn />
-                <span>Log In</span>
-              </Link>
-              <Link
-                className="header-nav-item"
-                onClick={handleMenuAside}
-                to="/signup"
-              >
-                <BsPersonPlusFill />
-                <span>Sign Up</span>
-              </Link>
-            </>
-          )}
+
+          <Link
+            className="header-nav-item"
+            to="/newrecipe"
+            onClick={handleMenuAside}
+          >
+            <FaPlus />
+            <span>New Recipe</span>
+          </Link>
+          <Link
+            className="header-nav-item"
+            to="/myrecipes"
+            onClick={handleMenuAside}
+          >
+            <FaBook />
+            <span>My Recipes</span>
+          </Link>
+          <Link
+            className="header-nav-item"
+            to="/account"
+            onClick={handleMenuAside}
+          >
+            <FaRegUser />
+            <span>Account</span>
+          </Link>
+          <Link className="header-nav-item" onClick={handleLogout} to="/">
+            <FaSignOutAlt />
+            <span>Sign Out</span>
+          </Link>
         </ul>
       </aside>
     </header>

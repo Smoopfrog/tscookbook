@@ -20,9 +20,12 @@
   justify-content: space-between;
   height: 100%;
 
-  h1 {
+  .header-title-link:link,
+  .header-title-link:visited {
     font-size: 16px;
+    text-decoration: none;
     color: whitesmoke;
+    font-weight: 700;
   }
 
   button {
@@ -94,5 +97,10 @@
 }
 
 .header-nav-item:visited {
+  color: whitesmoke;
+}
+
+.header-menu-btn:visited,
+.header-menu-btn:link {
   color: whitesmoke;
 }

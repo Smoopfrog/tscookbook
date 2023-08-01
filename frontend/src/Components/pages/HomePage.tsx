@@ -24,8 +24,7 @@ const HomePage = () => {
         </ul>
       ) : (
         <div className="homepage-default">
-          <h1>TS Cookbook</h1>
-          <h2>The Greatest Cookbook App Ever Created</h2>
+          <h1>The Greatest Cookbook App Ever Created</h1>
           <p>
             Save recipes to a digital recipe box, making it easy to create, and
             organize your cooking inspirations.

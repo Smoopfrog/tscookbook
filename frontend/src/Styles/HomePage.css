@@ -18,7 +18,7 @@
   padding: 6px;
   font-size: 24px;
   border: solid 1px black;
-  border-radius: 10px;
+  border-radius: 30px;
   width: 70%;
   margin-bottom: 12px;
 }
@@ -38,7 +38,26 @@
 .homepage-default h1 {
   margin: 0;
   font-weight: 700;
+  font-size: 2.5rem;
+  font-family: revert;
 }
 .homepage-default h2 {
   font-weight: 500;
+  line-height: 1rem;
+}
+.homepage-default p {
+  font-weight: 300;
+  line-height: 1.5rem;
+}
+.homepage-default .nav-item:visited,
+.homepage-default .nav-item:link {
+  width: 80%;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background-color: #15aabf;
+  border: solid 1px #15aabf;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
 }/*# sourceMappingURL=HomePage.css.map */

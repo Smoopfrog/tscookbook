@@ -13,10 +13,10 @@
   width: 80%;
   margin-bottom: 1rem;
   padding: 0.5rem 1rem;
-  border-radius: 20px;
   background-color: #15aabf;
-  font-weight: 600;
+  border-radius: 20px;
   border: solid 1px #15aabf;
+  font-weight: 600;
   color: white;
   text-transform: uppercase;
 }

@@ -8,32 +8,33 @@ const HomePage = () => {
 
   return (
     <section className="homepage">
-      <h1>TS Cookbook</h1>
-      <ul className="nav-list">
-        {user.username ? (
-          <>
-            <Link className="nav-item" to="/myrecipes">
-              My Recipes
-            </Link>
-            <Link className="nav-item" to="/newrecipe">
-              New Recipe
-            </Link>
+      {user.username ? (
+        <ul className="nav-list">
+          <h1>TS Cookbook</h1>
+          <Link className="nav-item" to="/myrecipes">
+            My Recipes
+          </Link>
+          <Link className="nav-item" to="/newrecipe">
+            New Recipe
+          </Link>
 
-            <Link className="nav-item" to="/">
-              Surprise Me!
-            </Link>
-          </>
-        ) : (
-          <>
-            <Link className="nav-item" to="/login">
-              Log in
-            </Link>
-            <Link className="nav-item" to="/signup">
-              Sign Up
-            </Link>
-          </>
-        )}
-      </ul>
+          <Link className="nav-item" to="/">
+            Surprise Me!
+          </Link>
+        </ul>
+      ) : (
+        <div className="homepage-default">
+          <h1>TS Cookbook</h1>
+          <h2>The Greatest Cookbook App Ever Created</h2>
+          <p>
+            Save recipes to a digital recipe box, making it easy to create, and
+            organize your cooking inspirations.
+          </p>
+          <Link className="nav-item" to="/signup">
+            Get Started
+          </Link>
+        </div>
+      )}
     </section>
   );
 };

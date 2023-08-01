@@ -30,3 +30,22 @@
     color: black;
   }
 }
+
+.homepage-default {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+
+  h1 {
+    margin: 0;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-weight: 500;
+  }
+}

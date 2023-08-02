@@ -24,7 +24,7 @@ const HomepageHeader = () => {
         <Link to="/" className="header-title-link">
           TS Cookbook
         </Link>
-        <Link to="/" className="header-link">
+        <Link to="/signup" className="header-link">
           Get Started
         </Link>
       </div>

@@ -25,7 +25,6 @@
     font-size: 32px;
     border: none;
     background-color: transparent;
-    color: whitesmoke;
   }
 }
 
@@ -35,10 +34,8 @@
 
   .header-title-link:link,
   .header-title-link:visited {
-    position: absolute;
-    left: 0;
     transition: all 1s;
-    transform: scale(2) translate(48%, 30px);
+    transform: scale(2) translate(40%, 25px);
   }
 
   .header-link:link,
@@ -67,7 +64,6 @@
 .header-link:visited {
   visibility: visible;
   transition: all 1s;
-
   padding: 0.5rem 1rem;
   border-radius: 20px;
   background-color: #15aabf;
@@ -90,8 +86,8 @@
   left: 0;
   width: 100%;
   height: 100dvh;
-  background-color: black;
-  color: whitesmoke;
+  background-color: white;
+  color: black;
   transition: all 0.2s;
   transform: scale(1, 1);
   transform-origin: 100% 50%;
@@ -121,13 +117,13 @@
   text-decoration: none;
   padding: 6px;
   font-size: 24px;
-  border: solid 1px white;
+  border: solid 1px #233748;
   border-radius: 10px;
   width: 70%;
   margin-bottom: 12px;
   display: flex;
   align-items: center;
-  color: whitesmoke;
+  color: #233748;
 
   span {
     margin-left: 24px;
@@ -139,10 +135,10 @@
 }
 
 .header-nav-item:visited {
-  color: whitesmoke;
+  color: #233748;
 }
 
 .header-menu-btn:visited,
 .header-menu-btn:link {
-  color: whitesmoke;
+  color: #233748;
 }

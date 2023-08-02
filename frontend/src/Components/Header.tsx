@@ -38,7 +38,12 @@ const Header = () => {
 
   return (
     <header
-      className={`header ${(path === "/newrecipe" || isEditPath) && "hide"}`}
+      className={`header ${
+        (path === "/newrecipe" ||
+          (path === "/" && !user.username) ||
+          isEditPath) &&
+        "hide"
+      }`}
     >
       <div className="header-nav">
         <div></div>

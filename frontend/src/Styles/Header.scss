@@ -1,6 +1,6 @@
 .header {
   position: sticky;
-  background-color: black;
+  // background-color: black;
   top: 0px;
   z-index: 1;
 }
@@ -12,7 +12,7 @@
 .header-nav {
   position: sticky;
   top: 0;
-  background-color: black;
+  // background-color: black;
   padding: 12px 16px;
   z-index: 2;
   display: flex;
@@ -22,9 +22,10 @@
 
   .header-title-link:link,
   .header-title-link:visited {
+    font-family: 'Pacifico', cursive;
     font-size: 16px;
     text-decoration: none;
-    color: whitesmoke;
+    color: #233748;
     font-weight: 700;
   }
 

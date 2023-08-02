@@ -36,16 +36,18 @@ const HomePage = () => {
             <Link className="nav-item" to="/signup">
               Get Started
             </Link>
-            <div className="homepage-stars">
-              <BsFillStarFill className="homepage-star" size={24} />
-              <BsFillStarFill className="homepage-star" size={24} />
-              <BsFillStarFill className="homepage-star" size={24} />
-              <BsFillStarFill className="homepage-star" size={24} />
-              <BsFillStarFill className="homepage-star" size={24} />
+            <div className="homepage-star-review">
+              <div className="homepage-stars">
+                <BsFillStarFill className="homepage-star" size={24} />
+                <BsFillStarFill className="homepage-star" size={24} />
+                <BsFillStarFill className="homepage-star" size={24} />
+                <BsFillStarFill className="homepage-star" size={24} />
+                <BsFillStarFill className="homepage-star" size={24} />
+              </div>
+              <p className="homepage-subtext">
+                5 star rating according to The App Experts
+              </p>
             </div>
-            <p className="homepage-subtext">
-              5 star rating according to The App Experts
-            </p>
             <h1>The Greatest Cookbook App Ever Created</h1>
             <p>
               Save recipes to a digital recipe box, making it easy to create,

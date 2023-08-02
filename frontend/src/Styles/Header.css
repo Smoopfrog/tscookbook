@@ -2,6 +2,8 @@
   position: sticky;
   top: 0px;
   z-index: 1;
+  width: 100%;
+  background-color: whitesmoke;
 }
 
 .hide {
@@ -18,20 +20,53 @@
   justify-content: space-between;
   height: 100%;
 }
-.header-nav .header-title-link:link,
-.header-nav .header-title-link:visited {
-  font-family: "Pacifico", cursive;
-  font-size: 16px;
-  text-decoration: none;
-  color: #233748;
-  font-weight: 700;
-}
 .header-nav button {
   height: 32px;
   font-size: 32px;
   border: none;
   background-color: transparent;
   color: whitesmoke;
+}
+
+.header-top {
+  transition: all 1s;
+  background-color: transparent;
+}
+.header-top .header-title-link:link,
+.header-top .header-title-link:visited {
+  transition: all 1s;
+  transform: scale(3) translate(50%, 15px);
+}
+.header-top .header-link:link,
+.header-top .header-link:visited {
+  transition: all 1s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.header-title-link:link,
+.header-title-link:visited {
+  font-family: "Pacifico", cursive;
+  font-size: 16px;
+  text-decoration: none;
+  color: #233748;
+  font-weight: 700;
+  transition: all 1s;
+}
+
+.header-link:link,
+.header-link:visited {
+  visibility: visible;
+  transition: all 1s;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background-color: #15aabf;
+  border: solid 1px #15aabf;
+  font-size: 1rem;
+  font-weight: 500;
+  color: whitesmoke;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
 .menu-aside {

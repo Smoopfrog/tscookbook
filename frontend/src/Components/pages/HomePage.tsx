@@ -3,6 +3,7 @@ import "../../Styles/HomePage.css";
 import { useAppSelector } from "../../hooks";
 import { selectUser } from "../../slices/userSlice";
 import { BsFillStarFill } from "react-icons/bs";
+import HomepageHeader from "./HomepageHeader";
 
 const HomePage = () => {
   const user = useAppSelector(selectUser);
@@ -24,24 +25,61 @@ const HomePage = () => {
           </Link>
         </ul>
       ) : (
-        <div className="homepage-default">
-          <h1>The Greatest Cookbook App Ever Created</h1>
-          <p>
-            Save recipes to a digital recipe box, making it easy to create, and
-            organize your cooking inspirations.
-          </p>
-          <Link className="nav-item" to="/signup">
-            Get Started
-          </Link>
-          <div className="homepage-stars">
-            <BsFillStarFill className="homepage-star" size={24} />
-            <BsFillStarFill className="homepage-star" size={24} />
-            <BsFillStarFill className="homepage-star" size={24} />
-            <BsFillStarFill className="homepage-star" size={24} />
-            <BsFillStarFill className="homepage-star" size={24} />
+        <>
+          <HomepageHeader />
+          <div className="homepage-default">
+            <h1>The Greatest Cookbook App Ever Created</h1>
+            <p>
+              Save recipes to a digital recipe box, making it easy to create,
+              and organize your cooking inspirations.
+            </p>
+            <Link className="nav-item" to="/signup">
+              Get Started
+            </Link>
+            <div className="homepage-stars">
+              <BsFillStarFill className="homepage-star" size={24} />
+              <BsFillStarFill className="homepage-star" size={24} />
+              <BsFillStarFill className="homepage-star" size={24} />
+              <BsFillStarFill className="homepage-star" size={24} />
+              <BsFillStarFill className="homepage-star" size={24} />
+            </div>
+            <p className="homepage-subtext">
+              5 star rating according to The App Experts
+            </p>
+            <h1>The Greatest Cookbook App Ever Created</h1>
+            <p>
+              Save recipes to a digital recipe box, making it easy to create,
+              and organize your cooking inspirations.
+            </p>
+            <Link className="nav-item" to="/signup">
+              Get Started
+            </Link>{" "}
+            <h1>The Greatest Cookbook App Ever Created</h1>
+            <p>
+              Save recipes to a digital recipe box, making it easy to create,
+              and organize your cooking inspirations.
+            </p>
+            <Link className="nav-item" to="/signup">
+              Get Started
+            </Link>{" "}
+            <h1>The Greatest Cookbook App Ever Created</h1>
+            <p>
+              Save recipes to a digital recipe box, making it easy to create,
+              and organize your cooking inspirations.
+            </p>
+            <Link className="nav-item" to="/signup">
+              Get Started
+            </Link>{" "}
+            <h1>The Greatest Cookbook App Ever Created</h1>
+            <p>
+              Save recipes to a digital recipe box, making it easy to create,
+              and organize your cooking inspirations.
+            </p>
+            <Link className="nav-item" to="/signup">
+              Get Started
+            </Link>
           </div>
-          <p className="homepage-subtext">5 star rating according to The App Experts</p>
-        </div>
+        </>
       )}
     </section>
   );

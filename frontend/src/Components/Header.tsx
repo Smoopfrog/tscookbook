@@ -6,16 +6,13 @@ import {
   FaHome,
   FaPlus,
   FaBook,
-  FaSearch,
-  FaDice,
   FaRegUser,
   FaSignOutAlt,
 } from "react-icons/fa";
 import * as UsersApi from "../network/users_api";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { logout, selectUser } from "../slices/userSlice";
-import { BsPersonPlusFill, BsDoorOpen } from "react-icons/bs";
-import { BiLogIn } from "react-icons/bi";
+import { BsDoorOpen } from "react-icons/bs";
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -45,7 +42,9 @@ const Header = () => {
     >
       <div className="header-nav">
         <div></div>
-        <Link className="header-title-link" to="/">TS Cookbook</Link>
+        <Link className="header-title-link" to="/">
+          TS Cookbook
+        </Link>
         {user.username ? (
           <button className="header-menu-btn" onClick={handleMenuAside}>
             <FiMenu />

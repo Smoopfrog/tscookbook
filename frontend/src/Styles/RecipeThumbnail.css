@@ -4,17 +4,18 @@
   padding: 10px;
   border: none;
   text-decoration: none;
+  height: 15vh;
 }
 .recipe-thumbnail img {
   width: 30%;
   border-radius: 10%;
   margin-right: 12px;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
-.recipe-thumbnail:link {
-  color: whitesmoke;
-}
-
+.recipe-thumbnail:link,
 .recipe-thumbnail:visited {
   color: whitesmoke;
 }

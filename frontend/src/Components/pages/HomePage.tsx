@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "../../Styles/HomePage.css";
 import { useAppSelector } from "../../hooks";
 import { selectUser } from "../../slices/userSlice";
+import { BsFillStarFill } from "react-icons/bs";
 
 const HomePage = () => {
   const user = useAppSelector(selectUser);
@@ -32,6 +33,14 @@ const HomePage = () => {
           <Link className="nav-item" to="/signup">
             Get Started
           </Link>
+          <div className="homepage-stars">
+            <BsFillStarFill className="homepage-star" size={24} />
+            <BsFillStarFill className="homepage-star" size={24} />
+            <BsFillStarFill className="homepage-star" size={24} />
+            <BsFillStarFill className="homepage-star" size={24} />
+            <BsFillStarFill className="homepage-star" size={24} />
+          </div>
+          <p className="homepage-subtext">5 star rating according to The App Experts</p>
         </div>
       )}
     </section>

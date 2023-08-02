@@ -59,14 +59,28 @@
 
   .nav-item:visited,
   .nav-item:link {
-    width: 80%;
     margin-bottom: 1rem;
     padding: 0.5rem 1rem;
     border-radius: 20px;
     background-color: #15aabf;
     border: solid 1px #15aabf;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 500;
     color: white;
     text-transform: uppercase;
   }
+}
+
+.homepage-stars {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.homepage-star {
+  color: gold;
+}
+
+.homepage-subtext {
+  font-size: 0.8rem;
+  color: #23374886;
 }

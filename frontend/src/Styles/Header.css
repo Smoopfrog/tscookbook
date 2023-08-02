@@ -34,20 +34,26 @@
 }
 .header-top .header-title-link:link,
 .header-top .header-title-link:visited {
+  position: absolute;
+  left: 0;
   transition: all 1s;
-  transform: scale(3) translate(50%, 15px);
+  transform: scale(2) translate(48%, 30px);
 }
 .header-top .header-link:link,
 .header-top .header-link:visited {
-  transition: all 1s;
+  transition: opacity 1s, visibility 1s;
   opacity: 0;
   visibility: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 12px 16px;
 }
 
 .header-title-link:link,
 .header-title-link:visited {
   font-family: "Pacifico", cursive;
-  font-size: 16px;
+  font-size: 24px;
   text-decoration: none;
   color: #233748;
   font-weight: 700;

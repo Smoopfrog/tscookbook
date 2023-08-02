@@ -3,7 +3,7 @@ import "../../Styles/Header.css";
 import { Link } from "react-router-dom";
 
 const HomepageHeader = () => {
-  const [header, setHeader] = useState("");
+  const [header, setHeader] = useState("header-top");
   const listenScrollEvent = () => {
     if (window.scrollY > 0) {
       return setHeader("");

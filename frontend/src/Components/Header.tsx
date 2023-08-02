@@ -55,13 +55,10 @@ const Header = () => {
             <FiMenu />
           </button>
         ) : (
-          <Link className="header-menu-btn" to="/signup">
-            <BsDoorOpen />
-          </Link>
+          <div></div>
         )}
       </div>
       <aside className={`menu-aside ${showMenuAside ? "" : "hide-menu"}`}>
-        <h2>My Cookbook</h2>
         <ul className="nav-list">
           <Link className="header-nav-item" to="" onClick={handleMenuAside}>
             <FaHome />

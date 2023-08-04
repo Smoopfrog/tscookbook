@@ -45,7 +45,7 @@ const Header = () => {
         "hide"
       }`}
     >
-      <div className="header-nav">
+      <div className={`header-nav ${path === "/" && "hide-header-nav"}`}>
         <div></div>
         <Link className="header-title-link" to="/">
           TS Cookbook

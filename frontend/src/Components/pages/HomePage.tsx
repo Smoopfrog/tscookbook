@@ -48,38 +48,6 @@ const HomePage = () => {
                 5 star rating according to The App Experts
               </p>
             </div>
-            <h1>The Greatest Cookbook App Ever Created</h1>
-            <p>
-              Save recipes to a digital recipe box, making it easy to create,
-              and organize your cooking inspirations.
-            </p>
-            <Link className="nav-item" to="/signup">
-              Get Started
-            </Link>{" "}
-            <h1>The Greatest Cookbook App Ever Created</h1>
-            <p>
-              Save recipes to a digital recipe box, making it easy to create,
-              and organize your cooking inspirations.
-            </p>
-            <Link className="nav-item" to="/signup">
-              Get Started
-            </Link>{" "}
-            <h1>The Greatest Cookbook App Ever Created</h1>
-            <p>
-              Save recipes to a digital recipe box, making it easy to create,
-              and organize your cooking inspirations.
-            </p>
-            <Link className="nav-item" to="/signup">
-              Get Started
-            </Link>{" "}
-            <h1>The Greatest Cookbook App Ever Created</h1>
-            <p>
-              Save recipes to a digital recipe box, making it easy to create,
-              and organize your cooking inspirations.
-            </p>
-            <Link className="nav-item" to="/signup">
-              Get Started
-            </Link>
           </div>
         </>
       )}

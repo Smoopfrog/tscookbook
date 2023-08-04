@@ -1,23 +1,28 @@
 .homepage {
+  background-image: url("../Assets/pizza-background.jpg");
   background-size: cover;
-  height: 100vh;
   width: 100%;
+  position: absolute;
+  top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .homepage h1 {
-  margin: 48px 0;
+  margin: 36px 0;
   font-size: 48px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Pacifico", cursive;
+}
+.homepage .nav-list {
+  height: 100vh;
+  justify-content: flex-start;
 }
 .homepage .nav-item {
   text-decoration: none;
   text-align: center;
-  color: black;
   padding: 6px;
   font-size: 24px;
-  border: solid 1px black;
+  background: rgba(255, 255, 255, 0.6901960784);
   border-radius: 30px;
   width: 70%;
   margin-bottom: 12px;
@@ -31,6 +36,7 @@
   display: flex;
   flex-direction: column;
   padding: 2rem;
+  height: 100vh;
   align-items: center;
   text-align: center;
   gap: 1.5rem;

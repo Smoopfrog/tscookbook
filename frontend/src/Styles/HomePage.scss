@@ -1,6 +1,4 @@
 .homepage {
-  background-image: url("../Assets/pizza-background.jpg");
-  background-size: cover;
   width: 100%;
   position: absolute;
   top: 0;
@@ -14,10 +12,14 @@
     font-family: "Pacifico", cursive;
   }
 
-
   .nav-list {
     height: 100vh;
+    padding-top: 3rem;
+
     justify-content: flex-start;
+
+    background-image: url("../Assets/pizza-background.jpg");
+    background-size: cover;
   }
 
   .nav-item {
@@ -35,8 +37,6 @@
     color: black;
   }
 }
-
-
 
 .homepage-default {
   margin-top: 4rem;

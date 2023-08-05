@@ -36,16 +36,18 @@ const Header = () => {
     setShowMenuAside((prev) => !prev);
   };
 
+  const headerClass = `header ${
+    (path === "/newrecipe" || (path === "/" && !user.username) || isEditPath) &&
+    "hide"
+  }`;
+
+  const headerNavClass = `header-nav 
+  ${path === "/" && "hide-header-nav"} 
+  ${(path === "/login" || path === "/signup") && "login-nav"}`;
+
   return (
-    <header
-      className={`header ${
-        (path === "/newrecipe" ||
-          (path === "/" && !user.username) ||
-          isEditPath) &&
-        "hide"
-      }`}
-    >
-      <div className={`header-nav ${path === "/" && "hide-header-nav"}`}>
+    <header className={headerClass}>
+      <div className={headerNavClass}>
         <div></div>
         <Link className="header-title-link" to="/">
           TS Cookbook

@@ -40,6 +40,10 @@
   display: none;
 }
 
+.login-nav {
+  background-color: transparent;
+}
+
 .header-top {
   transition: all 1s;
   background-color: transparent;

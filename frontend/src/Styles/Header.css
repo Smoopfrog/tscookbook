@@ -10,7 +10,7 @@
 }
 
 .header-nav {
-  background-color: #AEE0E7;
+  background-color: #aee0e7;
   position: sticky;
   top: 0;
   padding: 12px 16px;
@@ -19,6 +19,7 @@
   align-items: center;
   justify-content: space-between;
   height: 100%;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 }
 .header-nav h1 {
   font-family: "Pacifico", cursive;
@@ -34,6 +35,7 @@
 
 .hide-header-nav {
   background-color: transparent;
+  box-shadow: none;
 }
 .hide-header-nav .header-title-link:link,
 .hide-header-nav .header-title-link:visited {
@@ -42,6 +44,7 @@
 
 .login-nav {
   background-color: transparent;
+  box-shadow: none;
 }
 
 .header-top {
@@ -50,6 +53,7 @@
 }
 .header-top .header-nav {
   background-color: transparent;
+  box-shadow: none;
 }
 .header-top .header-title-link:link,
 .header-top .header-title-link:visited {

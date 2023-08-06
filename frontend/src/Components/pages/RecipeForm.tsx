@@ -96,8 +96,7 @@ const RecipeForm = () => {
           <BsCheckLg />
         </button>
       </header>
-      <div className="recipe-carousel-container">
-        <div className="recipe-carousel-scroll">
+        <div className="recipe-carousel">
           <section
             id="About"
             className={`${carouselPage !== "About" && "hide-section"}`}
@@ -261,9 +260,8 @@ const RecipeForm = () => {
             </ol>
           </section>
         </div>
-      </div>
 
-      <footer>
+      <footer className="recipe-form-footer">
         <button onClick={() => handleClickScroll("About")} type="button">
           About
         </button>

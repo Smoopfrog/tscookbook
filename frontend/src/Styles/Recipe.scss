@@ -1,5 +1,9 @@
 .recipe {
-  background-color: grey;
+  // height: 100dvh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 
   img {
     width: 100%;
@@ -9,8 +13,6 @@
 }
 
 .recipe-info {
-  background-color: black;
-  color: white;
   padding: 16px;
   position: relative;
 
@@ -25,7 +27,7 @@
 .recipe-delete-icon {
   padding: 4px;
   text-decoration: none;
-  color: white;
+  color: black;
   position: absolute;
   top: 8px;
   font-size: 24px;
@@ -51,7 +53,7 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  color: whitesmoke;
+  // color: whitesmoke;
 }
 
 .recipe-description {
@@ -67,12 +69,11 @@
 
   li {
     padding: 12px;
-    color: white;
-    background-color: #303030;
+    list-style: none;
   }
 
   li:nth-child(odd) {
-    background-color: #282828;
+    background-color: rgba(174, 224, 231, 0.3019607843);
   }
 
   span {
@@ -88,14 +89,13 @@
 
   li {
     padding: 12px;
-    color: white;
-    background-color: #303030;
+
     display: flex;
     align-items: center;
   }
 
   li:nth-child(odd) {
-    background-color: #282828;
+    background-color: rgba(174, 224, 231, 0.3019607843);
   }
 }
 

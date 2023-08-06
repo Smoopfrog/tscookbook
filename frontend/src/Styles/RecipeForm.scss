@@ -3,15 +3,14 @@
   display: flex;
   flex-direction: column;
   height: 100dvh;
-
-  .recipe-carousel {
-    display: flex;
-    overflow: auto;
-    flex: 1;
-    flex-flow: row nowrap;
-    width: 100%;
-    scroll-snap-type: x mandatory;
-  }
+}
+.recipe-carousel {
+  display: flex;
+  overflow: auto;
+  flex: 1;
+  flex-flow: row nowrap;
+  width: 100%;
+  scroll-snap-type: x mandatory;
 
   section {
     min-width: 100%;
@@ -197,6 +196,6 @@
     flex: 1;
     padding: 1rem;
     border: none;
-    background-color: transparent;
+    background-color: #aee0e7;
   }
 }

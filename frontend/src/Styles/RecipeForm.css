@@ -4,7 +4,8 @@
   flex-direction: column;
   height: 100dvh;
 }
-.recipe-form .recipe-carousel {
+
+.recipe-carousel {
   display: flex;
   overflow: auto;
   flex: 1;
@@ -12,7 +13,7 @@
   width: 100%;
   scroll-snap-type: x mandatory;
 }
-.recipe-form section {
+.recipe-carousel section {
   min-width: 100%;
   scroll-snap-align: center;
 }
@@ -177,5 +178,5 @@
   flex: 1;
   padding: 1rem;
   border: none;
-  background-color: transparent;
+  background-color: #aee0e7;
 }/*# sourceMappingURL=RecipeForm.css.map */

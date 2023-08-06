@@ -1,5 +1,8 @@
 .recipe {
-  background-color: grey;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 .recipe img {
   width: 100%;
@@ -9,8 +12,6 @@
 }
 
 .recipe-info {
-  background-color: black;
-  color: white;
   padding: 16px;
   position: relative;
 }
@@ -24,7 +25,7 @@
 .recipe-delete-icon {
   padding: 4px;
   text-decoration: none;
-  color: white;
+  color: black;
   position: absolute;
   top: 8px;
   font-size: 24px;
@@ -50,7 +51,6 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  color: whitesmoke;
 }
 
 .recipe-description {
@@ -64,11 +64,10 @@
 }
 .recipe-ingredients li {
   padding: 12px;
-  color: white;
-  background-color: #303030;
+  list-style: none;
 }
 .recipe-ingredients li:nth-child(odd) {
-  background-color: #282828;
+  background-color: rgba(174, 224, 231, 0.3019607843);
 }
 .recipe-ingredients span {
   font-weight: bolder;
@@ -80,13 +79,11 @@
 }
 .recipe-directions li {
   padding: 12px;
-  color: white;
-  background-color: #303030;
   display: flex;
   align-items: center;
 }
 .recipe-directions li:nth-child(odd) {
-  background-color: #282828;
+  background-color: rgba(174, 224, 231, 0.3019607843);
 }
 
 .recipe-direction-index {

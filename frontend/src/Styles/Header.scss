@@ -3,6 +3,7 @@
   top: 0px;
   z-index: 1;
   width: 100%;
+  height: 4rem;
 }
 
 .hide {
@@ -10,15 +11,16 @@
 }
 
 .header-nav {
-  background-color: #aee0e7;
+  background-color: #AEE0E7;
   position: sticky;
   top: 0;
   padding: 12px 16px;
   z-index: 2;
+  height: 4rem;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 
   h1 {
     font-family: "Pacifico", cursive;
@@ -36,7 +38,6 @@
 
 .hide-header-nav {
   background-color: transparent;
-  box-shadow: none;
 
   .header-title-link:link,
   .header-title-link:visited {
@@ -46,7 +47,7 @@
 
 .login-nav {
   background-color: transparent;
-  box-shadow: none
+
 }
 
 .header-top {
@@ -55,8 +56,6 @@
 
   .header-nav {
     background-color: transparent;
-  box-shadow: none
-
   }
 
   .header-title-link:link,

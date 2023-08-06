@@ -1,1 +1,1 @@
-{"version":3,"sources":["MyRecipesPage.scss","MyRecipesPage.css"],"names":[],"mappings":"AAAA;EACE,yBAAA;EACA,YAAA;ACCF;ADCE;EACE,yBAAA;ACCJ;ADEE;EACE,yBAAA;ACAJ;;ADIA;EACE,eAAA;EACA,aAAA;EACA,6BAAA;ACDF","file":"MyRecipesPage.css"}
+{"version":3,"sources":["MyRecipesPage.scss","MyRecipesPage.css"],"names":[],"mappings":"AAAA;EAEE,YAAA;ACAF;ADEE;EACE,mDAAA;ACAJ;ADQA;EACE,eAAA;EACA,aAAA;EACA,6BAAA;ACNF","file":"MyRecipesPage.css"}

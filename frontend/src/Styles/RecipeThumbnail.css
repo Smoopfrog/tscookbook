@@ -15,14 +15,20 @@
   -o-object-fit: cover;
      object-fit: cover;
 }
+.recipe-thumbnail h1 {
+  font-size: 16px;
+  font-weight: 500;
+}
 
 .recipe-thumbnail:link,
 .recipe-thumbnail:visited {
-  color: whitesmoke;
+  color: black;
 }
 
 .recipe-thumbnail-info-div {
   display: flex;
   align-items: center;
   gap: 5px;
+  font-size: 14px;
+  font-weight: 400;
 }/*# sourceMappingURL=RecipeThumbnail.css.map */

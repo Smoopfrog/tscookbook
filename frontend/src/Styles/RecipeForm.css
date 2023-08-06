@@ -2,6 +2,23 @@
   background-color: #282828;
   color: whitesmoke;
   position: relative;
+  width: 100vw;
+}
+.recipe-form .recipe-carousel-container {
+  width: 100%;
+}
+.recipe-form .recipe-carousel-scroll {
+  display: flex;
+  overflow: auto;
+  outline: 1px dashed lightgray;
+  flex: none;
+  flex-flow: row nowrap;
+  width: 100%;
+  scroll-snap-type: x mandatory;
+}
+.recipe-form section {
+  min-width: 100%;
+  scroll-snap-align: center;
 }
 
 .recipe-form-err {

@@ -1,7 +1,31 @@
 .recipe-form {
   background-color: #282828;
   color: whitesmoke;
-  position: relative
+  position: relative;
+  width: 100vw;
+
+
+
+
+  .recipe-carousel-container {
+    width: 100%;
+  }
+
+  .recipe-carousel-scroll {
+    display: flex;
+    overflow: auto;
+    outline: 1px dashed lightgray;
+    flex: none;
+    flex-flow: row nowrap;
+    width: 100%;
+    scroll-snap-type: x mandatory; 
+  }
+
+  section {
+    min-width: 100%;
+    scroll-snap-align: center;
+
+  }
 }
 
 .recipe-form-err {

@@ -76,6 +76,7 @@ interface TagInterface {
 }
 
 export const addTag = async (tag: TagInterface) => {
+  console.log(tag);
   await fetchData(`${server}/api/users/tags`, {
     method: "PATCH",
     credentials: "include",

@@ -178,6 +178,7 @@ export const addTag: RequestHandler<
       .select("+email +tags")
       .exec();
 
+      console.log("hello my dude")
     console.log("user", user);
 
     res.status(200).json(user);

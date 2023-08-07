@@ -3,6 +3,7 @@ export interface User {
   username: string;
   email: string;
   password: string;
+  tags: string[];
   createdAt: string;
   updatedAt: string;
 }

@@ -15,6 +15,7 @@ import LoginPage from "./Components/pages/LoginPage";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import AccountPage from "./Components/pages/AccountPage";
+import TagsPage from "./Components/pages/TagsPage";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/tags",
-        element: <AccountPage />,
+        element: <TagsPage />,
         loader: async () => {
           return UsersApi.fetchTags();
         },

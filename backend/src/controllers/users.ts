@@ -67,6 +67,7 @@ export const signUp: RequestHandler<
       username,
       email,
       password: passwordHashed,
+      tags: [],
     });
 
     req.session.userId = newUser._id;
@@ -97,13 +98,14 @@ export const login: RequestHandler<
     }
 
     const user = await UserModel.findOne({ username: username })
-      .select("+password +email")
+      .select("+password +email +tags")
       .exec();
 
     if (!user) {
       throw createHttpError(401, "Invalid credentials");
     }
 
+    console.log("User tags", user.tags);
     const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (!passwordMatch) {
@@ -131,6 +133,7 @@ export const logout: RequestHandler = (req, res, next) => {
 };
 
 export const getTags: RequestHandler = async (req, res, next) => {
+  console.log("at least oyu ttreid!!");
   const authenticatedUserId = req.session.userId;
 
   try {
@@ -190,7 +193,7 @@ export const deleteTag: RequestHandler<
   const tag = req.body.tag;
 
   console.log("New tag", tag);
-  
+
   try {
     assertIsDefined(authenticatedUserId);
     const user = await UserModel.find({

@@ -20,14 +20,6 @@ const allowedOrigins = [
   "http://localhost:3000",
 ];
 
-// const options: cors.CorsOptions = {
-//   origin: allowedOrigins,
-//   methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
-//   credentials: true,
-// };
-
-
-
 const MongoDBStore = connectMongoDBSession(session);
 
 const store = new MongoDBStore({

@@ -72,10 +72,15 @@ export const logout = async () => {
 };
 
 export const fetchTags = async () => {
-  await fetchData(`${server}/api/users/tags`, {
+  console.log('its fetching')
+  const response = await fetchData(`${server}/api/users/tags`, {
     method: "get",
     credentials: "include",
   });
+  console.log('its fetcged')
+
+  return response.json();
+
 };
 
 export const addTag = async (tag: string) => {

@@ -9,7 +9,7 @@ export const getAuthenticatedUser: RequestHandler = async (req, res, next) => {
 
   try {
     const user = await UserModel.findById(authenticatedUserId)
-      .select("+email")
+      .select("+email +tags")
       .exec();
 
     res.status(200).json(user);
@@ -72,7 +72,13 @@ export const signUp: RequestHandler<
 
     req.session.userId = newUser._id;
 
-    res.status(201).json({ username: newUser.username, email: newUser.email });
+    res
+      .status(201)
+      .json({
+        username: newUser.username,
+        email: newUser.email,
+        tags: newUser.tags,
+      });
   } catch (error) {
     next(error);
   }
@@ -114,7 +120,11 @@ export const login: RequestHandler<
 
     req.session.userId = user._id;
 
-    const userData = { username: user.username, email: user.email };
+    const userData = {
+      username: user.username,
+      email: user.email,
+      tag: user.tags,
+    };
 
     res.status(201).json(userData);
   } catch (error) {

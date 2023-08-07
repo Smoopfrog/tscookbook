@@ -10,6 +10,7 @@ import "../Styles/Recipe.css";
 
 const Recipe = () => {
   const [carouselPage, setCarouselPage] = useState("About");
+
   const handleClickScroll = (page: string) => {
     const element = document.getElementById(page);
 
@@ -18,11 +19,12 @@ const Recipe = () => {
 
       element.scrollIntoView({
         behavior: "smooth",
-        block: "nearest",
-        inline: "center",
+        block: "start",
+        inline: "start",
       });
     }
   };
+
   const recipe = useLoaderData() as RecipeModel;
   const navigate = useNavigate();
 
@@ -87,23 +89,13 @@ const Recipe = () => {
             </Link>
           </div>
         </section>
-        <section id="Ingredients">
-          {ingredientComponents && (
-            <div className="recipe-ingredients">
-              <h2>Ingredients</h2>
-              <ul className="recipe-ingredients-list">
-                {ingredientComponents}
-              </ul>
-            </div>
-          )}
+        <section id="Ingredients" className="recipe-ingredients">
+          <h2>Ingredients</h2>
+          <ul className="recipe-ingredients-list">{ingredientComponents}</ul>
         </section>
-        <section id="Directions">
-          {directionComponents && (
-            <div className="recipe-directions">
-              <h2>Directions</h2>
-              <ol>{directionComponents}</ol>
-            </div>
-          )}
+        <section id="Directions" className="recipe-directions">
+          <h2>Directions</h2>
+          <ol>{directionComponents}</ol>
         </section>
       </div>
       <footer className="recipe-form-footer">

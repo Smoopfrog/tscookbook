@@ -15,7 +15,6 @@
 }
 .recipe-carousel section {
   min-width: 100%;
-  scroll-snap-align: center;
 }
 
 .recipe-form-err {

@@ -67,6 +67,29 @@ export const login = async (credentials: LoginCredentials): Promise<User> => {
 export const logout = async () => {
   await fetchData(`${server}/api/users/logout`, {
     method: "POST",
-    credentials: "include"
+    credentials: "include",
+  });
+};
+
+export const fetchTags = async () => {
+  await fetchData(`${server}/api/users/tags`, {
+    method: "get",
+    credentials: "include",
+  });
+};
+
+export const addTag = async (tag: string) => {
+  await fetchData(`${server}/api/users/tags`, {
+    method: "POST",
+    credentials: "include",
+    body: tag,
+  });
+};
+
+export const deleteTag = async (tag: string) => {
+  await fetchData(`${server}/api/users/tags`, {
+    method: "Delete",
+    credentials: "include",
+    body: tag,
   });
 };

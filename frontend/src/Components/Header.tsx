@@ -8,11 +8,11 @@ import {
   FaBook,
   FaRegUser,
   FaSignOutAlt,
+  FaTags,
 } from "react-icons/fa";
 import * as UsersApi from "../network/users_api";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { logout, selectUser } from "../slices/userSlice";
-import { BsDoorOpen } from "react-icons/bs";
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -82,6 +82,14 @@ const Header = () => {
           >
             <FaBook />
             <span>My Recipes</span>
+          </Link>
+          <Link
+            className="header-nav-item"
+            to="/tags"
+            onClick={handleMenuAside}
+          >
+            <FaTags />
+            <span>Tags</span>
           </Link>
           <Link
             className="header-nav-item"

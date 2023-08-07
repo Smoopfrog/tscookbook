@@ -8,6 +8,7 @@ import Signup from "./Components/pages/Signup";
 import RecipeForm from "./Components/pages/RecipeForm";
 import MyRecipesPage from "./Components/pages/MyRecipesPage";
 import HomePage from "./Components/pages/HomePage";
+import * as UsersApi from "./network/users_api";
 import * as RecipesApi from "./network/recipes_api";
 import reportWebVitals from "./reportWebVitals";
 import LoginPage from "./Components/pages/LoginPage";
@@ -39,6 +40,13 @@ const router = createBrowserRouter([
       {
         path: "/account",
         element: <AccountPage />,
+      },
+      {
+        path: "/tags",
+        element: <AccountPage />,
+        loader: async () => {
+          return UsersApi.fetchTags();
+        },
       },
       {
         path: "/myrecipes",

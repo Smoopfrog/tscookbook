@@ -77,13 +77,13 @@ interface TagInterface {
 
 export const addTag = async (tag: TagInterface) => {
   console.log(tag);
-  const response = await fetchData(`${server}/api/users/`, {
+  const response = await fetchData(`${server}/api/users/tags`, {
     method: "PATCH",
     credentials: "include",
     body: JSON.stringify(tag),
   });
 
-  return response.json();
+  return response.json;
 };
 
 export const deleteTag = async (tag: string) => {

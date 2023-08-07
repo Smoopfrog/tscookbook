@@ -72,13 +72,11 @@ export const signUp: RequestHandler<
 
     req.session.userId = newUser._id;
 
-    res
-      .status(201)
-      .json({
-        username: newUser.username,
-        email: newUser.email,
-        tags: newUser.tags,
-      });
+    res.status(201).json({
+      username: newUser.username,
+      email: newUser.email,
+      tags: newUser.tags,
+    });
   } catch (error) {
     next(error);
   }
@@ -142,23 +140,23 @@ export const logout: RequestHandler = (req, res, next) => {
   });
 };
 
-export const getTags: RequestHandler = async (req, res, next) => {
-  console.log("at least oyu ttreid!!");
-  const authenticatedUserId = req.session.userId;
+// export const getTags: RequestHandler = async (req, res, next) => {
+//   console.log("at least oyu ttreid!!");
+//   const authenticatedUserId = req.session.userId;
 
-  try {
-    assertIsDefined(authenticatedUserId);
-    const user = await UserModel.find({
-      userId: authenticatedUserId,
-    }).exec();
+//   try {
+//     assertIsDefined(authenticatedUserId);
+//     const user = await UserModel.find({
+//       userId: authenticatedUserId,
+//     }).exec();
 
-    console.log(user);
+//     console.log(user);
 
-    res.status(200).json(user);
-  } catch (error) {
-    next(error);
-  }
-};
+//     res.status(200).json(user);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
 
 interface addTagBody {
   tag?: string;
@@ -176,12 +174,11 @@ export const addTag: RequestHandler<
   console.log("New tag", tag);
 
   try {
-    assertIsDefined(authenticatedUserId);
-    const user = await UserModel.find({
-      userId: authenticatedUserId,
-    }).exec();
+    const user = await UserModel.findById(authenticatedUserId)
+      .select("+email +tags")
+      .exec();
 
-    console.log(user);
+    console.log("user", user);
 
     res.status(200).json(user);
   } catch (error) {

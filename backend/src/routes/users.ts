@@ -12,7 +12,7 @@ router.post("/login", UserController.login);
 
 router.post("/logout", UserController.logout);
 
-router.get("/tags", requiresAuth, UserController.getTags);
+// router.get("/tags", requiresAuth, UserController.getTags);
 
 router.patch("/tags", requiresAuth, UserController.addTag);
 

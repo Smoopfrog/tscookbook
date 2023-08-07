@@ -2,9 +2,10 @@ import { RequestHandler } from "express";
 import createHttpError from "http-errors";
 import UserModel from "../models/user";
 import bcrypt from "bcrypt";
+import { assertIsDefined } from "../util/assertIsDefined";
 
 export const getAuthenticatedUser: RequestHandler = async (req, res, next) => {
-  const authenticatedUserId = req.session.userId; 
+  const authenticatedUserId = req.session.userId;
 
   try {
     const user = await UserModel.findById(authenticatedUserId)
@@ -103,13 +104,12 @@ export const login: RequestHandler<
       throw createHttpError(401, "Invalid credentials");
     }
 
-
     const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (!passwordMatch) {
       throw createHttpError(401, "Invalid credentials");
     }
-    
+
     req.session.userId = user._id;
 
     const userData = { username: user.username, email: user.email };
@@ -128,4 +128,79 @@ export const logout: RequestHandler = (req, res, next) => {
       res.sendStatus(200);
     }
   });
+};
+
+export const getTags: RequestHandler = async (req, res, next) => {
+  const authenticatedUserId = req.session.userId;
+
+  try {
+    assertIsDefined(authenticatedUserId);
+    const user = await UserModel.find({
+      userId: authenticatedUserId,
+    }).exec();
+
+    console.log(user);
+
+    res.status(200).json(user);
+  } catch (error) {
+    next(error);
+  }
+};
+
+interface addTagBody {
+  tag?: string;
+}
+
+export const addTag: RequestHandler<
+  unknown,
+  unknown,
+  addTagBody,
+  unknown
+> = async (req, res, next) => {
+  const authenticatedUserId = req.session.userId;
+  const tag = req.body.tag;
+
+  console.log("New tag", tag);
+
+  try {
+    assertIsDefined(authenticatedUserId);
+    const user = await UserModel.find({
+      userId: authenticatedUserId,
+    }).exec();
+
+    console.log(user);
+
+    res.status(200).json(user);
+  } catch (error) {
+    next(error);
+  }
+};
+
+interface deleteTagBody {
+  tag?: string;
+}
+
+export const deleteTag: RequestHandler<
+  unknown,
+  unknown,
+  deleteTagBody,
+  unknown
+> = async (req, res, next) => {
+  const authenticatedUserId = req.session.userId;
+  const tag = req.body.tag;
+
+  console.log("New tag", tag);
+  
+  try {
+    assertIsDefined(authenticatedUserId);
+    const user = await UserModel.find({
+      userId: authenticatedUserId,
+    }).exec();
+
+    console.log(user);
+
+    res.status(200).json(user);
+  } catch (error) {
+    next(error);
+  }
 };

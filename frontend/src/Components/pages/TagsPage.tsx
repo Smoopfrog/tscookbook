@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
-import { selectUser } from "../../slices/userSlice";
-import { useSelector } from "react-redux";
+import { login, selectUser } from "../../slices/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 import * as UsersApi from "../../network/users_api";
 
 interface Tag {
@@ -9,6 +9,7 @@ interface Tag {
 
 const TagsPage = () => {
   const user = useSelector(selectUser);
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -19,14 +20,24 @@ const TagsPage = () => {
 
   const onSubmit = async (data: Tag) => {
     try {
-      console.log(data);
-      await UsersApi.addTag(data);
-      // navigate("/myrecipes");
+      const user = await UsersApi.addTag(data);
+      dispatch(login(user));
     } catch (error) {
       console.log(error);
       alert(error);
     }
   };
+
+  const deleteTag = async (tagName: string) => {
+    try {
+      const user = await UsersApi.deleteTag(tagName);
+      dispatch(login(user));
+    } catch (error) {
+      console.log(error);
+      alert(error);
+    }
+  };
+
   return (
     <div>
       <h1>Tags</h1>
@@ -36,7 +47,12 @@ const TagsPage = () => {
       </form>
       <ul>
         {user.tags.map((tag) => {
-          return <li>{tag}</li>;
+          return (
+            <li>
+              <span>{tag}</span>
+              <button onClick={() => deleteTag(tag)}>Delete</button>
+            </li>
+          );
         })}
       </ul>
     </div>

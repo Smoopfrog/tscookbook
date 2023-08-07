@@ -12,10 +12,8 @@ router.post("/login", UserController.login);
 
 router.post("/logout", UserController.logout);
 
-// router.get("/tags", requiresAuth, UserController.getTags);
-
 router.patch("/tags", requiresAuth, UserController.addTag);
 
-// router.delete("/tags", requiresAuth, UserController.deleteTag);
+router.delete("/tags", requiresAuth, UserController.deleteTag);
 
 export default router;

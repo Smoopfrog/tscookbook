@@ -217,13 +217,33 @@ export const deleteTag: RequestHandler<
 
   try {
     assertIsDefined(authenticatedUserId);
-    const user = await UserModel.find({
-      userId: authenticatedUserId,
-    }).exec();
 
-    console.log(user);
+    if (!tag) {
+      throw createHttpError(400, "Parameters missing");
+    }
 
-    res.status(200).json(user);
+    const user = await UserModel.findById(authenticatedUserId)
+      .select("+email +tags")
+      .exec();
+
+    if (!user) {
+      throw createHttpError(404, "User not found");
+    }
+
+    // user.tags = [...user.tags, tag];
+    const index = user.tags.indexOf(tag);
+
+    if (index > -1) { // only splice array when item is found
+      user.tags.splice(index, 1); // 2nd parameter means remove one item only
+    } else {
+      throw createHttpError(404, "Tag not found")
+    }
+
+    const updatedUser = await user.save();
+
+    console.log("updatedUser", updatedUser);
+
+    res.status(200).json(updatedUser);
   } catch (error) {
     next(error);
   }

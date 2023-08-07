@@ -21,6 +21,7 @@ const Signup = () => {
     formState: { errors },
     handleSubmit,
   } = useForm<User>();
+  
   const handleSignup = async (data: User) => {
     try {
       const userData = await UsersApi.createUser(data);

@@ -86,13 +86,18 @@ export const addTag = async (tag: TagInterface) => {
     body: JSON.stringify(tag),
   });
 
-  return response.json;
+  return response.json();
 };
 
 export const deleteTag = async (tag: string) => {
-  await fetchData(`${server}/api/users/tags`, {
-    method: "Delete",
+  const response = await fetchData(`${server}/api/users/tags`, {
+    method: "DELETE",
     credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: tag,
   });
+
+  return response.json();
 };

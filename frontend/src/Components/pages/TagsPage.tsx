@@ -29,6 +29,7 @@ const TagsPage = () => {
   };
 
   const deleteTag = async (tagName: string) => {
+    console.log(tagName)
     try {
       const user = await UsersApi.deleteTag(tagName);
       dispatch(login(user));

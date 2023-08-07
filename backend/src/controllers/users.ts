@@ -171,7 +171,7 @@ export const addTag: RequestHandler<
   unknown
 > = async (req, res, next) => {
   const authenticatedUserId = req.session.userId;
-  const tag = req.body.tag;
+  const tag = req.body;
 
   console.log("New tag", tag);
 

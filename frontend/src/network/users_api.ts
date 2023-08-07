@@ -71,23 +71,15 @@ export const logout = async () => {
   });
 };
 
-export const fetchTags = async () => {
-  console.log('its fetching')
-  const response = await fetchData(`${server}/api/users/tags`, {
-    method: "get",
-    credentials: "include",
-  });
-  console.log('its fetcged')
+interface TagInterface {
+  tag: string;
+}
 
-  return response.json();
-
-};
-
-export const addTag = async (tag: string) => {
+export const addTag = async (tag: TagInterface) => {
   await fetchData(`${server}/api/users/tags`, {
-    method: "POST",
+    method: "PATCH",
     credentials: "include",
-    body: tag,
+    body: JSON.stringify(tag),
   });
 };
 

@@ -45,9 +45,6 @@ const router = createBrowserRouter([
       {
         path: "/tags",
         element: <TagsPage />,
-        loader: async () => {
-          return UsersApi.fetchTags();
-        },
       },
       {
         path: "/myrecipes",

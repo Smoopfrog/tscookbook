@@ -1,14 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from '../store'
+import type { RootState } from "../store";
 
 export interface UserState {
   username: string;
   email: string;
+  tags: string[];
 }
 
 const initialState: UserState = {
   username: "",
   email: "",
+  tags: [],
 };
 
 export const userSlice = createSlice({
@@ -16,13 +18,14 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action: PayloadAction<UserState>) => {
-      return state = action.payload;
+      return (state = action.payload);
     },
     logout: (state) => {
-      return state = {
+      return (state = {
         username: "",
         email: "",
-      };
+        tags: [],
+      });
     },
   },
 });

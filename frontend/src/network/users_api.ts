@@ -80,6 +80,9 @@ export const addTag = async (tag: TagInterface) => {
   const response = await fetchData(`${server}/api/users/tags`, {
     method: "PATCH",
     credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(tag),
   });
 

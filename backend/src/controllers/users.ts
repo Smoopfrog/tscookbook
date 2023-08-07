@@ -169,19 +169,32 @@ export const addTag: RequestHandler<
   unknown
 > = async (req, res, next) => {
   const authenticatedUserId = req.session.userId;
-  const tag = req.body;
+  const tag = req.body.tag;
 
   console.log("New tag", tag);
 
   try {
+    assertIsDefined(authenticatedUserId);
+
+    if (!tag) {
+      throw createHttpError(400, "Parameters missing");
+    }
+
     const user = await UserModel.findById(authenticatedUserId)
       .select("+email +tags")
       .exec();
 
-      console.log("hello my dude")
-    console.log("user", user);
+    if (!user) {
+      throw createHttpError(404, "User not found");
+    }
 
-    res.status(200).json(user);
+    user.tags = [...user.tags, tag];
+
+    const updatedUser = await user.save();
+
+    console.log("updatedUser", updatedUser);
+
+    res.status(200).json(updatedUser);
   } catch (error) {
     next(error);
   }

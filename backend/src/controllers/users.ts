@@ -140,24 +140,6 @@ export const logout: RequestHandler = (req, res, next) => {
   });
 };
 
-// export const getTags: RequestHandler = async (req, res, next) => {
-//   console.log("at least oyu ttreid!!");
-//   const authenticatedUserId = req.session.userId;
-
-//   try {
-//     assertIsDefined(authenticatedUserId);
-//     const user = await UserModel.find({
-//       userId: authenticatedUserId,
-//     }).exec();
-
-//     console.log(user);
-
-//     res.status(200).json(user);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
-
 interface addTagBody {
   tag?: string;
 }
@@ -170,8 +152,6 @@ export const addTag: RequestHandler<
 > = async (req, res, next) => {
   const authenticatedUserId = req.session.userId;
   const tag = req.body.tag;
-
-  console.log("New tag", tag);
 
   try {
     assertIsDefined(authenticatedUserId);
@@ -186,6 +166,10 @@ export const addTag: RequestHandler<
 
     if (!user) {
       throw createHttpError(404, "User not found");
+    }
+
+    if (user.tags.includes(tag)) {
+      throw createHttpError(409, "Tag already exists");
     }
 
     user.tags = [...user.tags, tag];
@@ -213,8 +197,6 @@ export const deleteTag: RequestHandler<
   const authenticatedUserId = req.session.userId;
   const tag = req.body.tag;
 
-  console.log("New tag", tag);
-
   try {
     assertIsDefined(authenticatedUserId);
 
@@ -230,18 +212,16 @@ export const deleteTag: RequestHandler<
       throw createHttpError(404, "User not found");
     }
 
-    // user.tags = [...user.tags, tag];
     const index = user.tags.indexOf(tag);
 
-    if (index > -1) { // only splice array when item is found
+    if (index > -1) {
+      // only splice array when item is found
       user.tags.splice(index, 1); // 2nd parameter means remove one item only
     } else {
-      throw createHttpError(404, "Tag not found")
+      throw createHttpError(404, "Tag not found");
     }
 
     const updatedUser = await user.save();
-
-    console.log("updatedUser", updatedUser);
 
     res.status(200).json(updatedUser);
   } catch (error) {

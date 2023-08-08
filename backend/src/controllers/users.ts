@@ -215,8 +215,7 @@ export const deleteTag: RequestHandler<
     const index = user.tags.indexOf(tag);
 
     if (index > -1) {
-      // only splice array when item is found
-      user.tags.splice(index, 1); // 2nd parameter means remove one item only
+      user.tags.splice(index, 1);
     } else {
       throw createHttpError(404, "Tag not found");
     }

@@ -1,0 +1,26 @@
+.tagsPage li:nth-child(odd) {
+  background-color: rgba(174, 224, 231, 0.3019607843);
+}
+.tagsPage li:last-child {
+  border-bottom: solid 1px rgb(174, 224, 231);
+}
+
+.tag {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.8rem;
+}
+.tag button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+}
+
+.tag-delete-icon {
+  width: 1.4rem;
+  height: 1.4rem;
+}/*# sourceMappingURL=Tags.css.map */

@@ -78,8 +78,8 @@ const RecipeForm = () => {
   const onSubmit = async (data: Recipe) => {
     try {
       console.log(data);
-      // await RecipesApi.createRecipe(data);
-      // navigate("/myrecipes");
+      await RecipesApi.createRecipe(data);
+      navigate("/myrecipes");
     } catch (error) {
       console.log(error);
       alert(error);

@@ -52,6 +52,7 @@ interface CreateRecipeBody {
   portion?: string;
   cooktime?: string;
   imgURL?: string;
+  tags?: string[];
   ingredients?: { amount?: string; name: string }[];
   directions?: { text: string }[];
 }
@@ -69,6 +70,7 @@ export const createRecipe: RequestHandler<
   const portion = req.body.portion;
   const cooktime = req.body.cooktime;
   const imgURL = req.body.imgURL;
+  const tags = req.body.tags;
   const ingredients = req.body.ingredients;
   const directions = req.body.directions;
 
@@ -81,14 +83,15 @@ export const createRecipe: RequestHandler<
 
     const newRecipe = await RecipeModel.create({
       userId: authenticatedUserId,
-      title: title,
-      description: description,
-      category: category,
-      portion: portion,
-      cooktime: cooktime,
+      title,
+      description,
+      category,
+      portion,
+      cooktime,
       imgURL,
-      ingredients: ingredients,
-      directions: directions,
+      tags,
+      ingredients,
+      directions,
     });
 
     res.status(201).json(newRecipe);
@@ -109,6 +112,7 @@ interface UpdateRecipeBody {
   cooktime?: string;
   category?: string;
   imgURL?: string;
+  tags?: string[];
   ingredients?: { amount?: string; name?: string }[];
   directions?: { text: string }[];
   createdAt: string;
@@ -129,6 +133,7 @@ export const updateRecipe: RequestHandler<
   const newPortion = req.body.portion;
   const newCooktime = req.body.cooktime;
   const newImgURL = req.body.imgURL;
+  const newTags = req.body.tags!;
   const newIngredients = req.body.ingredients!;
   const newDirections = req.body.directions!;
 
@@ -154,6 +159,7 @@ export const updateRecipe: RequestHandler<
     recipe.portion = newPortion;
     recipe.cooktime = newCooktime;
     recipe.imgURL = newImgURL;
+    recipe.tags = newTags;
     recipe.ingredients = newIngredients;
     recipe.directions = newDirections;
 

@@ -39,6 +39,7 @@ export interface RecipeInput {
   cooktime?: string;
   category?: string;
   imgUrl?: string;
+  tags?: string[];
   ingredients?: { amount?: string; name: string }[];
   directions?: { text: string }[];
 }

@@ -9,6 +9,7 @@ const recipeSchema = new Schema(
     portion: { type: String },
     cooktime: { type: String },
     imgURL: { type: String },
+    tags: [String],
     ingredients: [{ amount: String, name: String }],
     directions: [{ text: String }],
   },

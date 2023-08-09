@@ -88,6 +88,12 @@ const Recipe = () => {
               <BiEdit />
             </Link>
           </div>
+          <div className="recipe-tags">
+            {recipe.tags &&
+              recipe.tags.map((tag, index) => {
+                return <button key={index} className="recipe-tag">{tag}</button>;
+              })}
+          </div>
         </section>
         <section id="Ingredients" className="recipe-ingredients">
           <h2>Ingredients</h2>

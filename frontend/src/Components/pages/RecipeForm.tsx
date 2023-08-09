@@ -114,7 +114,7 @@ const RecipeForm = () => {
       onSubmit={recipe ? handleSubmit(onSave) : handleSubmit(onSubmit)}
     >
       <header className="header-nav">
-        <button className="header-menu-btn" onClick={() => navigate(-1)}>
+        <button className="header-menu-btn" onClick={() => navigate(-1)} type="button">
           <BsXLg />
         </button>
         <h1>TS Cookbook</h1>

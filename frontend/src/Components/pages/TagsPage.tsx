@@ -49,12 +49,12 @@ const TagsPage = () => {
         <button>Add Tag</button>
       </form>
       <ul>
-        {user.tags.map((tag) => {
+        {user.tags.map((tag, index) => {
           return (
-            <li className="tag">
+            <li key={index} className="tag">
               <span>{tag}</span>
               <button onClick={() => deleteTag(tag)}>
-                <BsTrash className="tag-delete-icon"/>
+                <BsTrash className="tag-delete-icon" />
               </button>
             </li>
           );

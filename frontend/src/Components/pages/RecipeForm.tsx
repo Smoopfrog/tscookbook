@@ -16,7 +16,6 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../../slices/userSlice";
 
 const RecipeForm = () => {
-  const [selectedTags, setSelectedTags] = useState<String[]>([]);
   const [carouselPage, setCarouselPage] = useState("About");
   const tags = useSelector(selectUser).tags;
   const navigate = useNavigate();
@@ -106,7 +105,7 @@ const RecipeForm = () => {
     tagsRemove(index);
   };
 
-  const watchTags: any = watch("tags");
+  const watchTags: string[] = watch("tags") || [];
 
   return (
     <form
@@ -114,7 +113,11 @@ const RecipeForm = () => {
       onSubmit={recipe ? handleSubmit(onSave) : handleSubmit(onSubmit)}
     >
       <header className="header-nav">
-        <button className="header-menu-btn" onClick={() => navigate(-1)} type="button">
+        <button
+          className="header-menu-btn"
+          onClick={() => navigate(-1)}
+          type="button"
+        >
           <BsXLg />
         </button>
         <h1>TS Cookbook</h1>
@@ -163,6 +166,7 @@ const RecipeForm = () => {
                   if (watchTags.includes(tag)) {
                     return (
                       <button
+                        key={index}
                         className="remove-tag"
                         onClick={() => removeTag(tag)}
                         type="button"
@@ -173,6 +177,7 @@ const RecipeForm = () => {
                   } else {
                     return (
                       <button
+                        key={index}
                         className="add-tag"
                         onClick={() => addTag(tag)}
                         type="button"

@@ -16,7 +16,9 @@ const MyRecipesPage = () => {
       <header className="my-recipes-page-header">
         <div>
           <h1 className="my-recipes-page-title">My Recipes</h1>
-          <Link to="/newrecipe">Add Recipe</Link>
+          <Link className="add-recipe" to="/newrecipe">
+            Add Recipe
+          </Link>
         </div>
         <div className="my-recipes-tags">
           <button
@@ -26,9 +28,10 @@ const MyRecipesPage = () => {
             All
           </button>
           {tags &&
-            tags.map((tag) => {
+            tags.map((tag, index) => {
               return (
                 <button
+                  key={index}
                   className={`${recipeFilter === tag && "tag-selected"}`}
                   onClick={() => setRecipeFilter(tag)}
                 >

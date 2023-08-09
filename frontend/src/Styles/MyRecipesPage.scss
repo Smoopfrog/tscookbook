@@ -11,13 +11,25 @@
 }
 
 .my-recipes-page-header {
-  padding: 30px 0;
-
   div:first-child {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+
+    .add-recipe:link,
+    .add-recipe:visited {
+      padding: 0.5rem 1rem;
+
+      background-color: #15aabf;
+      border-radius: 20px;
+      border: solid 1px #15aabf;
+
+      font-weight: 600;
+      color: white;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
   }
 }
 
@@ -29,6 +41,7 @@
   width: 100%;
   gap: 0.5rem;
   padding: 0 0.5rem;
+  padding-bottom: 1rem;
 
   button {
     padding: 0.4rem 0.6rem;

@@ -10,7 +10,7 @@ interface Tag {
 }
 
 const TagsPage = () => {
-  const user = useSelector(selectUser);
+  const tags = useSelector(selectUser).tags;
   const dispatch = useDispatch();
 
   const {
@@ -49,16 +49,17 @@ const TagsPage = () => {
         <button>Add Tag</button>
       </form>
       <ul>
-        {user.tags.map((tag, index) => {
-          return (
-            <li key={index} className="tag">
-              <span>{tag}</span>
-              <button onClick={() => deleteTag(tag)}>
-                <BsTrash className="tag-delete-icon" />
-              </button>
-            </li>
-          );
-        })}
+        {tags &&
+          tags.map((tag, index) => {
+            return (
+              <li key={index} className="tag">
+                <span>{tag}</span>
+                <button onClick={() => deleteTag(tag)}>
+                  <BsTrash className="tag-delete-icon" />
+                </button>
+              </li>
+            );
+          })}
       </ul>
     </div>
   );

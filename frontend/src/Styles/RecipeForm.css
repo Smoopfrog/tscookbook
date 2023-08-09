@@ -37,6 +37,28 @@
   border-radius: 10px;
 }
 
+.recipe-tags div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.recipe-tags button {
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.recipe-tags .add-tag {
+  background-color: white;
+  border: solid 1px black;
+  color: black;
+}
+.recipe-tags .remove-tag {
+  background-color: black;
+  border: solid 1px black;
+  color: white;
+}
+
 .recipe-form-ingredients h1,
 .recipe-form-directions h1 {
   text-align: center;

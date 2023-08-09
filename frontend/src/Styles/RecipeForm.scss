@@ -40,6 +40,33 @@
   }
 }
 
+.recipe-tags {
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem
+  }
+
+  button {
+    padding: 0.4rem 0.6rem;
+    border-radius: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .add-tag {
+    background-color: white;
+    border: solid 1px black;
+    color: black;
+  }
+
+  .remove-tag {
+    background-color: black;
+    border: solid 1px black;
+    color: white;
+  }
+}
+
 .recipe-form-ingredients,
 .recipe-form-directions {
   h1 {

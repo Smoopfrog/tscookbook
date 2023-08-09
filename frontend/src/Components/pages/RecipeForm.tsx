@@ -12,10 +12,13 @@ import {
   BsXLg,
 } from "react-icons/bs";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../slices/userSlice";
 
 const RecipeForm = () => {
+  const [selectedTags, setSelectedTags] = useState<String[]>([]);
   const [carouselPage, setCarouselPage] = useState("About");
-  
+  const tags = useSelector(selectUser).tags;
   const navigate = useNavigate();
   const recipe = useLoaderData() as Recipe;
 
@@ -37,6 +40,7 @@ const RecipeForm = () => {
     register,
     formState: { errors },
     control,
+    watch,
     handleSubmit,
   } = useForm<Recipe>({
     defaultValues: recipe,
@@ -62,10 +66,21 @@ const RecipeForm = () => {
     control,
   });
 
+  const {
+    fields: tagsFields,
+    append: tagsAppend,
+    remove: tagsRemove,
+    move: tagsMove,
+  } = useFieldArray<any>({
+    name: "tags",
+    control,
+  });
+
   const onSubmit = async (data: Recipe) => {
     try {
-      await RecipesApi.createRecipe(data);
-      navigate("/myrecipes");
+      console.log(data);
+      // await RecipesApi.createRecipe(data);
+      // navigate("/myrecipes");
     } catch (error) {
       console.log(error);
       alert(error);
@@ -81,6 +96,17 @@ const RecipeForm = () => {
       alert(error);
     }
   };
+
+  const addTag = (tagName: string) => {
+    tagsAppend(tagName);
+  };
+
+  const removeTag = (tagName: string) => {
+    const index = watchTags.indexOf(tagName);
+    tagsRemove(index);
+  };
+
+  const watchTags: any = watch("tags");
 
   return (
     <form
@@ -128,6 +154,38 @@ const RecipeForm = () => {
           <div className="recipe-input-div">
             <label>Image URL</label>
             <input placeholder="Image URL" {...register("imgURL")} />
+          </div>
+          <div className="recipe-input-div recipe-tags">
+            <label>Tags</label>
+            <div>
+              {tags ? (
+                tags.map((tag, index) => {
+                  if (watchTags.includes(tag)) {
+                    return (
+                      <button
+                        className="remove-tag"
+                        onClick={() => removeTag(tag)}
+                        type="button"
+                      >
+                        {tag}
+                      </button>
+                    );
+                  } else {
+                    return (
+                      <button
+                        className="add-tag"
+                        onClick={() => addTag(tag)}
+                        type="button"
+                      >
+                        {tag}
+                      </button>
+                    );
+                  }
+                })
+              ) : (
+                <div>Create Some tags</div>
+              )}
+            </div>
           </div>
         </section>
         <section

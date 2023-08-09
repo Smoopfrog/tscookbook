@@ -6,6 +6,34 @@
 }
 .my-recipes-page-header {
   padding: 30px 0;
+}
+.my-recipes-page-header div:first-child {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.my-recipes-tags {
+  display: flex;
+  overflow: auto;
+  flex: 1;
+  flex-flow: row nowrap;
+  width: 100%;
+  gap: 0.5rem;
+  padding: 0 0.5rem;
+}
+.my-recipes-tags button {
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  font-weight: 500;
+  text-transform: uppercase;
+  background-color: white;
+  border: solid 1px black;
+  color: black;
+}
+.my-recipes-tags .tag-selected {
+  background-color: black;
+  border: solid 1px black;
+  color: white;
 }/*# sourceMappingURL=MyRecipesPage.css.map */

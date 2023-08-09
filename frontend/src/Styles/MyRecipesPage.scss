@@ -1,7 +1,7 @@
 .my-recipes-page {
   // background-color: #868e96;
   height: 100%;
-  
+
   li:nth-child(odd) {
     background-color: #aee0e74d;
   }
@@ -13,6 +13,36 @@
 
 .my-recipes-page-header {
   padding: 30px 0;
+
+  div:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+}
+
+.my-recipes-tags {
   display: flex;
-  justify-content: space-evenly;
+  overflow: auto;
+  flex: 1;
+  flex-flow: row nowrap;
+  width: 100%;
+  gap: 0.5rem;
+  padding: 0 0.5rem;
+  button {
+    padding: 0.4rem 0.6rem;
+    border-radius: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    background-color: white;
+    border: solid 1px black;
+    color: black;
+  }
+
+  .tag-selected {
+    background-color: black;
+    border: solid 1px black;
+    color: white;
+  }
 }

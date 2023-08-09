@@ -69,6 +69,10 @@
 .recipe-form-directions li:nth-child(odd) {
   background-color: rgba(174, 224, 231, 0.3019607843);
 }
+.recipe-form-ingredients li:last-child,
+.recipe-form-directions li:last-child {
+  border-bottom: solid 1px rgb(174, 224, 231);
+}
 
 .recipe-form-ingredient-delete,
 .recipe-form-direction-delete {

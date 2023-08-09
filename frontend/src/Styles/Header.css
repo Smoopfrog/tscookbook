@@ -45,14 +45,17 @@
 
 .login-nav {
   background-color: transparent;
+  box-shadow: none;
 }
 
 .header-top {
   transition: all 1s;
   background-color: transparent;
+  box-shadow: none;
 }
 .header-top .header-nav {
   background-color: transparent;
+  box-shadow: none;
 }
 .header-top .header-title-link:link,
 .header-top .header-title-link:visited {

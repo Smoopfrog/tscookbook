@@ -39,7 +39,7 @@
 .hide-header-nav {
   background-color: transparent;
   box-shadow: none;
-  
+
   .header-title-link:link,
   .header-title-link:visited {
     display: none;
@@ -48,14 +48,17 @@
 
 .login-nav {
   background-color: transparent;
+  box-shadow: none;
 }
 
 .header-top {
   transition: all 1s;
   background-color: transparent;
-
+  box-shadow: none;
   .header-nav {
     background-color: transparent;
+  box-shadow: none;
+
   }
 
   .header-title-link:link,

@@ -16,6 +16,7 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import AccountPage from "./Components/pages/AccountPage";
 import TagsPage from "./Components/pages/TagsPage";
+import ErrorPage from "./Components/pages/ErrorPage";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "",
@@ -63,14 +65,11 @@ const router = createBrowserRouter([
       {
         path: "/myrecipes/:recipeId/edit",
         element: <RecipeForm />,
-
-        // Reuse previous loader somehow?
         loader: async ({ params }) => {
           return RecipesApi.fetchRecipe(params.recipeId);
         },
       },
       {
-        // Keeps data if edit recipe is open
         path: "/newrecipe",
         element: <RecipeForm />,
       },

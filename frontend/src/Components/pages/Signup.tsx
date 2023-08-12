@@ -21,7 +21,7 @@ const Signup = () => {
     formState: { errors },
     handleSubmit,
   } = useForm<User>();
-  
+
   const handleSignup = async (data: User) => {
     try {
       const userData = await UsersApi.createUser(data);
@@ -37,19 +37,38 @@ const Signup = () => {
     <form onSubmit={handleSubmit(handleSignup)} className="login-form">
       <h1>Sign Up</h1>
       <div className="login-form-input">
-        <label>Username</label>
-        <input placeholder="Username" {...register("username")} />
+        <div>
+          <label>Username</label>
+          {errors.username && <span>Please enter your username</span>}
+        </div>
+
+        <input
+          placeholder="Username"
+          {...register("username", { required: true })}
+        />
       </div>
       <div className="login-form-input">
-        <label>Email</label>
-        <input placeholder="Email" {...register("email")} />
+        <div>
+          <label>Email</label>
+          {errors.email && <span>Please enter your email</span>}
+        </div>
+        <input placeholder="Email" {...register("email", { required: true })} />
       </div>
       <div className="login-form-input">
-        <label>Password</label>
-        <input placeholder="Password" {...register("password")} />
+        <div>
+          <label>Password</label>
+          {errors.email && <span>Please enter your password</span>}
+        </div>
+        <input
+          placeholder="Password"
+          type="password"
+          {...register("password", { required: true })}
+        />
       </div>
       <button type="submit">Sign Up</button>
-      <Link className="login-link" to="/login">Already have an account? Log in here</Link>
+      <Link className="login-link" to="/login">
+        Already have an account? Log in here
+      </Link>
     </form>
   );
 };

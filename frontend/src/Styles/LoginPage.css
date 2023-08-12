@@ -51,9 +51,14 @@
 }
 .login-form-input div {
   display: flex;
-}
-.login-form-input label {
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 0.5rem;
+}
+.login-form-input span {
+  color: red;
+  font-weight: 300;
+  font-size: 0.8rem;
 }
 .login-form-input input {
   padding: 0.5rem;

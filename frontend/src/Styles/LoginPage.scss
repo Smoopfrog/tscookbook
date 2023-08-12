@@ -57,10 +57,15 @@
 
   div {
     display: flex;
-  }
-  
-  label {
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 0.5rem;
+  }
+
+  span {
+    color: red;
+    font-weight: 300;
+    font-size: 0.8rem;
   }
 
   input {

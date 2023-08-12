@@ -49,6 +49,9 @@
   margin-bottom: 1rem;
   width: 80%;
 }
+.login-form-input div {
+  display: flex;
+}
 .login-form-input label {
   margin-bottom: 0.5rem;
 }

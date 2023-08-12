@@ -4,7 +4,7 @@ import * as UsersApi from "../../network/users_api";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../hooks";
 import { login } from "../../slices/userSlice";
-import "../../Styles/LoginPage.css"
+import "../../Styles/LoginPage.css";
 
 interface User {
   username: string;
@@ -36,19 +36,34 @@ const LoginPage = () => {
     <form onSubmit={handleSubmit(handleLogin)} className="login-form">
       <h1>Login</h1>
       <div className="login-form-input">
-        <label>Username</label>
-        <input placeholder="username" {...register("username")} />
+        <div>
+          <label>Username</label>{" "}
+          {errors.username && (
+            <span className="login-form-err">Please enter your username</span>
+          )}
+        </div>
+        <input
+          placeholder="username"
+          {...register("username", { required: true })}
+        />
       </div>
       <div className="login-form-input">
-        <label>Password</label>
+        <div>
+          <label>Password</label>
+          {errors.password && (
+            <span className="login-form-err">Please enter your password</span>
+          )}
+        </div>
         <input
           placeholder="password"
           type="password"
-          {...register("password")}
+          {...register("password", { required: true })}
         />
       </div>
       <button type="submit">Log in</button>
-      <Link className="login-link" to="/signup">Don't have an account? Sign up here</Link>
+      <Link className="login-link" to="/signup">
+        Don't have an account? Sign up here
+      </Link>
     </form>
   );
 };

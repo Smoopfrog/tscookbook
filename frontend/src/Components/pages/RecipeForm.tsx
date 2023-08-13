@@ -1,6 +1,8 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import { Recipe } from "../../models/recipe";
 import * as RecipesApi from "../../network/recipes_api";
+import { MouseEvent } from "react";
+
 import { useLoaderData, useNavigate } from "react-router-dom";
 import "../../Styles/RecipeForm.css";
 import {
@@ -14,11 +16,15 @@ import {
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../slices/userSlice";
+import Modal from "../Modal";
 
 const RecipeForm = () => {
   const [carouselPage, setCarouselPage] = useState("About");
-  const tags = useSelector(selectUser).tags;
+  const [showModal, setShowModal] = useState(false);
+
   const navigate = useNavigate();
+
+  const tags = useSelector(selectUser).tags;
   const recipe = useLoaderData() as Recipe;
 
   const handleClickScroll = (page: string) => {
@@ -32,6 +38,16 @@ const RecipeForm = () => {
         block: "nearest",
         inline: "center",
       });
+    }
+  };
+
+  const deleteRecipe = async (e: MouseEvent<HTMLButtonElement>) => {
+    try {
+      await RecipesApi.deleteRecipe(recipe._id);
+      navigate("/myrecipes");
+    } catch (error) {
+      alert(error);
+      console.log(error);
     }
   };
 
@@ -191,6 +207,22 @@ const RecipeForm = () => {
               )}
             </div>
           </div>
+          {recipe && (
+            <>
+              <button onClick={() => setShowModal(true)} type="button">
+                DELETE
+              </button>
+              <Modal
+                handleClose={() => {
+                  setShowModal(false);
+                }}
+                show={showModal}
+              >
+                <p>Are you sure you want to delete {recipe.title}?</p>
+                <button onClick={deleteRecipe}>Delete</button>
+              </Modal>
+            </>
+          )}
         </section>
         <section
           id="Ingredients"

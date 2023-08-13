@@ -78,9 +78,6 @@ const Recipe = () => {
               </div>
             </div>
             <p className="recipe-description">{recipe.description}</p>
-            <button className="recipe-delete-icon" onClick={deleteRecipe}>
-              <BiTrash />
-            </button>
             <Link
               className="recipe-edit-icon"
               to={`/myrecipes/${recipe._id}/edit`}
@@ -91,7 +88,11 @@ const Recipe = () => {
           <div className="recipe-tags">
             {recipe.tags &&
               recipe.tags.map((tag, index) => {
-                return <button key={index} className="recipe-tag">{tag}</button>;
+                return (
+                  <button key={index} className="recipe-tag">
+                    {tag}
+                  </button>
+                );
               })}
           </div>
         </section>

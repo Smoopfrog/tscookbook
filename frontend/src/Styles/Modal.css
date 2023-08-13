@@ -29,6 +29,7 @@
 .modal-main button {
   border-radius: 10px;
   border: none;
+  width: auto;
   background-color: #ced4da;
   color: #343a40;
 }

@@ -1,6 +1,6 @@
 .my-recipes-page {
   height: 100%;
-
+  width: 100vw;
   li:nth-child(odd) {
     background-color: #aee0e74d;
   }
@@ -32,7 +32,7 @@
     }
   }
 }
-
+ 
 .my-recipes-tags {
   display: flex;
   overflow: auto;

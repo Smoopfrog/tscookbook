@@ -1,5 +1,6 @@
 .my-recipes-page {
   height: 100%;
+  width: 100vw;
 }
 .my-recipes-page li:nth-child(odd) {
   background-color: rgba(174, 224, 231, 0.3019607843);

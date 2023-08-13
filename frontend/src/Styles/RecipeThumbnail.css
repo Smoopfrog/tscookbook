@@ -1,6 +1,7 @@
 .recipe-thumbnail {
   display: flex;
   align-items: center;
+  width: 100%;
   padding: 10px;
   border: none;
   text-decoration: none;

@@ -60,6 +60,24 @@
   color: white;
 }
 
+.recipe-form-delete {
+  display: flex;
+  justify-content: center;
+}
+.recipe-form-delete button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border: solid 2px red;
+  border-radius: 20px;
+  background-color: white;
+  color: red;
+  font-size: 20px;
+  text-decoration: none;
+}
+
 .recipe-form-ingredients h1,
 .recipe-form-directions h1 {
   text-align: center;

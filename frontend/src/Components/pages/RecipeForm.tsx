@@ -2,7 +2,7 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { Recipe } from "../../models/recipe";
 import * as RecipesApi from "../../network/recipes_api";
 import { MouseEvent } from "react";
-
+import { BiEdit, BiTrash } from "react-icons/bi";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import "../../Styles/RecipeForm.css";
 import {
@@ -208,9 +208,10 @@ const RecipeForm = () => {
             </div>
           </div>
           {recipe && (
-            <>
+            <div className="recipe-form-delete">
               <button onClick={() => setShowModal(true)} type="button">
-                DELETE
+                <BiTrash />
+                <span>Delete</span>
               </button>
               <Modal
                 handleClose={() => {
@@ -218,10 +219,21 @@ const RecipeForm = () => {
                 }}
                 show={showModal}
               >
+                <h1>Delete this recipe?</h1>
+                <hr />
                 <p>Are you sure you want to delete {recipe.title}?</p>
-                <button onClick={deleteRecipe}>Delete</button>
+                <hr />
+
+                <div>
+                  <button className="delete" onClick={deleteRecipe}>
+                    Delete
+                  </button>
+                  <button type="button" onClick={() => setShowModal(false)}>
+                    Cancel
+                  </button>
+                </div>
               </Modal>
-            </>
+            </div>
           )}
         </section>
         <section

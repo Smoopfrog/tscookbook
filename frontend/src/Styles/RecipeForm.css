@@ -63,17 +63,20 @@
 .recipe-form-delete {
   display: flex;
   justify-content: center;
+  margin-top: 2rem;
 }
 .recipe-form-delete button {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 5px;
+  width: 50%;
   margin-bottom: 1rem;
   padding: 0.5rem 1rem;
   border: solid 2px red;
-  border-radius: 20px;
-  background-color: white;
-  color: red;
+  border-radius: 10px;
+  background-color: red;
+  color: white;
   font-size: 20px;
   text-decoration: none;
 }

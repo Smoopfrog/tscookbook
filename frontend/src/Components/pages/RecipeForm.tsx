@@ -223,7 +223,6 @@ const RecipeForm = () => {
                 <hr />
                 <p>Are you sure you want to delete {recipe.title}?</p>
                 <hr />
-
                 <div>
                   <button className="delete" onClick={deleteRecipe}>
                     Delete

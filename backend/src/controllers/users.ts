@@ -82,6 +82,30 @@ export const signUp: RequestHandler<
   }
 };
 
+export const deleteAccount: RequestHandler = async (req, res, next) => {
+  const authenticatedUserId = req.session.userId;
+
+  try {
+    assertIsDefined(authenticatedUserId);
+    
+    const user = await UserModel.findById(authenticatedUserId).exec();
+
+    if (!user) {
+      throw createHttpError(404, "User not found");
+    }
+
+    if (!user._id.equals(authenticatedUserId)) {
+      throw createHttpError(401, "Not authorized to access this account.");
+    }
+
+    await user.deleteOne();
+
+    res.sendStatus(204);
+  } catch (error) {
+    next(error);
+  }
+};
+
 interface LoginBody {
   username?: string;
   password?: string;

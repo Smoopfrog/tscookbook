@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../hooks";
 import { login } from "../../slices/userSlice";
 import "../../Styles/LoginPage.css";
+import { useState } from "react";
+import Modal from "../Modal";
 
 interface User {
   username: string;
@@ -13,6 +15,9 @@ interface User {
 }
 
 const Signup = () => {
+  const [errorMessage, setErrorMessage] = useState("");
+  const [showErrorModal, setShowErrorModal] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -27,9 +32,9 @@ const Signup = () => {
       const userData = await UsersApi.createUser(data);
       dispatch(login(userData));
       navigate("/myrecipes");
-    } catch (error) {
-      console.log(error);
-      alert(error);
+    } catch (error: any) {
+      setErrorMessage(error.toString());
+      setShowErrorModal(true);
     }
   };
 
@@ -69,6 +74,23 @@ const Signup = () => {
       <Link className="login-link" to="/login">
         Already have an account? Log in here
       </Link>
+      <Modal
+        show={showErrorModal}
+        handleClose={() => {
+          setShowErrorModal(false);
+        }}
+      >
+        <p>{errorMessage}</p>
+        <hr />
+        <button
+          onClick={() => {
+            setShowErrorModal(false);
+          }}
+          type="button"
+        >
+          Close
+        </button>
+      </Modal>
     </form>
   );
 };

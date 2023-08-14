@@ -39,7 +39,14 @@ const LoginPage = () => {
       dispatch(login(userData));
       navigate("/");
     } catch (error: any) {
-      setErrorMessage(error.toString());
+      const errorMessage: string = error.toString();
+
+      if (errorMessage.startsWith("Error: ")) {
+        setErrorMessage(errorMessage.slice(7));
+      } else {
+        setErrorMessage(error.toString());
+      }
+
       setShowErrorModal(true);
     }
   };

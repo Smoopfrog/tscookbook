@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import * as UsersApi from "../../network/users_api";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../hooks";
-import { login } from "../../slices/userSlice";
+import { login, selectUser } from "../../slices/userSlice";
 import "../../Styles/LoginPage.css";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 interface User {
   username: string;
@@ -14,6 +16,13 @@ interface User {
 const LoginPage = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const username = useSelector(selectUser).username;
+
+  useEffect(() => {
+    if (username) {
+      navigate("/");
+    }
+  }, [username, navigate]);
 
   const {
     register,
@@ -27,7 +36,6 @@ const LoginPage = () => {
       dispatch(login(userData));
       navigate("/");
     } catch (error) {
-      console.log(error);
       alert(error);
     }
   };

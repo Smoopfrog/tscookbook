@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { login, selectUser } from "../../slices/userSlice";
+import { logout, selectUser } from "../../slices/userSlice";
 import Modal from "../Modal";
 import * as UsersApi from "../../network/users_api";
 import { useNavigate } from "react-router-dom";
@@ -14,18 +14,13 @@ const AccountPage = () => {
   const deleteAccount = async () => {
     try {
       await UsersApi.deleteAccount();
-      dispatch(
-        login({
-          username: "",
-          email: "",
-          tags: [],
-        })
-      );
+      dispatch(logout());
       navigate("/");
     } catch (error) {
       alert(error);
     }
   };
+  
   return (
     <div>
       <h1>Account</h1>

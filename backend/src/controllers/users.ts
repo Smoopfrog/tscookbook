@@ -1,6 +1,8 @@
 import { RequestHandler } from "express";
 import createHttpError from "http-errors";
 import UserModel from "../models/user";
+import RecipeModel from "../models/recipe";
+
 import bcrypt from "bcrypt";
 import { assertIsDefined } from "../util/assertIsDefined";
 
@@ -87,7 +89,7 @@ export const deleteAccount: RequestHandler = async (req, res, next) => {
 
   try {
     assertIsDefined(authenticatedUserId);
-    
+
     const user = await UserModel.findById(authenticatedUserId).exec();
 
     if (!user) {
@@ -97,6 +99,10 @@ export const deleteAccount: RequestHandler = async (req, res, next) => {
     if (!user._id.equals(authenticatedUserId)) {
       throw createHttpError(401, "Not authorized to access this account.");
     }
+
+    await RecipeModel.deleteMany({
+      userId: authenticatedUserId,
+    }).exec();
 
     await user.deleteOne();
 

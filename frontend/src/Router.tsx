@@ -73,6 +73,13 @@ export const router = createBrowserRouter([
       {
         path: "/newrecipe",
         element: <RecipeForm />,
+        loader: async () => {
+          const data = {
+            user: await UsersApi.getLoggedInUser(),
+            recipes: await RecipesApi.fetchRecipes(),
+          };
+          return data;
+        },
       },
     ],
   },

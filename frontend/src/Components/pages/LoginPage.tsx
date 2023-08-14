@@ -6,7 +6,8 @@ import { useAppDispatch } from "../../hooks";
 import { login, selectUser } from "../../slices/userSlice";
 import "../../Styles/LoginPage.css";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Modal from "../Modal";
 
 interface User {
   username: string;
@@ -14,6 +15,8 @@ interface User {
 }
 
 const LoginPage = () => {
+  const [errorMessage, setErrorMessage] = useState("");
+  const [showErrorModal, setShowErrorModal] = useState(false);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const username = useSelector(selectUser).username;
@@ -35,8 +38,9 @@ const LoginPage = () => {
       const userData = await UsersApi.login(data);
       dispatch(login(userData));
       navigate("/");
-    } catch (error) {
-      alert(error);
+    } catch (error: any) {
+      setErrorMessage(error.toString());
+      setShowErrorModal(true);
     }
   };
 
@@ -72,6 +76,23 @@ const LoginPage = () => {
       <Link className="login-link" to="/signup">
         Don't have an account? Sign up here
       </Link>
+      <Modal
+        show={showErrorModal}
+        handleClose={() => {
+          setShowErrorModal(false);
+        }}
+      >
+        <p>{errorMessage}</p>
+        <hr />
+        <button
+          onClick={() => {
+            setShowErrorModal(false);
+          }}
+          type="button"
+        >
+          Close
+        </button>
+      </Modal>
     </form>
   );
 };

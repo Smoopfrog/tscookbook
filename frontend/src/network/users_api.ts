@@ -1,7 +1,14 @@
 import { User } from "../models/user";
-
+const env = process.env.NODE_ENV || "development";
 const localApi = "http://localhost:5000";
 const server = "https://tscookbook-api.onrender.com";
+let address: string;
+
+if (env === "development") {
+  address = localApi;
+} else {
+  address = server;
+}
 
 const fetchData = async (input: RequestInfo, init?: RequestInit) => {
   const response = await fetch(input, init);
@@ -11,13 +18,13 @@ const fetchData = async (input: RequestInfo, init?: RequestInit) => {
   } else {
     const errorBody = await response.json();
     const errorMessage = errorBody.error;
-    console.log(errorMessage)
+    console.log(errorMessage);
     throw Error(errorMessage);
   }
 };
 
 export const getLoggedInUser = async (): Promise<User> => {
-  const response = await fetchData(`${server}/api/users`, {
+  const response = await fetchData(`${address}/api/users`, {
     method: "GET",
     credentials: "include",
   });
@@ -34,7 +41,7 @@ interface SignUpCredentials {
 export const createUser = async (
   credentials: SignUpCredentials
 ): Promise<User> => {
-  const response = await fetchData(`${server}/api/users/signup`, {
+  const response = await fetchData(`${address}/api/users/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -52,7 +59,7 @@ interface LoginCredentials {
 }
 
 export const login = async (credentials: LoginCredentials): Promise<User> => {
-  const response = await fetchData(`${server}/api/users/login`, {
+  const response = await fetchData(`${address}/api/users/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -65,7 +72,7 @@ export const login = async (credentials: LoginCredentials): Promise<User> => {
 };
 
 export const logout = async () => {
-  await fetchData(`${server}/api/users/logout`, {
+  await fetchData(`${address}/api/users/logout`, {
     method: "POST",
     credentials: "include",
   });
@@ -77,7 +84,7 @@ interface TagInterface {
 
 export const addTag = async (tag: TagInterface) => {
   console.log(tag);
-  const response = await fetchData(`${server}/api/users/tags`, {
+  const response = await fetchData(`${address}/api/users/tags`, {
     method: "PATCH",
     credentials: "include",
     headers: {
@@ -91,7 +98,7 @@ export const addTag = async (tag: TagInterface) => {
 
 export const deleteTag = async (tag: string) => {
   console.log(tag);
-  const response = await fetchData(`${server}/api/users/tags`, {
+  const response = await fetchData(`${address}/api/users/tags`, {
     method: "DELETE",
     credentials: "include",
     headers: {

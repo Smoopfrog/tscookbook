@@ -109,7 +109,6 @@ export const login: RequestHandler<
       throw createHttpError(401, "Invalid credentials");
     }
 
-    console.log("User tags", user.tags);
     const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (!passwordMatch) {

@@ -44,7 +44,7 @@ export const signUp: RequestHandler<
     }).exec();
 
     if (existingUsername) {
-      createHttpError(
+      throw createHttpError(
         409,
         "Username already taken. Please choose a different one."
       );
@@ -55,7 +55,7 @@ export const signUp: RequestHandler<
     }).exec();
 
     if (existingEmail) {
-      createHttpError(
+      throw createHttpError(
         409,
         "Email already in use. Please choose a different one."
       );

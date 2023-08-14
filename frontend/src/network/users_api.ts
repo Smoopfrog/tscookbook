@@ -78,6 +78,13 @@ export const logout = async () => {
   });
 };
 
+export const deleteAccount = async () => {
+  await fetchData(`${address}/api/users/`, {
+    method: "Delete",
+    credentials: "include",
+  });
+}
+
 interface TagInterface {
   tag: string;
 }

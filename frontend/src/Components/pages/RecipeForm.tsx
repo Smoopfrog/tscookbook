@@ -51,7 +51,7 @@ const RecipeForm = () => {
       console.log(error);
     }
   };
-  
+
   const {
     register,
     formState: { errors },
@@ -210,7 +210,11 @@ const RecipeForm = () => {
           </div>
           {recipe && (
             <div className="recipe-form-delete">
-              <button onClick={() => setShowModal(true)} type="button">
+              <button
+                className="recipe-form-delete-btn"
+                onClick={() => setShowModal(true)}
+                type="button"
+              >
                 <BiTrash />
                 <span>Delete</span>
               </button>

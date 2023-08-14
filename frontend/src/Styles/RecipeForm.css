@@ -65,7 +65,7 @@
   justify-content: center;
   margin-top: 2rem;
 }
-.recipe-form-delete button {
+.recipe-form-delete .recipe-form-delete-btn {
   display: flex;
   align-items: center;
   justify-content: center;

@@ -67,7 +67,7 @@ export const login = async (credentials: LoginCredentials): Promise<User> => {
     body: JSON.stringify(credentials),
     credentials: "include",
   });
-
+  
   return response.json();
 };
 
@@ -83,7 +83,6 @@ interface TagInterface {
 }
 
 export const addTag = async (tag: TagInterface) => {
-  console.log(tag);
   const response = await fetchData(`${address}/api/users/tags`, {
     method: "PATCH",
     credentials: "include",
@@ -97,7 +96,6 @@ export const addTag = async (tag: TagInterface) => {
 };
 
 export const deleteTag = async (tag: string) => {
-  console.log(tag);
   const response = await fetchData(`${address}/api/users/tags`, {
     method: "DELETE",
     credentials: "include",

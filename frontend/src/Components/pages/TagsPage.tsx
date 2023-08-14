@@ -1,17 +1,20 @@
 import { useForm } from "react-hook-form";
 import { login, selectUser } from "../../slices/userSlice";
-import { useDispatch, useSelector } from "react-redux";
 import * as UsersApi from "../../network/users_api";
 import "../../Styles/Tags.css";
 import { BsTrash } from "react-icons/bs";
+import { useAppDispatch } from "../../hooks";
+import { useLoaderData } from "react-router-dom";
+import { User } from "../../models/user";
 
 interface Tag {
   tag: string;
 }
 
 const TagsPage = () => {
-  const tags = useSelector(selectUser).tags;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+
+  const { tags } = useLoaderData() as User;
 
   const {
     register,
@@ -31,7 +34,6 @@ const TagsPage = () => {
   };
 
   const deleteTag = async (tagName: string) => {
-    console.log(tagName);
     try {
       const user = await UsersApi.deleteTag(tagName);
       dispatch(login(user));

@@ -2,10 +2,9 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as UsersApi from "../../network/users_api";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import { login, selectUser } from "../../slices/userSlice";
 import "../../Styles/LoginPage.css";
-import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import Modal from "../Modal";
 
@@ -19,7 +18,7 @@ const LoginPage = () => {
   const [showErrorModal, setShowErrorModal] = useState(false);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const username = useSelector(selectUser).username;
+  const username = useAppSelector(selectUser).username;
 
   useEffect(() => {
     if (username) {

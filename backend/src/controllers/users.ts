@@ -175,8 +175,6 @@ export const addTag: RequestHandler<
 
     const updatedUser = await user.save();
 
-    console.log("updatedUser", updatedUser);
-
     res.status(200).json(updatedUser);
   } catch (error) {
     next(error);

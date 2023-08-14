@@ -1,14 +1,16 @@
+import { useState } from "react";
 import { useLoaderData, Link } from "react-router-dom";
 import RecipeThumbnail from "../RecipeThumbnail";
 import { Recipe } from "../../models/recipe";
+import { User } from "../../models/user";
 import "../../Styles/MyRecipesPage.css";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../slices/userSlice";
-import { useState } from "react";
 
 const MyRecipesPage = () => {
-  const recipes = useLoaderData() as Recipe[];
-  const tags = useSelector(selectUser).tags;
+  const { user, recipes } = useLoaderData() as {
+    user: User;
+    recipes: Recipe[];
+  };
+
   const [recipeFilter, setRecipeFilter] = useState("");
 
   return (
@@ -27,8 +29,8 @@ const MyRecipesPage = () => {
           >
             All
           </button>
-          {tags &&
-            tags.map((tag, index) => {
+          {user.tags &&
+            user.tags.map((tag: string, index: number) => {
               return (
                 <button
                   key={index}

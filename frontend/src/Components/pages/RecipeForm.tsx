@@ -1,5 +1,6 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import { Recipe } from "../../models/recipe";
+import { User } from "../../models/user";
 import * as RecipesApi from "../../network/recipes_api";
 import { MouseEvent } from "react";
 import { BiEdit, BiTrash } from "react-icons/bi";
@@ -14,8 +15,6 @@ import {
   BsXLg,
 } from "react-icons/bs";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../slices/userSlice";
 import Modal from "../Modal";
 
 const RecipeForm = () => {
@@ -24,8 +23,10 @@ const RecipeForm = () => {
 
   const navigate = useNavigate();
 
-  const tags = useSelector(selectUser).tags;
-  const recipe = useLoaderData() as Recipe;
+  const { user, recipe } = useLoaderData() as {
+    user: User;
+    recipe: Recipe;
+  };
 
   const handleClickScroll = (page: string) => {
     const element = document.getElementById(page);
@@ -50,7 +51,7 @@ const RecipeForm = () => {
       console.log(error);
     }
   };
-
+  
   const {
     register,
     formState: { errors },
@@ -176,8 +177,8 @@ const RecipeForm = () => {
           <div className="recipe-input-div recipe-tags">
             <label>Tags</label>
             <div>
-              {tags ? (
-                tags.map((tag, index) => {
+              {user.tags ? (
+                user.tags.map((tag, index) => {
                   if (watchTags.includes(tag)) {
                     return (
                       <button

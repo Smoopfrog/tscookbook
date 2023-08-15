@@ -18,7 +18,7 @@ const fetchData = async (input: RequestInfo, init?: RequestInit) => {
   } else {
     const errorBody = await response.json();
     const errorMessage = errorBody.error;
-    
+
     throw Error(errorMessage);
   }
 };
@@ -67,7 +67,7 @@ export const login = async (credentials: LoginCredentials): Promise<User> => {
     body: JSON.stringify(credentials),
     credentials: "include",
   });
-  
+
   return response.json();
 };
 
@@ -83,7 +83,24 @@ export const deleteAccount = async () => {
     method: "Delete",
     credentials: "include",
   });
+};
+
+interface PasswordCredentials {
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
 }
+
+export const changePassword = async (credentials: PasswordCredentials) => {
+  await fetchData(`${address}/api/users/password`, {
+    method: "PATCH",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(credentials),
+  });
+};
 
 interface TagInterface {
   tag: string;

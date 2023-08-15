@@ -8,6 +8,8 @@ router.get("/", requiresAuth, UserController.getAuthenticatedUser);
 
 router.delete("/", requiresAuth, UserController.deleteAccount);
 
+router.patch("/password", requiresAuth, UserController.changePassword);
+
 router.post("/signup", UserController.signUp);
 
 router.post("/login", UserController.login);

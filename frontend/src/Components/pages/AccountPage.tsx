@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
+import { useForm } from "react-hook-form";
+
 import { logout, selectUser } from "../../slices/userSlice";
 import Modal from "../Modal";
 import * as UsersApi from "../../network/users_api";
@@ -10,6 +12,12 @@ import { MdEmail } from "react-icons/md";
 import { FaPencil } from "react-icons/fa6";
 import { BiChevronDown } from "react-icons/bi";
 import { RiEyeCloseLine, RiEyeLine } from "react-icons/ri";
+
+type passwordData = {
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+};
 
 const AccountPage = () => {
   const [showPasswordForm, setShowPasswordForm] = useState(false);
@@ -23,6 +31,20 @@ const AccountPage = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
+  const {
+    register,
+    formState: { errors },
+    control,
+    reset,
+    handleSubmit,
+  } = useForm({
+    defaultValues: {
+      currentPassword: "",
+      newPassword: "",
+      confirmPassword: "",
+    },
+  });
+
   const deleteAccount = async () => {
     try {
       await UsersApi.deleteAccount();
@@ -33,6 +55,24 @@ const AccountPage = () => {
     }
   };
 
+  const submitPassword = async (data: passwordData) => {
+    try {
+      await UsersApi.changePassword(data);
+      alert("Password changed");
+      setShowPasswordForm(false);
+      reset({
+        currentPassword: "",
+        newPassword: "",
+        confirmPassword: "",
+      });
+      setShowCurrentPassword(false);
+      setShowNewPassword(false);
+      setShowConfirmPassword(false);
+    } catch (error) {
+      alert(error);
+      console.log(error);
+    }
+  };
   return (
     <section className="account-page">
       <div>
@@ -93,11 +133,15 @@ const AccountPage = () => {
             className={`account-password-form ${
               showPasswordForm ? "" : "hide-drawer"
             }`}
+            onSubmit={handleSubmit(submitPassword)}
           >
             <div className="account-form-input">
               <label htmlFor="">Current Password</label>
               <div>
-                <input type={`${showCurrentPassword ? "text" : "password"}`} />
+                <input
+                  type={`${showCurrentPassword ? "text" : "password"}`}
+                  {...register("currentPassword", { required: true })}
+                />
                 {showCurrentPassword ? (
                   <RiEyeLine
                     onClick={() => setShowCurrentPassword(false)}
@@ -116,7 +160,10 @@ const AccountPage = () => {
             <div className="account-form-input">
               <label htmlFor="">New Password</label>
               <div>
-                <input type={`${showNewPassword ? "text" : "password"}`} />
+                <input
+                  type={`${showNewPassword ? "text" : "password"}`}
+                  {...register("newPassword", { required: true })}
+                />
                 {showNewPassword ? (
                   <RiEyeLine
                     onClick={() => setShowNewPassword(false)}
@@ -135,7 +182,10 @@ const AccountPage = () => {
             <div className="account-form-input">
               <label htmlFor="">Confirm New Password</label>
               <div>
-                <input type={`${showConfirmPassword ? "text" : "password"}`} />
+                <input
+                  type={`${showConfirmPassword ? "text" : "password"}`}
+                  {...register("confirmPassword", { required: true })}
+                />
                 {showConfirmPassword ? (
                   <RiEyeLine
                     onClick={() => setShowConfirmPassword(false)}

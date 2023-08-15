@@ -112,6 +112,64 @@ export const deleteAccount: RequestHandler = async (req, res, next) => {
   }
 };
 
+interface changePasswordBody {
+  currentPassword?: string;
+  newPassword?: string;
+  confirmPassword?: string;
+}
+
+export const changePassword: RequestHandler<
+  unknown,
+  unknown,
+  changePasswordBody,
+  unknown
+> = async (req, res, next) => {
+  const authenticatedUserId = req.session.userId;
+  const currentPassword = req.body.currentPassword;
+  const newPassword = req.body.newPassword;
+  const confirmPassword = req.body.confirmPassword;
+
+  try {
+    if (!currentPassword || !newPassword || !confirmPassword) {
+      throw createHttpError(400, "Parameters missing");
+    }
+
+    if (newPassword !== confirmPassword) {
+      throw createHttpError(401, "Passwords don't match");
+    }
+
+    const user = await UserModel.findOne({ _id: authenticatedUserId })
+      .select("+password")
+      .exec();
+
+    if (!user) {
+      throw createHttpError(401, "Invalid credentials");
+    }
+
+    const passwordMatch = await bcrypt.compare(currentPassword, user.password);
+
+    if (!passwordMatch) {
+      throw createHttpError(401, "Invalid password");
+    }
+
+    if (currentPassword === newPassword) {
+      throw createHttpError(401, "Password must be different from previous one");
+
+    }
+
+ 
+    const passwordHashed = await bcrypt.hash(newPassword, 10);
+
+    user.password = passwordHashed;
+
+    await user.save();
+
+    res.sendStatus(204);
+  } catch (error) {
+    next(error);
+  }
+};
+
 interface LoginBody {
   username?: string;
   password?: string;

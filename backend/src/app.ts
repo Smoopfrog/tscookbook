@@ -21,6 +21,7 @@ const allowedOrigins = [
 ];
 
 const MongoDBStore = connectMongoDBSession(session);
+console.log("env", env)
 
 const store = new MongoDBStore({
   uri: env.MONGO_DB_CONNECTION,

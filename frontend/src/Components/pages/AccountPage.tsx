@@ -43,34 +43,22 @@ const AccountPage = () => {
       </div>
       <h1>Account Settings</h1>
       <div className="account-page-section">
+        <button>
+          <FaPencil size={24} className="icon" />
+          <span>Change Username</span>
+        </button>
+        <button>
+          <FaLock size={24} className="icon" />
+          <span>Change Password</span>
+        </button>
         <button
           onClick={() => {
             setShowDeleteUserModal(true);
           }}
         >
-          <FaPencil size={24} className="icon" />
-          <span>Change Username</span>
-        </button>
-        <div>
-          <FaLock size={24} className="icon" />
-          <button
-            onClick={() => {
-              setShowDeleteUserModal(true);
-            }}
-          >
-            Change Password
-          </button>
-        </div>
-        <div>
           <FaTrash size={24} className="icon" />
-          <button
-            onClick={() => {
-              setShowDeleteUserModal(true);
-            }}
-          >
-            Delete Account
-          </button>
-        </div>
+          <span>Delete Account</span>
+        </button>
       </div>
       <Modal
         show={showDeleteUserModal}

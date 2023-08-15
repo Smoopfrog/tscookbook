@@ -6,25 +6,21 @@
   border: solid 1px #233748;
   border-radius: 10px;
   margin-bottom: 2rem;
-  div {
+  
+  div,
+  button {
     display: flex;
     align-items: center;
     padding: 1rem;
-
+    color: #233748;
+    background-color: transparent;
+    width: 100%;
     border: solid 1px #23374850;
 
-    span,
-    button {
+    span {
       font-size: 1rem;
       font-weight: 600;
       margin-left: 0.3rem;
-    }
-
-    button {
-      display: flex;
-      color: #233748;
-      border: none;
-      background-color: transparent;
     }
   }
 

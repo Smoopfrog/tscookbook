@@ -7,23 +7,21 @@
   border-radius: 10px;
   margin-bottom: 2rem;
 }
-.account-page-section div {
+.account-page-section div,
+.account-page-section button {
   display: flex;
   align-items: center;
   padding: 1rem;
+  color: #233748;
+  background-color: transparent;
+  width: 100%;
   border: solid 1px rgba(35, 55, 72, 0.3137254902);
 }
 .account-page-section div span,
-.account-page-section div button {
+.account-page-section button span {
   font-size: 1rem;
   font-weight: 600;
   margin-left: 0.3rem;
-}
-.account-page-section div button {
-  display: flex;
-  color: #233748;
-  border: none;
-  background-color: transparent;
 }
 .account-page-section div:first-child {
   border-top-left-radius: 10px;

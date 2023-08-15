@@ -10,8 +10,6 @@
 .account-page-section div,
 .account-page-section button {
   display: flex;
-  align-items: center;
-  padding: 1rem;
   color: #233748;
   background-color: transparent;
   width: 100%;
@@ -23,11 +21,130 @@
   font-weight: 600;
   margin-left: 0.3rem;
 }
-.account-page-section div:first-child {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+.account-page-section div {
+  padding: 1rem;
+  align-items: center;
 }
-.account-page-section div:last-child {
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+.account-page-drawer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+}
+.account-page-drawer button {
+  display: flex;
+  align-items: center;
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+.account-page-drawer button span {
+  flex: 1;
+  text-align: left;
+}
+.account-page-drawer button .chevron {
+  transform: rotate(-90deg);
+  transition: all 0.3s;
+}
+.account-page-drawer button .rotate {
+  transform: rotate(0);
+}
+@keyframes collapseUsernameForm {
+  from {
+    transform-origin: top;
+    transform: scale(1);
+    height: 120px;
+  }
+  to {
+    transform-origin: top;
+    transform: scale(1, 0);
+    height: 0px;
+  }
+}
+@keyframes openUsernameForm {
+  from {
+    transform-origin: top;
+    transform: scale(1, 0);
+    height: 0px;
+  }
+  to {
+    transform-origin: top;
+    transform: scale(1);
+    height: 120px;
+  }
+}
+@keyframes collapsePasswordForm {
+  from {
+    transform-origin: top;
+    transform: scale(1);
+    height: 280px;
+  }
+  to {
+    transform-origin: top;
+    transform: scale(1, 0);
+    height: 0px;
+  }
+}
+@keyframes openPasswordForm {
+  from {
+    transform-origin: top;
+    transform: scale(1, 0);
+    height: 0px;
+  }
+  to {
+    transform-origin: top;
+    transform: scale(1);
+    height: 280px;
+  }
+}
+.account-page-drawer .account-username-form {
+  animation: openUsernameForm 0.3s linear forwards;
+}
+.account-page-drawer .account-username-form.hide-drawer {
+  animation: collapseUsernameForm 0.3s linear forwards;
+}
+.account-page-drawer .account-password-form {
+  animation: openPasswordForm 0.3s linear forwards;
+}
+.account-page-drawer .account-password-form.hide-drawer {
+  animation: collapsePasswordForm 0.3s linear forwards;
+}
+.account-page-drawer form {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.account-page-drawer form div {
+  border: none;
+}
+.account-page-drawer form button {
+  background-color: #aee0e7;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  font-weight: 700;
+}
+
+.account-form-input {
+  display: flex;
+  flex-direction: column;
+}
+.account-form-input div {
+  padding: 0px;
+  display: flex;
+  align-items: center;
+}
+.account-form-input label {
+  align-self: start;
+}
+.account-form-input input {
+  padding: 0.3rem;
+  font-size: 1rem;
+}
+.account-form-input .icon {
+  margin: 0 0.5rem;
 }/*# sourceMappingURL=AccountPage.css.map */

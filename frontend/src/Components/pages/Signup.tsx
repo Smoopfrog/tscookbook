@@ -7,6 +7,9 @@ import { login } from "../../slices/userSlice";
 import "../../Styles/LoginPage.css";
 import { useState } from "react";
 import Modal from "../Modal";
+import { FaRegUser } from "react-icons/fa";
+import { RiEyeCloseLine, RiEyeLine } from "react-icons/ri";
+import { MdEmail } from "react-icons/md";
 
 interface User {
   username: string;
@@ -17,6 +20,7 @@ interface User {
 const Signup = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [showErrorModal, setShowErrorModal] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -53,28 +57,52 @@ const Signup = () => {
           {errors.username && <span>Please enter your username</span>}
         </div>
 
-        <input
-          placeholder="Username"
-          {...register("username", { required: true })}
-        />
+        <div>
+          <input
+            placeholder="Username"
+            {...register("username", { required: true })}
+          />
+          <FaRegUser size={36} className="icon" />
+        </div>
       </div>
       <div className="login-form-input">
         <div>
           <label>Email</label>
           {errors.email && <span>Please enter your email</span>}
         </div>
-        <input placeholder="Email" {...register("email", { required: true })} />
+        <div>
+          <input
+            placeholder="Email"
+            {...register("email", { required: true })}
+          />
+          <MdEmail size={36} className="icon" />
+        </div>
       </div>
       <div className="login-form-input">
         <div>
           <label>Password</label>
           {errors.email && <span>Please enter your password</span>}
         </div>
-        <input
-          placeholder="Password"
-          type="password"
-          {...register("password", { required: true })}
-        />
+        <div>
+          <input
+            placeholder="Password"
+            type={`${showPassword ? "text" : "password"}`}
+            {...register("password", { required: true })}
+          />
+          {showPassword ? (
+            <RiEyeLine
+              size={36}
+              className="icon"
+              onClick={() => setShowPassword(false)}
+            />
+          ) : (
+            <RiEyeCloseLine
+              size={36}
+              className="icon"
+              onClick={() => setShowPassword(true)}
+            />
+          )}
+        </div>
       </div>
       <button type="submit">Sign Up</button>
       <Link className="login-link" to="/login">

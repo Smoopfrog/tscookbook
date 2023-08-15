@@ -7,6 +7,8 @@ import { login, selectUser } from "../../slices/userSlice";
 import "../../Styles/LoginPage.css";
 import { useEffect, useState } from "react";
 import Modal from "../Modal";
+import { FaRegUser } from "react-icons/fa";
+import { RiEyeCloseLine, RiEyeLine } from "react-icons/ri";
 
 interface User {
   username: string;
@@ -15,6 +17,7 @@ interface User {
 
 const LoginPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -60,10 +63,13 @@ const LoginPage = () => {
             <span className="login-form-err">Please enter your username</span>
           )}
         </div>
-        <input
-          placeholder="username"
-          {...register("username", { required: true })}
-        />
+        <div>
+          <input
+            placeholder="username"
+            {...register("username", { required: true })}
+          />
+          <FaRegUser size={36} className="icon" />
+        </div>
       </div>
       <div className="login-form-input">
         <div>
@@ -72,11 +78,26 @@ const LoginPage = () => {
             <span className="login-form-err">Please enter your password</span>
           )}
         </div>
-        <input
-          placeholder="password"
-          type="password"
-          {...register("password", { required: true })}
-        />
+        <div>
+          <input
+            placeholder="Password"
+            type={`${showPassword ? "text" : "password"}`}
+            {...register("password", { required: true })}
+          />
+          {showPassword ? (
+            <RiEyeLine
+              size={36}
+              className="icon"
+              onClick={() => setShowPassword(false)}
+            />
+          ) : (
+            <RiEyeCloseLine
+              size={36}
+              className="icon"
+              onClick={() => setShowPassword(true)}
+            />
+          )}
+        </div>
       </div>
       <button type="submit">Log in</button>
       <Link className="login-link" to="/signup">

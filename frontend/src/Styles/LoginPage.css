@@ -64,10 +64,15 @@
   padding: 0.5rem;
   border: solid 1px rgb(143, 143, 143);
   border-radius: 5px;
+  flex: 1;
+}
+.login-form-input .icon {
+  margin: 0 0.5rem;
+  width: 36px;
 }
 
 .login-link:link,
-.login-form:visited {
+.login-link:visited {
   text-decoration: none;
-  color: #4263eb;
+  color: #233748;
 }/*# sourceMappingURL=LoginPage.css.map */

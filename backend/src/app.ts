@@ -34,6 +34,9 @@ app.use(
     saveUninitialized: false,
     cookie: {
       maxAge: 7 * 24 * 60 * 60 * 1000,
+      secure: env.NODE_ENV === "development" ? false : true,
+      httpOnly: env.NODE_ENV === "development" ? false : true,
+      sameSite: env.NODE_ENV === "development" ? false : "none",
     },
     rolling: true,
     store: store,

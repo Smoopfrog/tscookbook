@@ -73,6 +73,7 @@ const Signup = () => {
         <div>
           <input
             placeholder="Email"
+            type="email"
             {...register("email", { required: true })}
           />
           <MdEmail size={36} className="icon" />

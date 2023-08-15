@@ -85,6 +85,23 @@ export const deleteAccount = async () => {
   });
 };
 
+interface UsernameCredentials {
+  username: string;
+}
+
+export const changeUsername = async (credentials: UsernameCredentials) => {
+  const response = await fetchData(`${address}/api/users/username`, {
+    method: "PATCH",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(credentials),
+  });
+
+  return response.json();
+};
+
 interface PasswordCredentials {
   currentPassword: string;
   newPassword: string;

@@ -112,6 +112,53 @@ export const deleteAccount: RequestHandler = async (req, res, next) => {
   }
 };
 
+interface changeUsernameBody {
+  username?: string;
+}
+
+export const changeUsername: RequestHandler<
+  unknown,
+  unknown,
+  changeUsernameBody,
+  unknown
+> = async (req, res, next) => {
+  const authenticatedUserId = req.session.userId;
+  const username = req.body.username;
+
+  try {
+    if (!username) {
+      throw createHttpError(400, "Parameters missing");
+    }
+
+    const existingUser = await UserModel.findOne({ username: username }).exec();
+
+    if (existingUser) {
+      throw createHttpError(401, "Username is already taken");
+    }
+
+    const user = await UserModel.findById(authenticatedUserId)
+      .select("+email")
+      .exec();
+
+    if (!user) {
+      throw createHttpError(404, "User not found");
+    }
+
+    user.username = username;
+
+    await user.save();
+
+    const userData = {
+      username: username,
+      email: user.email,
+      tags: user.tags,
+    };
+
+    res.status(201).json(userData);
+  } catch (error) {
+    next(error);
+  }
+};
 interface changePasswordBody {
   currentPassword?: string;
   newPassword?: string;
@@ -153,11 +200,12 @@ export const changePassword: RequestHandler<
     }
 
     if (currentPassword === newPassword) {
-      throw createHttpError(401, "Password must be different from previous one");
-
+      throw createHttpError(
+        401,
+        "Password must be different from previous one"
+      );
     }
 
- 
     const passwordHashed = await bcrypt.hash(newPassword, 10);
 
     user.password = passwordHashed;

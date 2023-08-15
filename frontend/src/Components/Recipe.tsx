@@ -1,11 +1,9 @@
 import { ReactNode, useState } from "react";
 import { Recipe as RecipeModel } from "../models/recipe";
-import { useLoaderData, Link, useNavigate } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import { FaRegClock } from "react-icons/fa6";
 import { PiForkKnife } from "react-icons/pi";
-import { BiEdit, BiTrash } from "react-icons/bi";
-import * as RecipesApi from "../network/recipes_api";
-import { MouseEvent } from "react";
+import { BiEdit } from "react-icons/bi";
 import "../Styles/Recipe.css";
 
 const Recipe = () => {
@@ -26,7 +24,6 @@ const Recipe = () => {
   };
 
   const recipe = useLoaderData() as RecipeModel;
-  const navigate = useNavigate();
 
   const ingredientComponents: ReactNode = recipe.ingredients?.map(
     (ingredient, index) => {
@@ -49,16 +46,6 @@ const Recipe = () => {
       );
     }
   );
-
-  const deleteRecipe = async (e: MouseEvent<HTMLButtonElement>) => {
-    try {
-      await RecipesApi.deleteRecipe(recipe._id);
-      navigate("/myrecipes");
-    } catch (error) {
-      alert(error);
-      console.log(error);
-    }
-  };
 
   return (
     <article className="recipe">

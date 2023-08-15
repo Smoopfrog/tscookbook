@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { useForm } from "react-hook-form";
 
-import { logout, selectUser } from "../../slices/userSlice";
+import { login, logout, selectUser } from "../../slices/userSlice";
 import Modal from "../Modal";
 import * as UsersApi from "../../network/users_api";
 import { useNavigate } from "react-router-dom";
@@ -13,10 +13,14 @@ import { FaPencil } from "react-icons/fa6";
 import { BiChevronDown } from "react-icons/bi";
 import { RiEyeCloseLine, RiEyeLine } from "react-icons/ri";
 
-type passwordData = {
+type PasswordData = {
   currentPassword: string;
   newPassword: string;
   confirmPassword: string;
+};
+
+type UsernameData = {
+  username: string;
 };
 
 const AccountPage = () => {
@@ -32,16 +36,24 @@ const AccountPage = () => {
   const dispatch = useAppDispatch();
 
   const {
-    register,
-    formState: { errors },
-    control,
-    reset,
-    handleSubmit,
+    register: passwordRegister,
+    reset: passwordReset,
+    handleSubmit: handlePasswordSubmit,
   } = useForm({
     defaultValues: {
       currentPassword: "",
       newPassword: "",
       confirmPassword: "",
+    },
+  });
+
+  const {
+    register: usernameRegister,
+    reset: usernameReset,
+    handleSubmit: handleUsernameSubmit,
+  } = useForm({
+    defaultValues: {
+      username: "",
     },
   });
 
@@ -55,12 +67,26 @@ const AccountPage = () => {
     }
   };
 
-  const submitPassword = async (data: passwordData) => {
+  const usernameSubmit = async (data: UsernameData) => {
+    try {
+      const user = await UsersApi.changeUsername(data);
+      dispatch(login(user))
+      alert("Username changed");
+      setShowUsernameForm(false);
+      usernameReset({
+        username: "",
+      });
+    } catch (error) {
+      alert(error);
+      console.log(error);
+    }
+  };
+  const submitPassword = async (data: PasswordData) => {
     try {
       await UsersApi.changePassword(data);
       alert("Password changed");
       setShowPasswordForm(false);
-      reset({
+      passwordReset({
         currentPassword: "",
         newPassword: "",
         confirmPassword: "",
@@ -108,10 +134,14 @@ const AccountPage = () => {
             className={`account-username-form ${
               showUsernameForm ? "" : "hide-drawer"
             }`}
+            onSubmit={handleUsernameSubmit(usernameSubmit)}
           >
             <div className="account-form-input">
               <label htmlFor="">Desired Username</label>
-              <input type="text" />
+              <input
+                type="text"
+                {...usernameRegister("username", { required: true })}
+              />
             </div>
             <button>Save</button>
           </form>
@@ -133,14 +163,14 @@ const AccountPage = () => {
             className={`account-password-form ${
               showPasswordForm ? "" : "hide-drawer"
             }`}
-            onSubmit={handleSubmit(submitPassword)}
+            onSubmit={handlePasswordSubmit(submitPassword)}
           >
             <div className="account-form-input">
               <label htmlFor="">Current Password</label>
               <div>
                 <input
                   type={`${showCurrentPassword ? "text" : "password"}`}
-                  {...register("currentPassword", { required: true })}
+                  {...passwordRegister("currentPassword", { required: true })}
                 />
                 {showCurrentPassword ? (
                   <RiEyeLine
@@ -162,7 +192,7 @@ const AccountPage = () => {
               <div>
                 <input
                   type={`${showNewPassword ? "text" : "password"}`}
-                  {...register("newPassword", { required: true })}
+                  {...passwordRegister("newPassword", { required: true })}
                 />
                 {showNewPassword ? (
                   <RiEyeLine
@@ -184,7 +214,7 @@ const AccountPage = () => {
               <div>
                 <input
                   type={`${showConfirmPassword ? "text" : "password"}`}
-                  {...register("confirmPassword", { required: true })}
+                  {...passwordRegister("confirmPassword", { required: true })}
                 />
                 {showConfirmPassword ? (
                   <RiEyeLine

@@ -10,6 +10,8 @@ router.delete("/", requiresAuth, UserController.deleteAccount);
 
 router.patch("/password", requiresAuth, UserController.changePassword);
 
+router.patch("/username", requiresAuth, UserController.changeUsername);
+
 router.post("/signup", UserController.signUp);
 
 router.post("/login", UserController.login);

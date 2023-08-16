@@ -61,15 +61,6 @@ const AccountPage = () => {
     },
   });
 
-  const deleteAccount = async () => {
-    try {
-      await UsersApi.deleteAccount();
-      dispatch(logout());
-      navigate("/");
-    } catch (error) {
-      alert(error);
-    }
-  };
 
   const handleUsernameDrawer = () => {
     usernameClearErrors();
@@ -114,6 +105,18 @@ const AccountPage = () => {
       console.log(error);
     }
   };
+
+  const deleteAccount = async () => {
+    try {
+      await UsersApi.deleteAccount();
+      alert("Account Deleted");
+      dispatch(logout());
+      navigate("/");
+    } catch (error) {
+      alert(error);
+    }
+  };
+  
   return (
     <section className="account-page">
       <div>

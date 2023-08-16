@@ -61,7 +61,6 @@ const AccountPage = () => {
     },
   });
 
-
   const handleUsernameDrawer = () => {
     usernameClearErrors();
     setShowUsernameForm(!showUsernameForm);
@@ -116,21 +115,19 @@ const AccountPage = () => {
       alert(error);
     }
   };
-  
+
   return (
     <section className="account-page">
-      <div>
-        <h1>Account</h1>
-        <div className="account-page-section">
-          <div>
-            <FaRegUser size={24} className="icon" />
-            <span>Username: {user.username}</span>
-          </div>
-          <div>
-            <MdEmail size={24} className="icon" />
-            <span>Email: </span>
-            <span>{user.email}</span>
-          </div>
+      <h1>Account</h1>
+      <div className="account-page-section">
+        <div>
+          <FaRegUser size={24} className="icon" />
+          <span>Username: {user.username}</span>
+        </div>
+        <div>
+          <MdEmail size={24} className="icon" />
+          <span>Email: </span>
+          <span>{user.email}</span>
         </div>
       </div>
       <h1>Account Settings</h1>

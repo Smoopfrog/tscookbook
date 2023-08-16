@@ -137,6 +137,11 @@
   padding: 0px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+.account-form-input span {
+  color: red;
+  font-weight: 300;
 }
 .account-form-input label {
   align-self: start;

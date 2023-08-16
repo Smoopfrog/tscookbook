@@ -151,6 +151,7 @@
     }
   }
 }
+
 .account-form-input {
   display: flex;
   flex-direction: column;
@@ -159,7 +160,14 @@
     padding: 0px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
+
+  span {
+    color: red;
+    font-weight: 300;
+  }
+
   label {
     align-self: start;
   }

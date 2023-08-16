@@ -38,6 +38,8 @@ const AccountPage = () => {
   const {
     register: passwordRegister,
     reset: passwordReset,
+    formState: { errors: passowrdErrors },
+    clearErrors: passwordClearErrors,
     handleSubmit: handlePasswordSubmit,
   } = useForm({
     defaultValues: {
@@ -50,6 +52,8 @@ const AccountPage = () => {
   const {
     register: usernameRegister,
     reset: usernameReset,
+    formState: { errors: usernameErrors },
+    clearErrors: usernameClearErrors,
     handleSubmit: handleUsernameSubmit,
   } = useForm({
     defaultValues: {
@@ -67,10 +71,15 @@ const AccountPage = () => {
     }
   };
 
+  const handleUsernameDrawer = () => {
+    usernameClearErrors();
+    setShowUsernameForm(!showUsernameForm);
+  };
+
   const usernameSubmit = async (data: UsernameData) => {
     try {
       const user = await UsersApi.changeUsername(data);
-      dispatch(login(user))
+      dispatch(login(user));
       alert("Username changed");
       setShowUsernameForm(false);
       usernameReset({
@@ -81,6 +90,12 @@ const AccountPage = () => {
       console.log(error);
     }
   };
+
+  const handlePasswordDrawer = () => {
+    passwordClearErrors();
+    setShowPasswordForm(!showPasswordForm);
+  };
+
   const submitPassword = async (data: PasswordData) => {
     try {
       await UsersApi.changePassword(data);
@@ -118,11 +133,7 @@ const AccountPage = () => {
       <h1>Account Settings</h1>
       <div className="account-page-section">
         <div className="account-page-drawer">
-          <button
-            onClick={() => {
-              setShowUsernameForm(!showUsernameForm);
-            }}
-          >
+          <button onClick={handleUsernameDrawer}>
             <FaPencil size={24} className="icon" />
             <span>Change Username</span>
             <BiChevronDown
@@ -137,7 +148,10 @@ const AccountPage = () => {
             onSubmit={handleUsernameSubmit(usernameSubmit)}
           >
             <div className="account-form-input">
-              <label htmlFor="">Desired Username</label>
+              <div>
+                <label htmlFor="">Desired Username</label>
+                {usernameErrors.username && <span>Required!</span>}
+              </div>
               <input
                 type="text"
                 {...usernameRegister("username", { required: true })}
@@ -147,11 +161,7 @@ const AccountPage = () => {
           </form>
         </div>
         <div className="account-page-drawer">
-          <button
-            onClick={() => {
-              setShowPasswordForm(!showPasswordForm);
-            }}
-          >
+          <button onClick={handlePasswordDrawer}>
             <FaLock size={24} className="icon" />
             <span>Change Password</span>
             <BiChevronDown
@@ -166,7 +176,10 @@ const AccountPage = () => {
             onSubmit={handlePasswordSubmit(submitPassword)}
           >
             <div className="account-form-input">
-              <label htmlFor="">Current Password</label>
+              <div>
+                <label htmlFor="">Current Password</label>
+                {passowrdErrors.currentPassword && <span>Required!</span>}
+              </div>
               <div>
                 <input
                   type={`${showCurrentPassword ? "text" : "password"}`}
@@ -188,7 +201,10 @@ const AccountPage = () => {
               </div>
             </div>
             <div className="account-form-input">
-              <label htmlFor="">New Password</label>
+              <div>
+                <label htmlFor="">New Password</label>
+                {passowrdErrors.newPassword && <span>Required!</span>}
+              </div>
               <div>
                 <input
                   type={`${showNewPassword ? "text" : "password"}`}
@@ -210,7 +226,10 @@ const AccountPage = () => {
               </div>
             </div>
             <div className="account-form-input">
-              <label htmlFor="">Confirm New Password</label>
+              <div>
+                <label htmlFor="">Confirm New Password</label>
+                {passowrdErrors.confirmPassword && <span>Required!</span>}
+              </div>
               <div>
                 <input
                   type={`${showConfirmPassword ? "text" : "password"}`}

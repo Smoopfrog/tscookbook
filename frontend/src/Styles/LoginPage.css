@@ -1,3 +1,10 @@
+/*
+  SPACING SYSTEM (px)
+  2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+  FONT SIZE SYSTEM (px)
+  10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+*/
 .login-form {
   position: absolute;
   top: 0;
@@ -76,4 +83,21 @@
 .login-link:visited {
   text-decoration: none;
   color: #233748;
+}
+
+@media screen and (min-width: 576px) {
+  .login-form-input {
+    width: 50%;
+  }
+  .login-form button {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .login-form-input {
+    width: 30%;
+  }
+  .login-form button {
+    width: 30%;
+  }
 }/*# sourceMappingURL=LoginPage.css.map */

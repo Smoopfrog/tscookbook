@@ -1,0 +1,33 @@
+/*
+  SPACING SYSTEM (px)
+  2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+  
+  FONT SIZE SYSTEM (px)
+  10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+*/
+
+$text-color: #233748;
+
+// Small devices (landscape phones, 576px and up)
+$breakpoint-small: 576px;
+
+// Medium devices (tablets, 768px and up)
+$breakpoint-medium: 768px;
+
+// Large devices (desktops, 992px and up)
+$breakpoint-large: 992px;
+
+// Extra large devices (large desktops, 1200px and up)
+$breakpoint-xlarge: 1200px;
+
+// @media screen and (min-width: $breakpoint-small) {
+// }
+
+// @media screen and (min-width: $breakpoint-medium) {
+// }
+
+// @media screen and (min-width: $breakpoint-large) {
+// }
+
+// @media screen and (min-width: $breakpoint-xlarge) {
+// }

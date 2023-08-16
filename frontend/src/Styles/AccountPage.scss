@@ -27,8 +27,6 @@
     padding: 1rem;
     align-items: center;
   }
-  button {
-  }
 }
 
 .account-page-drawer {
@@ -58,98 +56,41 @@
       transform: rotate(0);
     }
   }
+}
 
-  @keyframes collapseUsernameForm {
-    from {
-      transform-origin: top;
-      transform: scale(1);
-      height: 120px;
-    }
+.account-username-form,
+.account-password-form {
+  transform-origin: top;
+  transform: scale(1, 0);
+  height: 0px;
+  transition: transform 0.3s linear, height 0.3s linear;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    to {
-      transform-origin: top;
-      transform: scale(1, 0);
-      height: 0px;
-    }
-  }
-
-  @keyframes openUsernameForm {
-    from {
-      transform-origin: top;
-      transform: scale(1, 0);
-      height: 0px;
-    }
-
-    to {
-      transform-origin: top;
-      transform: scale(1);
-      height: 120px;
-    }
-  }
-
-  @keyframes collapsePasswordForm {
-    from {
-      transform-origin: top;
-      transform: scale(1);
-      height: 280px;
-    }
-
-    to {
-      transform-origin: top;
-      transform: scale(1, 0);
-      height: 0px;
-    }
-  }
-
-  @keyframes openPasswordForm {
-    from {
-      transform-origin: top;
-      transform: scale(1, 0);
-      height: 0px;
-    }
-
-    to {
-      transform-origin: top;
-      transform: scale(1);
-      height: 280px;
-    }
-  }
-
-  .account-username-form {
-    animation: openUsernameForm 0.3s linear forwards;
-  }
-
-  .account-username-form.hide-drawer {
-    animation: collapseUsernameForm 0.3s linear forwards;
-  }
-
-  .account-password-form {
-    animation: openPasswordForm 0.3s linear forwards;
-  }
-
-  .account-password-form.hide-drawer {
-    animation: collapsePasswordForm 0.3s linear forwards;
-  }
-
-  form {
+  div {
     border: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    div {
-      border: none;
-    }
-
-    button {
-      background-color: #aee0e7;
-      border-radius: 10px;
-      padding: 0.5rem 1rem;
-      width: fit-content;
-      height: fit-content;
-      font-weight: 700;
-    }
   }
+
+  button {
+    background-color: #aee0e7;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    width: fit-content;
+    height: fit-content;
+    font-weight: 700;
+  }
+}
+
+.account-username-form.show {
+  height: 120px;
+  transform: scale(1);
+}
+
+.account-password-form.show {
+  height: 280px;
+  transform: scale(1);
 }
 
 .account-form-input {

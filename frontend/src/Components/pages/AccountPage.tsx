@@ -143,7 +143,7 @@ const AccountPage = () => {
           </button>
           <form
             className={`account-username-form ${
-              showUsernameForm ? "" : "hide-drawer"
+              showUsernameForm ? "show" : ""
             }`}
             onSubmit={handleUsernameSubmit(usernameSubmit)}
           >
@@ -171,7 +171,7 @@ const AccountPage = () => {
           </button>
           <form
             className={`account-password-form ${
-              showPasswordForm ? "" : "hide-drawer"
+              showPasswordForm ? "show" : ""
             }`}
             onSubmit={handlePasswordSubmit(submitPassword)}
           >

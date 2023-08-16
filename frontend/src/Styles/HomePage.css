@@ -1,3 +1,10 @@
+/*
+  SPACING SYSTEM (px)
+  2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+  FONT SIZE SYSTEM (px)
+  10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+*/
 .homepage {
   width: 100%;
   position: absolute;
@@ -19,7 +26,8 @@
   background-image: url("../Assets/pizza-background.webp");
   background-size: cover;
 }
-.homepage .nav-item {
+.homepage .nav-item:link,
+.homepage .nav-item:visited {
   text-decoration: none;
   text-align: center;
   padding: 6px;
@@ -28,6 +36,10 @@
   border-radius: 30px;
   width: 70%;
   margin-bottom: 12px;
+}
+.homepage .nav-item:visited:hover,
+.homepage .nav-item:link:hover {
+  background-color: #15aabf;
 }
 .homepage .nav-item:visited {
   color: black;
@@ -63,11 +75,15 @@
   padding: 0.5rem 1rem;
   border-radius: 20px;
   background-color: #15aabf;
-  border: solid 1px #15aabf;
   font-size: 20px;
   font-weight: 500;
   color: white;
   text-transform: uppercase;
+  transition: background-color 0.4s ease;
+}
+.homepage-default .nav-item:visited:hover,
+.homepage-default .nav-item:link:hover {
+  background-color: #77ebfa;
 }
 
 .homepage-star-review {
@@ -89,4 +105,11 @@
 .homepage-subtext {
   font-size: 0.8rem;
   color: rgba(35, 55, 72, 0.5254901961);
+}
+
+@media screen and (min-width: 768px) {
+  .homepage .nav-item:link,
+  .homepage .nav-item:visited {
+    max-width: 50%;
+  }
 }/*# sourceMappingURL=HomePage.css.map */

@@ -1,3 +1,5 @@
+@import "./Variables.scss";
+
 .homepage {
   width: 100%;
   position: absolute;
@@ -22,7 +24,8 @@
     background-size: cover;
   }
 
-  .nav-item {
+  .nav-item:link,
+  .nav-item:visited {
     text-decoration: none;
     text-align: center;
     padding: 6px;
@@ -31,6 +34,11 @@
     border-radius: 30px;
     width: 70%;
     margin-bottom: 12px;
+  }
+
+  .nav-item:visited:hover,
+  .nav-item:link:hover {
+    background-color: #15aabf;
   }
 
   .nav-item:visited {
@@ -71,11 +79,16 @@
     padding: 0.5rem 1rem;
     border-radius: 20px;
     background-color: #15aabf;
-    border: solid 1px #15aabf;
     font-size: 20px;
     font-weight: 500;
     color: white;
     text-transform: uppercase;
+    transition: background-color 0.4s ease;
+  }
+
+  .nav-item:visited:hover,
+  .nav-item:link:hover {
+    background-color: #77ebfa;
   }
 }
 
@@ -99,3 +112,21 @@
   font-size: 0.8rem;
   color: #23374886;
 }
+
+// @media screen and (min-width: $breakpoint-small) {
+// }
+
+@media screen and (min-width: $breakpoint-medium) {
+  .homepage {
+    .nav-item:link,
+    .nav-item:visited {
+      max-width: 50%;
+    }
+  }
+}
+
+// @media screen and (min-width: $breakpoint-large) {
+// }
+
+// @media screen and (min-width: $breakpoint-xlarge) {
+// }

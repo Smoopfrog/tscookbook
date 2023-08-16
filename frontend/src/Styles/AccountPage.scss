@@ -1,5 +1,12 @@
+@import "./Variables.scss";
+
 .account-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 2rem;
+  width: 100vw;
+  margin: 0 auto;
 }
 
 .account-page-section {
@@ -55,6 +62,10 @@
     .rotate {
       transform: rotate(0);
     }
+  }
+
+  button:hover {
+    cursor: pointer;
   }
 }
 
@@ -123,3 +134,21 @@
     margin: 0 0.5rem;
   }
 }
+
+// @media screen and (min-width: $breakpoint-small) {
+// }
+
+@media screen and (min-width: $breakpoint-medium) {
+  .account-page {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: $breakpoint-large) {
+  .account-page {
+    width: 50%;
+  }
+}
+
+// @media screen and (min-width: $breakpoint-xlarge) {
+// }

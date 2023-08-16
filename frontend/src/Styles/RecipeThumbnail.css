@@ -5,19 +5,31 @@
   padding: 10px;
   border: none;
   text-decoration: none;
+  transform-origin: top;
+  height: 15vh;
+  transition: box-shadow 0.3s ease, height 0.3s ease;
 }
 .recipe-thumbnail img {
-  min-width: 25%;
-  max-width: 25%;
-  border-radius: 10%;
+  min-width: 15vh;
+  max-width: 15vh;
+  border-radius: 10px;
   margin-right: 12px;
-  height: 5.5rem;
+  height: 90%;
   -o-object-fit: cover;
      object-fit: cover;
 }
 .recipe-thumbnail h1 {
   font-size: 16px;
   font-weight: 500;
+}
+
+.recipe-thumbnail:hover {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  height: 30vh;
+}
+.recipe-thumbnail:hover img {
+  min-width: 30vh;
+  max-width: 30vh;
 }
 
 .recipe-thumbnail:link,

@@ -32,6 +32,12 @@
   font-size: 32px;
   border: none;
   background-color: transparent;
+  color: #233748;
+  transition: color 0.2s ease;
+}
+.header-nav button:hover {
+  cursor: pointer;
+  color: rgba(0, 136, 255, 0.63);
 }
 
 .hide-header-nav {
@@ -157,9 +163,5 @@
 }
 
 .header-nav-item:visited {
-  color: #233748;
-}
-
-.header-menu-btn {
   color: #233748;
 }/*# sourceMappingURL=Header.css.map */

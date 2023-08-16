@@ -33,6 +33,13 @@
     font-size: 32px;
     border: none;
     background-color: transparent;
+    color: #233748;
+    transition: color 0.2s ease;
+  }
+
+  button:hover {
+    cursor: pointer;
+    color: rgba(0, 136, 255, 0.63);
   }
 }
 
@@ -57,8 +64,7 @@
   box-shadow: none;
   .header-nav {
     background-color: transparent;
-  box-shadow: none;
-
+    box-shadow: none;
   }
 
   .header-title-link:link,
@@ -165,9 +171,5 @@
 }
 
 .header-nav-item:visited {
-  color: #233748;
-}
-
-.header-menu-btn {
   color: #233748;
 }

@@ -1,8 +1,30 @@
-.tagsPage li:nth-child(odd) {
+.tags-page li:nth-child(odd) {
   background-color: rgba(174, 224, 231, 0.3019607843);
 }
-.tagsPage li:last-child {
+.tags-page li:last-child {
   border-bottom: solid 1px rgb(174, 224, 231);
+}
+
+.tags-page-controller {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.tags-page-controller button {
+  padding: 0.5rem 1rem;
+  background-color: #15aabf;
+  border-radius: 20px;
+  border: solid 1px #15aabf;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.tags-page-controller button:hover {
+  cursor: pointer;
+  background-color: #77ebfa;
+  border: solid 1px #77ebfa;
 }
 
 .tag {
@@ -19,8 +41,15 @@
   border: none;
   background-color: transparent;
 }
+.tag button:hover {
+  cursor: pointer;
+}
 
 .tag-delete-icon {
   width: 1.4rem;
   height: 1.4rem;
+}
+
+.tag-delete-icon:hover {
+  color: rgba(0, 0, 0, 0.589);
 }/*# sourceMappingURL=Tags.css.map */

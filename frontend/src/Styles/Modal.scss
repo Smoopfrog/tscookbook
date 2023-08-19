@@ -16,12 +16,28 @@
 
   padding: 2rem;
   background: white;
-  width: 89%;
+  width: max-content;
   height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+    h1 {
+    font-size: 1.5rem;
+    }
+
+    .tag-input {
+      font-size: 1rem;
+      padding: 0.5rem;
+      border-radius: 10px;
+    }
+  }
 
   div {
     display: flex;
@@ -29,25 +45,37 @@
   }
 
   button {
+    width: auto;
     border-radius: 10px;
     border: none;
-    width: auto;
+    padding: 0.5rem 1rem;
     margin-bottom: 0px;
     background-color: #ced4da;
     color: #343a40;
-
-    padding: 0.5rem 1rem;
-
     font-weight: 600;
-
   }
 
-  button:hover{
-    background-color: black;
+  button:hover {
+    background-color: rgba(0, 0, 0, 0.363);
+    cursor: pointer;
   }
+
   .delete {
     background-color: red;
     color: white;
+  }
+
+  .delete:hover {
+    background-color: rgba(255, 0, 0, 0.613);
+  }
+
+  .accept {
+    background-color: #15aabf;
+    color: white;
+  }
+
+  .accept:hover {
+    background-color: #15abbfaf;
   }
 }
 

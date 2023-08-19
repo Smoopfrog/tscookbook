@@ -1,10 +1,36 @@
-.tagsPage {
+.tags-page {
   li:nth-child(odd) {
     background-color: rgba(174, 224, 231, 0.3019607843);
   }
 
   li:last-child {
     border-bottom: solid 1px rgba(174, 224, 231);
+  }
+}
+
+.tags-page-controller {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+
+  button {
+    padding: 0.5rem 1rem;
+
+    background-color: #15aabf;
+    border-radius: 20px;
+    border: solid 1px #15aabf;
+
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  button:hover {
+    cursor: pointer;
+    background-color: #77ebfa;
+    border: solid 1px #77ebfa;
   }
 }
 
@@ -22,9 +48,17 @@
     border: none;
     background-color: transparent;
   }
+
+  button:hover {
+    cursor: pointer;
+  }
 }
 
 .tag-delete-icon {
   width: 1.4rem;
   height: 1.4rem;
+}
+
+.tag-delete-icon:hover {
+  color: rgba(0, 0, 0, 0.589);
 }

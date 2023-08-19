@@ -37,6 +37,7 @@
 }
 .my-recipes-page-header div:first-child .add-recipe:visited:hover,
 .my-recipes-page-header div:first-child .add-recipe:link:hover {
+  cursor: pointer;
   background-color: #77ebfa;
   border: solid 1px #77ebfa;
 }

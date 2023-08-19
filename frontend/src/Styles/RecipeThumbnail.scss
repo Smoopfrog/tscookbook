@@ -24,16 +24,6 @@
   }
 }
 
-.recipe-thumbnail:hover {
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-  height: 30vh;
-
-  img {
-    min-width: 30vh;
-    max-width: 30vh;
-  }
-}
-
 .recipe-thumbnail:link,
 .recipe-thumbnail:visited {
   color: black;
@@ -46,3 +36,24 @@
   font-size: 14px;
   font-weight: 400;
 }
+
+// @media screen and (min-width: $breakpoint-small) {
+// }
+
+// @media screen and (min-width: $breakpoint-medium) {
+// }
+
+@media screen and (min-width: $breakpoint-large) {
+  .recipe-thumbnail:hover {
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    height: 30vh;
+
+    img {
+      min-width: 30vh;
+      max-width: 30vh;
+    }
+  }
+}
+
+// @media screen and (min-width: $breakpoint-xlarge) {
+// }

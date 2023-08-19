@@ -78,6 +78,9 @@
   margin: 0 0.5rem;
   width: 36px;
 }
+.login-form-input .eye:hover {
+  cursor: pointer;
+}
 
 .login-link:link,
 .login-link:visited {

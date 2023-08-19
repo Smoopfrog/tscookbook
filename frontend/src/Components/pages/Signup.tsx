@@ -93,13 +93,13 @@ const Signup = () => {
           {showPassword ? (
             <RiEyeLine
               size={36}
-              className="icon"
+              className="icon eye"
               onClick={() => setShowPassword(false)}
             />
           ) : (
             <RiEyeCloseLine
               size={36}
-              className="icon"
+              className="icon eye"
               onClick={() => setShowPassword(true)}
             />
           )}

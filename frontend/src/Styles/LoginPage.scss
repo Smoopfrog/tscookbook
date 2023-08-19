@@ -82,6 +82,10 @@
     margin: 0 0.5rem;
     width: 36px;
   }
+  
+  .eye:hover {
+    cursor: pointer;
+  }
 }
 
 .login-link:link,
@@ -91,7 +95,7 @@
 }
 
 @media screen and (min-width: $breakpoint-small) {
-  .login-form-input  {
+  .login-form-input {
     width: 50%;
   }
 
@@ -106,7 +110,7 @@
 // }
 
 @media screen and (min-width: $breakpoint-large) {
-  .login-form-input  {
+  .login-form-input {
     width: 30%;
   }
 

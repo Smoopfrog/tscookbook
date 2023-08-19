@@ -50,6 +50,8 @@ const TagsPage = () => {
     try {
       const user = await UsersApi.deleteTag(tagName);
       dispatch(login(user));
+      alert(`${tagName} tag deleted.`)
+      navigate("/tags");
     } catch (error) {
       console.log(error);
       alert(error);

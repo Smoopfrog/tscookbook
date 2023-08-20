@@ -71,8 +71,8 @@
   }
 
   button:hover {
-    background-color: #15aabf;
-    border: solid 1px #15aabf;
+    background-color: $blue;
+    border: solid 1px $blue;
     color: white;
     cursor: pointer;
   }
@@ -293,7 +293,7 @@
 
   button:hover {
     cursor: pointer;
-    background-color: #15aabf;
+    background-color: $blue;
   }
 }
 

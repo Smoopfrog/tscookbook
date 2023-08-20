@@ -1,3 +1,5 @@
+@import "./Variables.scss";
+
 .tags-page {
   li:nth-child(odd) {
     background-color: rgba(174, 224, 231, 0.3019607843);
@@ -17,9 +19,9 @@
   button {
     padding: 0.5rem 1rem;
 
-    background-color: #15aabf;
+    background-color: $blue;
     border-radius: 20px;
-    border: solid 1px #15aabf;
+    border: solid 1px $blue;
 
     font-weight: 600;
     color: white;

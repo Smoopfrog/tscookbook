@@ -1,3 +1,10 @@
+/*
+  SPACING SYSTEM (px)
+  2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+  FONT SIZE SYSTEM (px)
+  10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+*/
 .tags-page li:nth-child(odd) {
   background-color: rgba(174, 224, 231, 0.3019607843);
 }
@@ -13,9 +20,9 @@
 }
 .tags-page-controller button {
   padding: 0.5rem 1rem;
-  background-color: #15aabf;
+  background-color: #15abbf;
   border-radius: 20px;
-  border: solid 1px #15aabf;
+  border: solid 1px #15abbf;
   font-weight: 600;
   color: white;
   text-transform: uppercase;

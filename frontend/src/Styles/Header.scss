@@ -1,3 +1,5 @@
+@import "./Variables.scss";
+
 .header {
   position: sticky;
   top: 0px;
@@ -70,7 +72,7 @@
   .header-title-link:link,
   .header-title-link:visited {
     transition: all 1s;
-    color: #15aabf;
+    color: $blue;
     transform: scale(2) translate(35%, 25px);
   }
 
@@ -102,8 +104,8 @@
   transition: all 1s;
   padding: 0.5rem 1rem;
   border-radius: 20px;
-  background-color: #15aabf;
-  border: solid 1px #15aabf;
+  background-color: $blue;
+  border: solid 1px $blue;
   font-size: 1rem;
   font-weight: 500;
   color: whitesmoke;

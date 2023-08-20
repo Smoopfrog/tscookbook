@@ -26,9 +26,9 @@
     .add-recipe:visited {
       padding: 0.5rem 1rem;
 
-      background-color: #15aabf;
+      background-color: $blue;
       border-radius: 20px;
-      border: solid 1px #15aabf;
+      border: solid 1px $blue;
 
       font-weight: 600;
       color: white;
@@ -66,8 +66,8 @@
   }
 
   button:hover {
-    background-color: #15aabf;
-    border: solid 1px #15aabf;
+    background-color: $blue;
+    border: solid 1px $blue;
     color: white;
     cursor: pointer;
   }

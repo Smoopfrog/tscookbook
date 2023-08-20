@@ -1,3 +1,10 @@
+/*
+  SPACING SYSTEM (px)
+  2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+  FONT SIZE SYSTEM (px)
+  10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+*/
 .header {
   position: sticky;
   top: 0px;
@@ -66,7 +73,7 @@
 .header-top .header-title-link:link,
 .header-top .header-title-link:visited {
   transition: all 1s;
-  color: #15aabf;
+  color: #15abbf;
   transform: scale(2) translate(35%, 25px);
 }
 .header-top .header-link:link,
@@ -96,8 +103,8 @@
   transition: all 1s;
   padding: 0.5rem 1rem;
   border-radius: 20px;
-  background-color: #15aabf;
-  border: solid 1px #15aabf;
+  background-color: #15abbf;
+  border: solid 1px #15abbf;
   font-size: 1rem;
   font-weight: 500;
   color: whitesmoke;

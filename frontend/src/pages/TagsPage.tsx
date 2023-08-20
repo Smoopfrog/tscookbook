@@ -6,7 +6,7 @@ import { BsTrash } from "react-icons/bs";
 import { useAppDispatch } from "../hooks";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { User } from "../models/user";
-import Modal from "../Components/Modal";
+import Modal from "../Components/UI/Modal";
 import { useState } from "react";
 
 interface Tag {

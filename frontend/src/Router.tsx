@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
-import Recipe from "./Components/Recipe";
+import Recipe from "./pages/RecipePage";
 import Signup from "./pages/Signup";
 import RecipeForm from "./pages/RecipeForm";
 import MyRecipesPage from "./pages/MyRecipesPage";

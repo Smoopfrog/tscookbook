@@ -6,7 +6,7 @@ import { useAppDispatch } from "../hooks";
 import { login } from "../slices/userSlice";
 import "../Styles/LoginPage.css";
 import { useState } from "react";
-import Modal from "../Components/Modal";
+import Modal from "../Components/UI/Modal";
 import { FaRegUser } from "react-icons/fa";
 import { RiEyeCloseLine, RiEyeLine } from "react-icons/ri";
 import { MdEmail } from "react-icons/md";

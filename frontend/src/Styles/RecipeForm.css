@@ -70,8 +70,8 @@
   color: black;
 }
 .recipe-tags button:hover {
-  background-color: #15abbf;
-  border: solid 1px #15abbf;
+  background-color: #15aabf;
+  border: solid 1px #15aabf;
   color: white;
   cursor: pointer;
 }
@@ -268,7 +268,7 @@
 }
 .recipe-form-footer button:hover {
   cursor: pointer;
-  background-color: #15abbf;
+  background-color: #15aabf;
 }
 
 @media screen and (min-width: 768px) {

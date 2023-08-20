@@ -17,7 +17,7 @@ interface User {
   password: string;
 }
 
-const Signup = () => {
+const SignupPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -130,4 +130,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignupPage;

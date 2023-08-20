@@ -20,7 +20,7 @@ const ErrorPage = () => {
 
   return (
     <div className="error-page">
-      <Header />
+      {/* <Header /> */}
       <h1>Uh oh!</h1>
       <p>
         {errorStatus} {errorMessage}

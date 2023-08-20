@@ -7,55 +7,55 @@ import {
   FaSignOutAlt,
   FaTags,
 } from "react-icons/fa";
-
 import * as UsersApi from "../../api/users_api";
 import { useAppDispatch } from "../../hooks";
 import { logout } from "../../slices/userSlice";
-interface SideBarProps {
+
+interface SidebarProps {
   show: boolean;
-  handleMenuAside(): void;
+  handleSidebar(): void;
 }
 
-const SideBar = ({ show, handleMenuAside }: SideBarProps) => {
+const Sidebar = ({ show, handleSidebar }: SidebarProps) => {
   const dispatch = useAppDispatch();
 
   const handleLogout = () => {
     UsersApi.logout();
-    handleMenuAside();
+    handleSidebar();
     dispatch(logout());
   };
 
   return (
     <aside className={`menu-aside ${show ? "" : "hide-menu"}`}>
       <ul className="nav-list">
-        <SidebarLink route="" name="Home" handleMenuAside={handleMenuAside}>
+        <SidebarLink route="" name="Home" handleMenuAside={handleSidebar}>
           <FaHome />
         </SidebarLink>
         <SidebarLink
           route="/newrecipe"
           name="New Recipe"
-          handleMenuAside={handleMenuAside}
+          handleMenuAside={handleSidebar}
         >
           <FaPlus />
         </SidebarLink>
         <SidebarLink
           name="My Recipes"
           route="/myrecipes"
-          handleMenuAside={handleMenuAside}
+          handleMenuAside={handleSidebar}
         >
           <FaBook />
         </SidebarLink>
         <SidebarLink
           name="Tags"
           route="/tags"
-          handleMenuAside={handleMenuAside}
+          handleMenuAside={handleSidebar}
         >
           <FaTags />
         </SidebarLink>
         <SidebarLink
           name="Account"
           route="/account"
-          handleMenuAside={handleMenuAside}
+          handleMenuAside={handleSidebar}
         >
           <FaRegUser />
         </SidebarLink>
@@ -67,4 +67,4 @@ const SideBar = ({ show, handleMenuAside }: SideBarProps) => {
   );
 };
 
-export default SideBar;
+export default Sidebar;

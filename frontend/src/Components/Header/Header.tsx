@@ -3,11 +3,14 @@ import { Link, useLocation } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import { useAppSelector } from "../../hooks";
 import { selectUser } from "../../slices/userSlice";
-import SideBar from "./SideBar";
+import SideBar from "./Sidebar";
 import "../../Styles/Header.css";
 
-const Header = () => {
-  const [showMenuAside, setShowMenuAside] = useState<boolean>(false);
+interface HeaderProps {
+  handleSidebar(): void;
+}
+
+const Header = ({ handleSidebar }: HeaderProps) => {
   const user = useAppSelector(selectUser);
   const path = useLocation().pathname;
   let isEditPath = false;
@@ -15,10 +18,6 @@ const Header = () => {
   if (path.substring(path.length - 4) === "edit") {
     isEditPath = true;
   }
-
-  const handleMenuAside = (): void => {
-    setShowMenuAside((prev) => !prev);
-  };
 
   const headerClass = `header ${
     (path === "/newrecipe" || (path === "/" && !user.username) || isEditPath) &&
@@ -37,15 +36,13 @@ const Header = () => {
           TS Cookbook
         </Link>
         {user.username ? (
-          <button className="header-menu-btn" onClick={handleMenuAside}>
+          <button className="header-menu-btn" onClick={handleSidebar}>
             <FiMenu />
           </button>
         ) : (
           <div></div>
         )}
       </div>
-
-      <SideBar show={showMenuAside} handleMenuAside={handleMenuAside} />
     </header>
   );
 };

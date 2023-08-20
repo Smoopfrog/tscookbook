@@ -1,12 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header/Header";
 import { Outlet } from "react-router-dom";
 import * as UsersApi from "./api/users_api";
 import { useAppDispatch } from "./hooks";
 import { login } from "./slices/userSlice";
+import Sidebar from "./Components/Header/Sidebar";
 
 function App() {
+  const [showSidebar, SetShowSidebar] = useState(false);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -21,9 +23,14 @@ function App() {
     fetchLoggedInUser();
   }, [dispatch]);
 
+  const toggleSidebar = () => {
+    SetShowSidebar((prev) => !prev);
+  };
+
   return (
     <div className="App">
-      <Header />
+      <Header handleSidebar={toggleSidebar} />
+      <Sidebar show={showSidebar} handleSidebar={toggleSidebar} />
       <Outlet />
     </div>
   );

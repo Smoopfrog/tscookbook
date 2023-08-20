@@ -83,10 +83,8 @@ const RecipeForm = () => {
   });
 
   const {
-    fields: tagsFields,
     append: tagsAppend,
     remove: tagsRemove,
-    move: tagsMove,
   } = useFieldArray<any>({
     name: "tags",
     control,

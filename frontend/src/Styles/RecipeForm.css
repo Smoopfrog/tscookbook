@@ -70,8 +70,8 @@
   color: black;
 }
 .recipe-tags button:hover {
-  background-color: #15aabf;
-  border: solid 1px #15aabf;
+  background-color: #15abbf;
+  border: solid 1px #15abbf;
   color: white;
   cursor: pointer;
 }
@@ -162,7 +162,8 @@
 .recipe-form-ingredient input {
   padding: 10px;
   border-radius: 7px;
-  border: solid 1px black;
+  border: solid 1px #233748;
+  color: #233748;
 }
 .recipe-form-ingredient .recipe-form-ingredient-input:nth-child(1) {
   width: 30%;
@@ -267,7 +268,7 @@
 }
 .recipe-form-footer button:hover {
   cursor: pointer;
-  background-color: #15aabf;
+  background-color: #15abbf;
 }
 
 @media screen and (min-width: 768px) {

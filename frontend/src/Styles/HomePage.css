@@ -39,10 +39,10 @@
 }
 .homepage .nav-item:visited:hover,
 .homepage .nav-item:link:hover {
-  background-color: #15aabf;
+  background-color: #15abbf;
 }
 .homepage .nav-item:visited {
-  color: black;
+  color: #233748;
 }
 
 .homepage-default {
@@ -74,7 +74,7 @@
   margin-bottom: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 20px;
-  background-color: #15aabf;
+  background-color: #15abbf;
   font-size: 20px;
   font-weight: 500;
   color: white;

@@ -91,7 +91,7 @@
 .login-link:link,
 .login-link:visited {
   text-decoration: none;
-  color: #233748;
+  color: $text-color;
 }
 
 @media screen and (min-width: $breakpoint-small) {

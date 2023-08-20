@@ -73,7 +73,7 @@
 .header-top .header-title-link:link,
 .header-top .header-title-link:visited {
   transition: all 1s;
-  color: #15abbf;
+  color: #15aabf;
   transform: scale(2) translate(35%, 25px);
 }
 .header-top .header-link:link,
@@ -103,8 +103,8 @@
   transition: all 1s;
   padding: 0.5rem 1rem;
   border-radius: 20px;
-  background-color: #15abbf;
-  border: solid 1px #15abbf;
+  background-color: #15aabf;
+  border: solid 1px #15aabf;
   font-size: 1rem;
   font-weight: 500;
   color: whitesmoke;
@@ -124,7 +124,7 @@
   width: 100%;
   height: 100dvh;
   background-color: white;
-  color: black;
+  color: #233748;
   transition: all 0.2s;
   transform: scale(1, 1);
   transform-origin: 100% 50%;
@@ -160,13 +160,14 @@
   display: flex;
   align-items: center;
   color: #233748;
+  transition: background-color 0.2s ease;
 }
 .header-nav-item span {
   margin-left: 24px;
 }
 
 .header-nav-item:hover {
-  background-color: grey;
+  background-color: #aee0e7;
 }
 
 .header-nav-item:visited {

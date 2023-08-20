@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { Recipe } from "../models/recipe";
-import "../Styles/RecipeThumbnail.css";
 import { FaRegClock } from "react-icons/fa6";
 import { PiForkKnife, PiTagBold } from "react-icons/pi";
+import { Recipe } from "../../models/recipe";
+import "../../Styles/RecipeThumbnail.css";
 
 interface ThumbnailProps {
   recipe: Recipe;

@@ -3,7 +3,7 @@ import "../Styles/HomePage.css";
 import { useAppSelector } from "../hooks";
 import { selectUser } from "../slices/userSlice";
 import { BsFillStarFill } from "react-icons/bs";
-import HomepageHeader from "../Components/HomepageHeader";
+import HomepageHeader from "../Components/Header/HomepageHeader";
 
 const HomePage = () => {
   const user = useAppSelector(selectUser);

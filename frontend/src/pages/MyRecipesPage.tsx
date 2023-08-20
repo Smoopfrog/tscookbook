@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLoaderData, Link } from "react-router-dom";
-import RecipeThumbnail from "../Components/RecipeThumbnail";
+import RecipeThumbnail from "../Components/UI/RecipeThumbnail";
 import { Recipe } from "../models/recipe";
 import { User } from "../models/user";
 import "../Styles/MyRecipesPage.css";

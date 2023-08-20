@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "./App.css";
-import Header from "./Components/Header";
+import Header from "./Components/Header/Header";
 import { Outlet } from "react-router-dom";
 import * as UsersApi from "./api/users_api";
 import { useAppDispatch } from "./hooks";

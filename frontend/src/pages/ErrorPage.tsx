@@ -1,6 +1,6 @@
 import { Link, isRouteErrorResponse, useRouteError } from "react-router-dom";
 import "../Styles/ErrorPage.css";
-import Header from "../Components/Header";
+import Header from "../Components/Header/Header";
 
 const ErrorPage = () => {
   const error = useRouteError();

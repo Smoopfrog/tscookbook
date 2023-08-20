@@ -1,11 +1,11 @@
 import { useForm, useFieldArray } from "react-hook-form";
-import { Recipe } from "../../models/recipe";
-import { User } from "../../models/user";
-import * as RecipesApi from "../../network/recipes_api";
+import { Recipe } from "../models/recipe";
+import { User } from "../models/user";
+import * as RecipesApi from "../api/recipes_api";
 import { MouseEvent } from "react";
-import { BiEdit, BiTrash } from "react-icons/bi";
+import { BiTrash } from "react-icons/bi";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import "../../Styles/RecipeForm.css";
+import "../Styles/RecipeForm.css";
 import {
   BsChevronUp,
   BsChevronDown,
@@ -15,7 +15,7 @@ import {
   BsXLg,
 } from "react-icons/bs";
 import { useState } from "react";
-import Modal from "../Modal";
+import Modal from "../Components/Modal";
 
 const RecipeForm = () => {
   const [carouselPage, setCarouselPage] = useState("About");

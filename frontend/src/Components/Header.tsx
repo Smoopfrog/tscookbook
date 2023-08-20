@@ -10,7 +10,7 @@ import {
   FaSignOutAlt,
   FaTags,
 } from "react-icons/fa";
-import * as UsersApi from "../network/users_api";
+import * as UsersApi from "../api/users_api";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { logout, selectUser } from "../slices/userSlice";
 

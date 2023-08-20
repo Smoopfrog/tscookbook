@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
-import { login } from "../../slices/userSlice";
-import * as UsersApi from "../../network/users_api";
-import "../../Styles/Tags.css";
+import { login } from "../slices/userSlice";
+import * as UsersApi from "../api/users_api";
+import "../Styles/Tags.css";
 import { BsTrash } from "react-icons/bs";
-import { useAppDispatch } from "../../hooks";
+import { useAppDispatch } from "../hooks";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import { User } from "../../models/user";
-import Modal from "../Modal";
+import { User } from "../models/user";
+import Modal from "../Components/Modal";
 import { useState } from "react";
 
 interface Tag {

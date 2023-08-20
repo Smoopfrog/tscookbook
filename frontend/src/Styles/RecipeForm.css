@@ -13,6 +13,15 @@
 }
 
 .recipe-carousel {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.recipe-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.recipe-carousel {
   display: flex;
   overflow: auto;
   flex: 1;

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import "../../Styles/HomePage.css";
-import { useAppSelector } from "../../hooks";
-import { selectUser } from "../../slices/userSlice";
+import "../Styles/HomePage.css";
+import { useAppSelector } from "../hooks";
+import { selectUser } from "../slices/userSlice";
 import { BsFillStarFill } from "react-icons/bs";
-import HomepageHeader from "./HomepageHeader";
+import HomepageHeader from "../Components/HomepageHeader";
 
 const HomePage = () => {
   const user = useAppSelector(selectUser);

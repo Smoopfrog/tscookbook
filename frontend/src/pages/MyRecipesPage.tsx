@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useLoaderData, Link } from "react-router-dom";
-import RecipeThumbnail from "../RecipeThumbnail";
-import { Recipe } from "../../models/recipe";
-import { User } from "../../models/user";
-import "../../Styles/MyRecipesPage.css";
+import RecipeThumbnail from "../Components/RecipeThumbnail";
+import { Recipe } from "../models/recipe";
+import { User } from "../models/user";
+import "../Styles/MyRecipesPage.css";
 
 const MyRecipesPage = () => {
   const { user, recipes } = useLoaderData() as {

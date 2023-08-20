@@ -1,16 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Recipe from "./Components/Recipe";
-import Signup from "./Components/pages/Signup";
-import RecipeForm from "./Components/pages/RecipeForm";
-import MyRecipesPage from "./Components/pages/MyRecipesPage";
-import HomePage from "./Components/pages/HomePage";
-import * as UsersApi from "./network/users_api";
-import * as RecipesApi from "./network/recipes_api";
-import LoginPage from "./Components/pages/LoginPage";
-import AccountPage from "./Components/pages/AccountPage";
-import TagsPage from "./Components/pages/TagsPage";
-import ErrorPage from "./Components/pages/ErrorPage";
+import Signup from "./pages/Signup";
+import RecipeForm from "./pages/RecipeForm";
+import MyRecipesPage from "./pages/MyRecipesPage";
+import HomePage from "./pages/HomePage";
+import * as UsersApi from "./api/users_api";
+import * as RecipesApi from "./api/recipes_api";
+import LoginPage from "./pages/LoginPage";
+import AccountPage from "./pages/AccountPage";
+import TagsPage from "./pages/TagsPage";
+import ErrorPage from "./pages/ErrorPage";
 
 export const router = createBrowserRouter([
   {

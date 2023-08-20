@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import "./App.css";
 import Header from "./Components/Header";
 import { Outlet } from "react-router-dom";
-import * as UsersApi from "./network/users_api";
+import * as UsersApi from "./api/users_api";
 import { useAppDispatch } from "./hooks";
 import { login } from "./slices/userSlice";
 

@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../hooks";
 import { useForm } from "react-hook-form";
 
-import { login, logout, selectUser } from "../../slices/userSlice";
-import Modal from "../Modal";
-import * as UsersApi from "../../network/users_api";
+import { login, logout, selectUser } from "../slices/userSlice";
+import Modal from "../Components/Modal";
+import * as UsersApi from "../api/users_api";
 import { useNavigate } from "react-router-dom";
-import "../../Styles/AccountPage.css";
+import "../Styles/AccountPage.css";
 import { FaLock, FaRegUser, FaTrash } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaPencil } from "react-icons/fa6";

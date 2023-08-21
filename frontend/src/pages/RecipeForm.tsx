@@ -45,6 +45,7 @@ const RecipeForm = () => {
   const deleteRecipe = async (e: MouseEvent<HTMLButtonElement>) => {
     try {
       await RecipesApi.deleteRecipe(recipe._id);
+      console.log("hello");
       navigate("/myrecipes");
     } catch (error) {
       alert(error);
@@ -82,10 +83,7 @@ const RecipeForm = () => {
     control,
   });
 
-  const {
-    append: tagsAppend,
-    remove: tagsRemove,
-  } = useFieldArray<any>({
+  const { append: tagsAppend, remove: tagsRemove } = useFieldArray<any>({
     name: "tags",
     control,
   });
@@ -227,7 +225,11 @@ const RecipeForm = () => {
                 <p>Are you sure you want to delete {recipe.title}?</p>
                 <hr />
                 <div>
-                  <button className="delete" onClick={deleteRecipe}>
+                  <button
+                    className="delete"
+                    type="button"
+                    onClick={deleteRecipe}
+                  >
                     Delete
                   </button>
                   <button type="button" onClick={() => setShowModal(false)}>

@@ -1,8 +1,15 @@
 @import "./Variables.scss";
 
 .tags-page {
+  display: flex;
+  flex-direction: column;
   flex: 2;
-  
+  height: 90vh;
+
+  ul {
+    overflow-y: auto;
+  }
+
   li:nth-child(odd) {
     background-color: rgba(174, 224, 231, 0.3019607843);
   }

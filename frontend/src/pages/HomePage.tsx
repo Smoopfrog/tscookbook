@@ -1,12 +1,19 @@
 import { Link } from "react-router-dom";
 import "../Styles/HomePage.css";
-import { useAppSelector } from "../hooks";
-import { selectUser } from "../slices/userSlice";
+import { useAppDispatch, useAppSelector } from "../hooks";
+import { logout, selectUser } from "../slices/userSlice";
+import * as UsersApi from "../api/users_api";
 import { BsFillStarFill } from "react-icons/bs";
 import HomepageHeader from "../Components/Header/HomepageHeader";
 
 const HomePage = () => {
   const user = useAppSelector(selectUser);
+  const dispatch = useAppDispatch();
+
+  const handleLogout = () => {
+    UsersApi.logout();
+    dispatch(logout());
+  };
 
   return (
     <section className="homepage">
@@ -19,9 +26,17 @@ const HomePage = () => {
           <Link className="nav-item" to="/newrecipe">
             New Recipe
           </Link>
-
           <Link className="nav-item" to="/">
             Surprise Me!
+          </Link>
+          <Link className="nav-item" to="/tags">
+            Tags
+          </Link>
+          <Link className="nav-item" to="/account">
+            Account
+          </Link>
+          <Link className="nav-item" to="/" onClick={handleLogout}>
+            Sign Out
           </Link>
         </ul>
       ) : (

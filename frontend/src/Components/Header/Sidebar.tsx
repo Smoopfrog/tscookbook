@@ -21,7 +21,13 @@ const Sidebar = ({ show, handleSidebar }: SidebarProps) => {
   const path = useLocation().pathname;
   const dispatch = useAppDispatch();
 
-  const hideAside = `${(path === "/newrecipe" || path === "/") && "remove"}`;
+  const hideAside = `${
+    (path === "/" ||
+      path === "/newrecipe" ||
+      path === "/signup" ||
+      path === "/login") &&
+    "remove"
+  }`;
 
   const handleLogout = () => {
     UsersApi.logout();

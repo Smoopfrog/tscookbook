@@ -6,7 +6,13 @@
   10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
 */
 .tags-page {
+  display: flex;
+  flex-direction: column;
   flex: 2;
+  height: 90vh;
+}
+.tags-page ul {
+  overflow-y: auto;
 }
 .tags-page li:nth-child(odd) {
   background-color: rgba(174, 224, 231, 0.3019607843);

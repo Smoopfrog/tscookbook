@@ -39,7 +39,7 @@
 }
 .homepage .nav-item:visited:hover,
 .homepage .nav-item:link:hover {
-  background-color: #15aabf;
+  background-color: #ffba65;
 }
 .homepage .nav-item:visited {
   color: #233748;
@@ -83,7 +83,7 @@
 }
 .homepage-default .nav-item:visited:hover,
 .homepage-default .nav-item:link:hover {
-  background-color: #77ebfa;
+  background-color: #ffba65;
 }
 
 .homepage-star-review {

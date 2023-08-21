@@ -8,11 +8,12 @@
 .my-recipes-page {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 90vh;
   width: 100%;
   min-width: 0;
 }
 .my-recipes-page ul {
+  overflow-y: auto;
   list-style: none;
 }
 .my-recipes-page li:nth-child(odd) {

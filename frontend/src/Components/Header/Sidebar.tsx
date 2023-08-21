@@ -10,6 +10,7 @@ import {
 import * as UsersApi from "../../api/users_api";
 import { useAppDispatch } from "../../hooks";
 import { logout } from "../../slices/userSlice";
+import { useLocation } from "react-router-dom";
 
 interface SidebarProps {
   show: boolean;
@@ -17,7 +18,10 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ show, handleSidebar }: SidebarProps) => {
+  const path = useLocation().pathname;
   const dispatch = useAppDispatch();
+
+  const hideAside = `${(path === "/newrecipe" || path === "/") && "remove"}`;
 
   const handleLogout = () => {
     UsersApi.logout();
@@ -26,7 +30,7 @@ const Sidebar = ({ show, handleSidebar }: SidebarProps) => {
   };
 
   return (
-    <aside className={`menu-aside ${show ? "" : "hide-menu"}`}>
+    <aside className={`menu-aside ${show ? "" : "hide-menu"} ${hideAside}`}>
       <ul className="nav-list">
         <SidebarLink route="" name="Home" handleMenuAside={handleSidebar}>
           <FaHome />
@@ -45,11 +49,7 @@ const Sidebar = ({ show, handleSidebar }: SidebarProps) => {
         >
           <FaBook />
         </SidebarLink>
-        <SidebarLink
-          name="Tags"
-          route="/tags"
-          handleMenuAside={handleSidebar}
-        >
+        <SidebarLink name="Tags" route="/tags" handleMenuAside={handleSidebar}>
           <FaTags />
         </SidebarLink>
         <SidebarLink

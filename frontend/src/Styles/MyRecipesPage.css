@@ -9,7 +9,11 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 100vw;
+  width: 100%;
+  min-width: 0;
+}
+.my-recipes-page ul {
+  list-style: none;
 }
 .my-recipes-page li:nth-child(odd) {
   background-color: rgba(174, 224, 231, 0.3019607843);
@@ -73,15 +77,19 @@
   color: white;
 }
 
+@media screen and (min-width: 768px) {
+  .my-recipes-page {
+    flex: 2;
+  }
+}
 @media screen and (min-width: 992px) {
   .my-recipes-page {
     align-items: center;
-    width: 70vw;
     align-self: center;
+    flex: 3;
   }
   .my-recipes-page ul {
     width: 100%;
-    list-style: none;
   }
   .my-recipes-page-header {
     width: 100%;

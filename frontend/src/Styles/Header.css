@@ -55,6 +55,9 @@
 .hide-header-nav .header-title-link:visited {
   display: none;
 }
+.hide-header-nav button {
+  display: none;
+}
 
 .login-nav {
   background-color: transparent;
@@ -123,7 +126,7 @@
   left: 0;
   width: 100%;
   height: 100dvh;
-  background-color: white;
+  background-color: #ffba65;
   color: #233748;
   transition: all 0.2s;
   transform: scale(1, 1);
@@ -160,6 +163,7 @@
   display: flex;
   align-items: center;
   color: #233748;
+  background-color: whitesmoke;
   transition: background-color 0.2s ease;
 }
 .header-nav-item span {
@@ -172,4 +176,29 @@
 
 .header-nav-item:visited {
   color: #233748;
+}
+
+@media screen and (min-width: 768px) {
+  .menu-aside {
+    position: static;
+    transform-origin: 0% 100%;
+    flex: 1;
+    padding: 0px;
+  }
+  .hide-menu {
+    transform: none;
+    flex: 0;
+  }
+  .hide-menu span {
+    display: none;
+  }
+  .hide-menu .header-nav-item {
+    width: auto;
+  }
+  .hide-menu ul {
+    padding: 0px 0.5rem;
+  }
+  .menu-aside.remove {
+    display: none;
+  }
 }/*# sourceMappingURL=Header.css.map */

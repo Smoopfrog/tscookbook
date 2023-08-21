@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import { useAppSelector } from "../../hooks";
@@ -11,10 +11,16 @@ interface HeaderProps {
 }
 
 const Header = ({ handleSidebar }: HeaderProps) => {
+  const [mobileView, setMobileView] = useState(false);
   const user = useAppSelector(selectUser);
   const path = useLocation().pathname;
   let isEditPath = false;
 
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      setMobileView(true);
+    }
+  }, []);
   if (path.substring(path.length - 4) === "edit") {
     isEditPath = true;
   }
@@ -31,11 +37,17 @@ const Header = ({ handleSidebar }: HeaderProps) => {
   return (
     <header className={headerClass}>
       <div className={headerNavClass}>
-        <div></div>
+        {user.username && !mobileView ? (
+          <button className="header-menu-btn" onClick={handleSidebar}>
+            <FiMenu />
+          </button>
+        ) : (
+          <div></div>
+        )}
         <Link className="header-title-link" to="/">
           TS Cookbook
         </Link>
-        {user.username ? (
+        {user.username && mobileView ? (
           <button className="header-menu-btn" onClick={handleSidebar}>
             <FiMenu />
           </button>

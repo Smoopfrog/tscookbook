@@ -1,6 +1,8 @@
 @import "./Variables.scss";
 
 .tags-page {
+  flex: 2;
+  
   li:nth-child(odd) {
     background-color: rgba(174, 224, 231, 0.3019607843);
   }

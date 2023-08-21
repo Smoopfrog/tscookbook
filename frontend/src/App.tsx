@@ -30,8 +30,10 @@ function App() {
   return (
     <div className="App">
       <Header handleSidebar={toggleSidebar} />
-      <Sidebar show={showSidebar} handleSidebar={toggleSidebar} />
-      <Outlet />
+      <main className="main-section">
+        <Sidebar show={showSidebar} handleSidebar={toggleSidebar} />
+        <Outlet />
+      </main>
     </div>
   );
 }

@@ -4,7 +4,12 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 100vw;
+  width: 100%;
+  min-width: 0;
+
+  ul {
+    list-style: none;
+  }
 
   li:nth-child(odd) {
     background-color: #aee0e74d;
@@ -82,18 +87,20 @@
 // @media screen and (min-width: $breakpoint-small) {
 // }
 
-// @media screen and (min-width: $breakpoint-medium) {
-// }
+@media screen and (min-width: $breakpoint-medium) {
+  .my-recipes-page {
+    flex: 2;
+  }
+}
 
 @media screen and (min-width: $breakpoint-large) {
   .my-recipes-page {
     align-items: center;
-    width: 70vw;
     align-self: center;
+    flex: 3;
 
     ul {
       width: 100%;
-      list-style: none;
     }
   }
 

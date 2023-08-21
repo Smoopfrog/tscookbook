@@ -53,6 +53,10 @@
   .header-title-link:visited {
     display: none;
   }
+
+  button {
+    display: none;
+  }
 }
 
 .login-nav {
@@ -64,6 +68,7 @@
   transition: all 1s;
   background-color: transparent;
   box-shadow: none;
+
   .header-nav {
     background-color: transparent;
     box-shadow: none;
@@ -124,7 +129,7 @@
   left: 0;
   width: 100%;
   height: 100dvh;
-  background-color: white;
+  background-color: #ffba65;
   color: $text-color;
   transition: all 0.2s;
   transform: scale(1, 1);
@@ -162,6 +167,7 @@
   display: flex;
   align-items: center;
   color: $text-color;
+  background-color: whitesmoke;
   transition: background-color 0.2s ease;
 
   span {
@@ -176,3 +182,42 @@
 .header-nav-item:visited {
   color: $text-color;
 }
+
+// @media screen and (min-width: $breakpoint-small) {
+// }
+
+@media screen and (min-width: $breakpoint-medium) {
+  .menu-aside {
+    position: static;
+    transform-origin: 0% 100%;
+    flex: 1;
+    padding: 0px;
+  }
+
+  .hide-menu {
+    transform: none;
+    flex: 0;
+
+    span {
+      display: none;
+    }
+
+    .header-nav-item {
+      width: auto;
+    }
+
+    ul {
+      padding: 0px 0.5rem;
+    }
+  }
+
+  .menu-aside.remove {
+    display: none;
+  }
+}
+
+// @media screen and (min-width: $breakpoint-large) {
+// }
+
+// @media screen and (min-width: $breakpoint-xlarge) {
+// }

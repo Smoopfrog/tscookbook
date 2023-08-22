@@ -73,3 +73,21 @@
 .tag-delete-icon:hover {
   color: rgba(0, 0, 0, 0.589);
 }
+
+// @media screen and (min-width: $breakpoint-small) {
+// }
+
+@media screen and (min-width: $breakpoint-medium) {
+  .tags-page {
+    flex: 2;
+  }
+}
+
+@media screen and (min-width: $breakpoint-large) {
+  .tags-page {
+    flex: 3;
+  }
+}
+
+// @media screen and (min-width: $breakpoint-xlarge) {
+// }

@@ -68,4 +68,15 @@
 
 .tag-delete-icon:hover {
   color: rgba(0, 0, 0, 0.589);
+}
+
+@media screen and (min-width: 768px) {
+  .tags-page {
+    flex: 2;
+  }
+}
+@media screen and (min-width: 992px) {
+  .tags-page {
+    flex: 3;
+  }
 }/*# sourceMappingURL=Tags.css.map */

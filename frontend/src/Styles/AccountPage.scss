@@ -141,13 +141,13 @@
 
 @media screen and (min-width: $breakpoint-medium) {
   .account-page {
-    width: 70%;
+   flex: 2;
   }
 }
 
 @media screen and (min-width: $breakpoint-large) {
   .account-page {
-    width: 50%;
+    flex: 3;
   }
 }
 

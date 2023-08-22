@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import { useAppSelector } from "../../hooks";
@@ -7,19 +6,14 @@ import "../../Styles/Header.css";
 
 interface HeaderProps {
   handleSidebar(): void;
+  mobileView: boolean;
 }
 
-const Header = ({ handleSidebar }: HeaderProps) => {
-  const [mobileView, setMobileView] = useState(false);
+const Header = ({ handleSidebar, mobileView }: HeaderProps) => {
   const user = useAppSelector(selectUser);
   const path = useLocation().pathname;
   let isEditPath = false;
 
-  useEffect(() => {
-    if (window.innerWidth < 768) {
-      setMobileView(true);
-    }
-  }, []);
   if (path.substring(path.length - 4) === "edit") {
     isEditPath = true;
   }

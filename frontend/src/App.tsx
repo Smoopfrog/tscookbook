@@ -9,7 +9,14 @@ import Sidebar from "./Components/Header/Sidebar";
 
 function App() {
   const [showSidebar, SetShowSidebar] = useState(false);
+  const [mobileView, setMobileView] = useState(false);
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      setMobileView(true);
+    }
+  }, []);
 
   useEffect(() => {
     const fetchLoggedInUser = async () => {
@@ -27,11 +34,17 @@ function App() {
     SetShowSidebar((prev) => !prev);
   };
 
+  const closeSidebar = () => {
+    if (mobileView) {
+      SetShowSidebar(false);
+    }
+  };
+  
   return (
     <div className="App">
-      <Header handleSidebar={toggleSidebar} />
+      <Header handleSidebar={toggleSidebar} mobileView={mobileView} />
       <main className="main-section">
-        <Sidebar show={showSidebar} handleSidebar={toggleSidebar} />
+        <Sidebar show={showSidebar} handleSidebar={closeSidebar} />
         <Outlet />
       </main>
     </div>

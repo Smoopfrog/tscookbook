@@ -195,6 +195,10 @@
     height: auto;
     border-right: solid 1px $text-color;
     background-color: rgba(174, 224, 231, 0.3019607843);
+
+    span {
+      font-size: 1rem;
+    }
   }
 
   .hide-menu {

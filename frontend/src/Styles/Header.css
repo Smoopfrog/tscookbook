@@ -188,6 +188,9 @@
     border-right: solid 1px #233748;
     background-color: rgba(174, 224, 231, 0.3019607843);
   }
+  .menu-aside span {
+    font-size: 1rem;
+  }
   .hide-menu {
     transform: none;
     flex: 0;

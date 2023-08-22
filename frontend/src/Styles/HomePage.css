@@ -41,6 +41,7 @@
 .homepage .nav-item:link:hover {
   background-color: #ffba65;
 }
+.homepage .nav-item:link,
 .homepage .nav-item:visited {
   color: #233748;
 }

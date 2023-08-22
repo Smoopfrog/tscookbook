@@ -9,7 +9,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100dvh;
   width: 100%;
 }
 
@@ -24,10 +23,10 @@
 
 .recipe-carousel {
   display: flex;
-  overflow: auto;
+  overflow-x: scroll;
   flex: 1;
   flex-flow: row nowrap;
-  width: 100%;
+  width: 100vw;
   scroll-snap-type: x mandatory;
 }
 .recipe-carousel section {
@@ -276,6 +275,11 @@
 }
 
 @media screen and (min-width: 768px) {
+  .recipe-carousel {
+    min-width: 0;
+    flex: 2;
+    width: 100%;
+  }
   .recipe-form-direction textarea {
     width: 50%;
   }

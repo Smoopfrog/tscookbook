@@ -129,7 +129,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(174, 224, 231, 0.3019607843);
+  background-color: rgb(174, 224, 231);
   color: $text-color;
   transition: all 0.2s;
   transform: scale(1, 1);
@@ -194,6 +194,7 @@
     padding: 0px;
     height: auto;
     border-right: solid 1px $text-color;
+    background-color: rgba(174, 224, 231, 0.3019607843);
   }
 
   .hide-menu {

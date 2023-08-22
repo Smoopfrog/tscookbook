@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import { useAppSelector } from "../../hooks";
 import { selectUser } from "../../slices/userSlice";
-import SideBar from "./Sidebar";
 import "../../Styles/Header.css";
 
 interface HeaderProps {

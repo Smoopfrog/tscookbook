@@ -9,7 +9,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 2;
 }
 .recipe img {
   width: 100%;
@@ -115,4 +115,11 @@
   font-weight: bolder;
   font-size: 20px;
   margin-right: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .recipe {
+    min-width: 0;
+    flex: 2;
+  }
 }/*# sourceMappingURL=Recipe.css.map */

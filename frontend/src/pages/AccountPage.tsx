@@ -11,6 +11,7 @@ import { MdEmail } from "react-icons/md";
 import { FaPencil } from "react-icons/fa6";
 import { BiChevronDown } from "react-icons/bi";
 import { RiEyeCloseLine, RiEyeLine } from "react-icons/ri";
+import Swal from "sweetalert2";
 
 type PasswordData = {
   currentPassword: string;
@@ -69,14 +70,25 @@ const AccountPage = () => {
     try {
       const user = await UsersApi.changeUsername(data);
       dispatch(login(user));
-      alert("Username changed");
+
+      Swal.fire("Username changed");
+      // alert();
       setShowUsernameForm(false);
       usernameReset({
         username: "",
       });
-    } catch (error) {
-      alert(error);
-      console.log(error);
+    } catch (e) {
+      if (typeof e === "string") {
+        console.log(e);
+
+        e.toUpperCase();
+        Swal.fire(e);
+      } else if (e instanceof Error) {
+        console.log(e);
+
+        const errorMsg = e.message;
+        Swal.fire(errorMsg);
+      }
     }
   };
 
@@ -88,7 +100,7 @@ const AccountPage = () => {
   const submitPassword = async (data: PasswordData) => {
     try {
       await UsersApi.changePassword(data);
-      alert("Password changed");
+      Swal.fire("Password changed");
       setShowPasswordForm(false);
       passwordReset({
         currentPassword: "",
@@ -98,20 +110,39 @@ const AccountPage = () => {
       setShowCurrentPassword(false);
       setShowNewPassword(false);
       setShowConfirmPassword(false);
-    } catch (error) {
-      alert(error);
-      console.log(error);
+    } catch (e) {
+      if (typeof e === "string") {
+        console.log(e);
+
+        e.toUpperCase();
+        Swal.fire(e);
+      } else if (e instanceof Error) {
+        console.log(e);
+
+        const errorMsg = e.message;
+        Swal.fire(errorMsg);
+      }
     }
   };
 
   const deleteAccount = async () => {
     try {
       await UsersApi.deleteAccount();
-      alert("Account Deleted");
+      Swal.fire("Account Deleted");
       dispatch(logout());
       navigate("/");
-    } catch (error) {
-      alert(error);
+    } catch (e) {
+      if (typeof e === "string") {
+        console.log(e);
+
+        e.toUpperCase();
+        Swal.fire(e);
+      } else if (e instanceof Error) {
+        console.log(e);
+
+        const errorMsg = e.message;
+        Swal.fire(errorMsg);
+      }
     }
   };
 

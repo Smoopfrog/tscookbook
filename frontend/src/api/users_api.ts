@@ -18,7 +18,7 @@ const fetchData = async (input: RequestInfo, init?: RequestInit) => {
   } else {
     const errorBody = await response.json();
     const errorMessage = errorBody.error;
-
+    
     throw Error(errorMessage);
   }
 };

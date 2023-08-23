@@ -6,10 +6,10 @@ import { useAppDispatch, useAppSelector } from "../hooks";
 import { login, selectUser } from "../slices/userSlice";
 import "../Styles/LoginPage.css";
 import { useEffect, useState } from "react";
-import Modal from "../Components/UI/Modal";
 import { FaRegUser } from "react-icons/fa";
 import { RiEyeCloseLine, RiEyeLine } from "react-icons/ri";
-import appleImg from "../Assets/apple-background.webp"
+import appleImg from "../Assets/apple-background.webp";
+import Swal from "sweetalert2";
 
 interface User {
   username: string;
@@ -17,9 +17,7 @@ interface User {
 }
 
 const LoginPage = () => {
-  const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [showErrorModal, setShowErrorModal] = useState(false);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const username = useAppSelector(selectUser).username;
@@ -41,22 +39,29 @@ const LoginPage = () => {
       const userData = await UsersApi.login(data);
       dispatch(login(userData));
       navigate("/");
-    } catch (error: any) {
-      const errorMessage: string = error.toString();
+    } catch (e) {
+      if (typeof e === "string") {
+        console.log(e);
 
-      if (errorMessage.startsWith("Error: ")) {
-        setErrorMessage(errorMessage.slice(7));
-      } else {
-        setErrorMessage(error.toString());
+        e.toUpperCase();
+        Swal.fire(e);
+      } else if (e instanceof Error) {
+        console.log(e);
+
+        const errorMsg = e.message;
+        Swal.fire(errorMsg);
       }
-
-      setShowErrorModal(true);
     }
   };
 
   return (
     <div className="login-page">
-      <img loading="lazy" className="login-side-img" src={appleImg} alt="An apple"></img>
+      <img
+        loading="lazy"
+        className="login-side-img"
+        src={appleImg}
+        alt="An apple"
+      ></img>
       <form onSubmit={handleSubmit(handleLogin)} className="login-form">
         <h1>Login</h1>
         <div className="login-form-input">
@@ -106,23 +111,6 @@ const LoginPage = () => {
         <Link className="login-link" to="/signup">
           Don't have an account? Sign up here
         </Link>
-        <Modal
-          show={showErrorModal}
-          handleClose={() => {
-            setShowErrorModal(false);
-          }}
-        >
-          <p>{errorMessage}</p>
-          <hr />
-          <button
-            onClick={() => {
-              setShowErrorModal(false);
-            }}
-            type="button"
-          >
-            Close
-          </button>
-        </Modal>
       </form>
     </div>
   );

@@ -101,7 +101,8 @@
 
 @media screen and (min-width: 576px) {
   .login-form-input {
-    width: 50%;
+    width: -moz-fit-content;
+    width: fit-content;
   }
   .login-form button {
     width: 50%;
@@ -123,7 +124,7 @@
     -o-object-position: center;
        object-position: center;
     opacity: 0.85;
-    background-color: #9DD8BD;
+    background-color: #9dd8bd;
     height: 100vh;
     width: 50%;
   }
@@ -138,9 +139,6 @@
   }
 }
 @media screen and (min-width: 992px) {
-  .login-form-input {
-    width: 30%;
-  }
   .login-form button {
     width: 30%;
   }

@@ -6,11 +6,11 @@ import { useAppDispatch } from "../hooks";
 import { login } from "../slices/userSlice";
 import "../Styles/LoginPage.css";
 import { useState } from "react";
-import Modal from "../Components/UI/Modal";
 import { FaRegUser } from "react-icons/fa";
 import { RiEyeCloseLine, RiEyeLine } from "react-icons/ri";
 import { MdEmail } from "react-icons/md";
 import appleImg from "../Assets/apple-background.webp";
+import Swal from "sweetalert2";
 
 interface User {
   username: string;
@@ -19,8 +19,6 @@ interface User {
 }
 
 const SignupPage = () => {
-  const [errorMessage, setErrorMessage] = useState("");
-  const [showErrorModal, setShowErrorModal] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
@@ -37,21 +35,29 @@ const SignupPage = () => {
       const userData = await UsersApi.createUser(data);
       dispatch(login(userData));
       navigate("/myrecipes");
-    } catch (error: any) {
-      const errorMessage: string = error.toString();
+    } catch (e) {
+      if (typeof e === "string") {
+        console.log(e);
 
-      if (errorMessage.startsWith("Error: ")) {
-        setErrorMessage(errorMessage.slice(7));
-      } else {
-        setErrorMessage(error.toString());
+        e.toUpperCase();
+        Swal.fire(e);
+      } else if (e instanceof Error) {
+        console.log(e);
+
+        const errorMsg = e.message;
+        Swal.fire(errorMsg);
       }
-      setShowErrorModal(true);
     }
   };
 
   return (
     <div className="signup-page">
-      <img loading="lazy" className="login-side-img" src={appleImg} alt="An apple"></img>
+      <img
+        loading="lazy"
+        className="login-side-img"
+        src={appleImg}
+        alt="An apple"
+      ></img>
       <form onSubmit={handleSubmit(handleSignup)} className="login-form">
         <h1>Sign Up</h1>
         <div className="login-form-input">
@@ -112,23 +118,6 @@ const SignupPage = () => {
         <Link className="login-link" to="/login">
           Already have an account? Log in here
         </Link>
-        <Modal
-          show={showErrorModal}
-          handleClose={() => {
-            setShowErrorModal(false);
-          }}
-        >
-          <p>{errorMessage}</p>
-          <hr />
-          <button
-            onClick={() => {
-              setShowErrorModal(false);
-            }}
-            type="button"
-          >
-            Close
-          </button>
-        </Modal>
       </form>
     </div>
   );

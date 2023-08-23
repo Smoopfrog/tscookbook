@@ -8,6 +8,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { User } from "../models/user";
 import Modal from "../Components/UI/Modal";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 interface Tag {
   tag: string;
@@ -40,9 +41,18 @@ const TagsPage = () => {
       dispatch(login(user));
       navigate("/tags");
       closeModal();
-    } catch (error) {
-      console.log(error);
-      alert(error);
+    } catch (e) {
+      if (typeof e === "string") {
+        console.log(e);
+
+        e.toUpperCase();
+        Swal.fire(e);
+      } else if (e instanceof Error) {
+        console.log(e);
+
+        const errorMsg = e.message;
+        Swal.fire(errorMsg);
+      }
     }
   };
 
@@ -50,11 +60,20 @@ const TagsPage = () => {
     try {
       const user = await UsersApi.deleteTag(tagName);
       dispatch(login(user));
-      alert(`${tagName} tag deleted.`)
+      Swal.fire(`${tagName} tag deleted.`);
       navigate("/tags");
-    } catch (error) {
-      console.log(error);
-      alert(error);
+    } catch (e) {
+      if (typeof e === "string") {
+        console.log(e);
+
+        e.toUpperCase();
+        Swal.fire(e);
+      } else if (e instanceof Error) {
+        console.log(e);
+
+        const errorMsg = e.message;
+        Swal.fire(errorMsg);
+      }
     }
   };
 

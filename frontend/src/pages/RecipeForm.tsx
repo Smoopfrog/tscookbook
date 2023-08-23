@@ -45,7 +45,6 @@ const RecipeForm = () => {
   const deleteRecipe = async (e: MouseEvent<HTMLButtonElement>) => {
     try {
       await RecipesApi.deleteRecipe(recipe._id);
-      console.log("hello");
       navigate("/myrecipes");
     } catch (error) {
       alert(error);

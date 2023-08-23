@@ -92,6 +92,11 @@
   height: -moz-fit-content;
   height: fit-content;
   font-weight: 700;
+  transition: background-color 0.3s ease;
+}
+.account-username-form button:hover,
+.account-password-form button:hover {
+  background-color: #15aabf;
 }
 
 .account-username-form.show {

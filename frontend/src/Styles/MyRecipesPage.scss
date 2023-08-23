@@ -34,19 +34,20 @@
 
       background-color: $blue;
       border-radius: 20px;
-      border: solid 1px $blue;
+      border: none;
 
       font-weight: 600;
       color: white;
       text-transform: uppercase;
       text-decoration: none;
+      transition: background-color 0.3s ease;
     }
 
     .add-recipe:visited:hover,
     .add-recipe:link:hover {
       cursor: pointer;
       background-color: #77ebfa;
-      border: solid 1px #77ebfa;
+      // border: solid 1px #77ebfa;
     }
   }
 }
@@ -69,6 +70,7 @@
     background-color: white;
     border: solid 1px black;
     color: black;
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
   }
 
   button:hover {

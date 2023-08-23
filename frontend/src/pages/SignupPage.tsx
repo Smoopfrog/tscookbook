@@ -51,7 +51,7 @@ const SignupPage = () => {
 
   return (
     <div className="signup-page">
-      <img className="login-side-img" src={appleImg} alt="An apple"></img>
+      <img loading="lazy" className="login-side-img" src={appleImg} alt="An apple"></img>
       <form onSubmit={handleSubmit(handleSignup)} className="login-form">
         <h1>Sign Up</h1>
         <div className="login-form-input">

@@ -4,6 +4,13 @@ import { Link } from "react-router-dom";
 
 const HomepageHeader = () => {
   const [header, setHeader] = useState("header-top");
+  const [mobileView, setMobileView] = useState(false);
+
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      setMobileView(true);
+    }
+  }, []);
   const listenScrollEvent = () => {
     if (window.scrollY > 0) {
       return setHeader("");
@@ -19,7 +26,7 @@ const HomepageHeader = () => {
   }, []);
 
   return (
-    <header className={`header ${header}`}>
+    <header className={`header ${mobileView && header}`}>
       <div className="header-nav">
         <Link to="/" className="header-title-link">
           TS Cookbook

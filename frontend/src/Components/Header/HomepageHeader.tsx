@@ -11,6 +11,7 @@ const HomepageHeader = () => {
       setMobileView(true);
     }
   }, []);
+  
   const listenScrollEvent = () => {
     if (window.scrollY > 0) {
       return setHeader("");

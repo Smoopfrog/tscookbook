@@ -48,13 +48,8 @@
 }
 
 .homepage-default {
-  margin-top: 4rem;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
-  align-items: center;
-  text-align: center;
-  gap: 1.5rem;
 }
 .homepage-default h1 {
   margin: 0;
@@ -87,6 +82,17 @@
   background-color: #ffba65;
 }
 
+.homepage-default-text {
+  display: flex;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
 .homepage-star-review {
   display: flex;
   flex-direction: column;
@@ -108,9 +114,82 @@
   color: rgba(35, 55, 72, 0.5254901961);
 }
 
+.homepage-img-section {
+  position: relative;
+}
+
+.homepage-img,
+.homepage-img-back {
+  position: absolute;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  width: 60vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.homepage-img {
+  left: 10%;
+}
+
+.homepage-img-back {
+  top: 10vh;
+  left: 30%;
+}
+
+@media screen and (min-width: 576px) {
+  .homepage-img,
+  .homepage-img-back {
+    width: 40vw;
+  }
+  .homepage-img {
+    left: 15%;
+  }
+  .homepage-img-back {
+    left: 45%;
+  }
+}
 @media screen and (min-width: 768px) {
   .homepage .nav-item:link,
   .homepage .nav-item:visited {
     max-width: 50%;
+  }
+  .homepage-default {
+    flex-direction: row;
+  }
+  .homepage-default-text {
+    display: flex;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    width: 50%;
+  }
+  .homepage-img,
+  .homepage-img-back {
+    width: 25vw;
+  }
+  .homepage-img {
+    top: 10vh;
+    left: 10vw;
+  }
+  .homepage-img-back {
+    top: 15vh;
+    left: 20vw;
+  }
+}
+@media screen and (min-width: 992px) {
+  .homepage-img,
+  .homepage-img-back {
+    width: 20vw;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .homepage-img,
+  .homepage-img-back {
+    width: 15vw;
   }
 }/*# sourceMappingURL=HomePage.css.map */

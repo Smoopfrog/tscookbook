@@ -48,13 +48,8 @@
 }
 
 .homepage-default {
-  margin-top: 4rem;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
-  align-items: center;
-  text-align: center;
-  gap: 1.5rem;
 
   h1 {
     margin: 0;
@@ -92,6 +87,17 @@
   }
 }
 
+.homepage-default-text {
+  display: flex;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
 .homepage-star-review {
   display: flex;
   flex-direction: column;
@@ -113,8 +119,43 @@
   color: #23374886;
 }
 
-// @media screen and (min-width: $breakpoint-small) {
-// }
+.homepage-img-section {
+  position: relative;
+}
+
+.homepage-img,
+.homepage-img-back {
+  position: absolute;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  width: 60vw;
+  object-fit: cover;
+}
+
+.homepage-img {
+  // top: 10vh;
+  left: 10%;
+}
+
+.homepage-img-back {
+  top: 10vh;
+  left: 30%;
+}
+
+@media screen and (min-width: $breakpoint-small) {
+  .homepage-img,
+  .homepage-img-back {
+    width: 40vw;
+  }
+
+  .homepage-img {
+    left: 15%;
+  }
+  
+  .homepage-img-back {
+    left: 45%;
+  }
+}
 
 @media screen and (min-width: $breakpoint-medium) {
   .homepage {
@@ -123,10 +164,49 @@
       max-width: 50%;
     }
   }
+
+  .homepage-default {
+    flex-direction: row;
+  }
+
+  .homepage-default-text {
+    display: flex;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    width: 50%;
+  }
+
+  .homepage-img,
+  .homepage-img-back {
+    width: 25vw;
+  }
+
+  .homepage-img {
+    top: 10vh;
+    left: 10vw;
+  }
+
+  .homepage-img-back {
+    top: 15vh;
+    left: 20vw;
+  }
 }
 
-// @media screen and (min-width: $breakpoint-large) {
-// }
+@media screen and (min-width: $breakpoint-large) {
+  .homepage-img,
+  .homepage-img-back {
+    width: 20vw;
+  }
+}
 
-// @media screen and (min-width: $breakpoint-xlarge) {
-// }
+@media screen and (min-width: $breakpoint-xlarge) {
+  .homepage-img,
+  .homepage-img-back {
+    width: 15vw;
+  }
+}

@@ -179,6 +179,9 @@
 }
 
 @media screen and (min-width: 768px) {
+  .login-nav {
+    width: 50%;
+  }
   .menu-aside {
     position: static;
     transform-origin: 0% 100%;

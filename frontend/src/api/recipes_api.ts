@@ -1,7 +1,7 @@
 import { Recipe } from "../models/recipe";
 const env = process.env.NODE_ENV || "development";
 const localApi = "http://localhost:5000";
-const server = "https://server.flavourfulplates.ca/";
+const server = "https://server.flavourfulplates.ca";
 let address: string;
 
 if (env === "development") {

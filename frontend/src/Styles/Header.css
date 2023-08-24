@@ -77,7 +77,7 @@
 .header-top .header-title-link:visited {
   transition: all 1s;
   color: #15aabf;
-  transform: scale(2) translate(35%, 25px);
+  transform: scale(1.5) translate(35%, 25px);
 }
 .header-top .header-link:link,
 .header-top .header-link:visited {

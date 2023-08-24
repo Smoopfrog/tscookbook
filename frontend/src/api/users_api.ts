@@ -1,7 +1,7 @@
 import { User } from "../models/user";
 const env = process.env.NODE_ENV || "development";
 const localApi = "http://localhost:5000";
-const server = "https://tscookbook-api.onrender.com";
+const server = "https://server.flavourfulplates.ca/";
 let address: string;
 
 if (env === "development") {
@@ -18,7 +18,7 @@ const fetchData = async (input: RequestInfo, init?: RequestInit) => {
   } else {
     const errorBody = await response.json();
     const errorMessage = errorBody.error;
-    
+
     throw Error(errorMessage);
   }
 };

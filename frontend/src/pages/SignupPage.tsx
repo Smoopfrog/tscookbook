@@ -52,73 +52,75 @@ const SignupPage = () => {
 
   return (
     <div className="signup-page">
-      <img
-        loading="lazy"
-        className="login-side-img"
-        src={appleImg}
-        alt="An apple"
-      ></img>
-      <form onSubmit={handleSubmit(handleSignup)} className="login-form">
-        <h1>Sign Up</h1>
-        <div className="login-form-input">
-          <div>
-            <label>Username</label>
-            {errors.username && <span>Please enter your username</span>}
-          </div>
+      <div className="login-page-container">
+        <img
+          loading="lazy"
+          className="login-side-img"
+          src={appleImg}
+          alt="An apple"
+        ></img>
+        <form onSubmit={handleSubmit(handleSignup)} className="login-form">
+          <h1>Sign Up</h1>
+          <div className="login-form-input">
+            <div>
+              <label>Username</label>
+              {errors.username && <span>Please enter your username</span>}
+            </div>
 
-          <div>
-            <input
-              placeholder="Username"
-              {...register("username", { required: true })}
-            />
-            <FaRegUser size={36} className="icon" />
-          </div>
-        </div>
-        <div className="login-form-input">
-          <div>
-            <label>Email</label>
-            {errors.email && <span>Please enter your email</span>}
-          </div>
-          <div>
-            <input
-              placeholder="Email"
-              type="email"
-              {...register("email", { required: true })}
-            />
-            <MdEmail size={36} className="icon" />
-          </div>
-        </div>
-        <div className="login-form-input">
-          <div>
-            <label>Password</label>
-            {errors.email && <span>Please enter your password</span>}
-          </div>
-          <div>
-            <input
-              placeholder="Password"
-              type={`${showPassword ? "text" : "password"}`}
-              {...register("password", { required: true })}
-            />
-            {showPassword ? (
-              <RiEyeLine
-                size={36}
-                className="icon eye"
-                onClick={() => setShowPassword(false)}
+            <div>
+              <input
+                placeholder="Username"
+                {...register("username", { required: true })}
               />
-            ) : (
-              <RiEyeCloseLine
-                size={36}
-                className="icon eye"
-                onClick={() => setShowPassword(true)}
-              />
-            )}
+              <FaRegUser size={36} className="icon" />
+            </div>
           </div>
-        </div>
-        <button type="submit">Sign Up</button>
-        <Link className="login-link" to="/login">
-          Already have an account? Log in here
-        </Link>
-      </form>
+          <div className="login-form-input">
+            <div>
+              <label>Email</label>
+              {errors.email && <span>Please enter your email</span>}
+            </div>
+            <div>
+              <input
+                placeholder="Email"
+                type="email"
+                {...register("email", { required: true })}
+              />
+              <MdEmail size={36} className="icon" />
+            </div>
+          </div>
+          <div className="login-form-input">
+            <div>
+              <label>Password</label>
+              {errors.email && <span>Please enter your password</span>}
+            </div>
+            <div>
+              <input
+                placeholder="Password"
+                type={`${showPassword ? "text" : "password"}`}
+                {...register("password", { required: true })}
+              />
+              {showPassword ? (
+                <RiEyeLine
+                  size={36}
+                  className="icon eye"
+                  onClick={() => setShowPassword(false)}
+                />
+              ) : (
+                <RiEyeCloseLine
+                  size={36}
+                  className="icon eye"
+                  onClick={() => setShowPassword(true)}
+                />
+              )}
+            </div>
+          </div>
+          <button type="submit">Sign Up</button>
+          <Link className="login-link" to="/login">
+            Already have an account? Log in here
+          </Link>
+        </form>
+      </div>
     </div>
   );
 };

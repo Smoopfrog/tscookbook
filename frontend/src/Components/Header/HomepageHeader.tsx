@@ -11,7 +11,7 @@ const HomepageHeader = () => {
       setMobileView(true);
     }
   }, []);
-  
+
   const listenScrollEvent = () => {
     if (window.scrollY > 0) {
       return setHeader("");
@@ -30,7 +30,7 @@ const HomepageHeader = () => {
     <header className={`header ${mobileView && header}`}>
       <div className="header-nav">
         <Link to="/" className="header-title-link">
-          TS Cookbook
+          Flavourful Plates
         </Link>
         <Link to="/signup" className="header-link">
           Get Started

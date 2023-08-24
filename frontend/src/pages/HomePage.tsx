@@ -21,7 +21,7 @@ const HomePage = () => {
     <section className="homepage">
       {user.username ? (
         <ul className="nav-list">
-          <h1>TS Cookbook</h1>
+          <h1>Flavourful Plates</h1>
           <Link className="nav-item" to="/myrecipes">
             My Recipes
           </Link>

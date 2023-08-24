@@ -131,7 +131,7 @@ const RecipeForm = () => {
         >
           <BsXLg />
         </button>
-        <h1>TS Cookbook</h1>
+        <h1>Flavourful Plates</h1>
         <button className="header-menu-btn" type="submit">
           <BsCheckLg />
         </button>

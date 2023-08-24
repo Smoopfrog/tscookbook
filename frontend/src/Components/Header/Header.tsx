@@ -38,7 +38,7 @@ const Header = ({ handleSidebar, mobileView }: HeaderProps) => {
           <div></div>
         )}
         <Link className="header-title-link" to="/">
-          TS Cookbook
+          Flavourful Plates
         </Link>
         {user.username && mobileView ? (
           <button className="header-menu-btn" onClick={handleSidebar}>

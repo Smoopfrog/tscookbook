@@ -18,6 +18,7 @@ app.use(express.json());
 const allowedOrigins = [
   "https://tscookbook.onrender.com",
   "http://localhost:3000",
+  "https://www.flavourfulplates.ca",
 ];
 
 const MongoDBStore = connectMongoDBSession(session);

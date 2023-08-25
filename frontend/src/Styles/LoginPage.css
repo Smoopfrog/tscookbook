@@ -162,6 +162,7 @@
   }
   .login-form h1 {
     margin-top: 0px;
+    text-align: center;
   }
   .login-form::before {
     display: none;

@@ -50,7 +50,7 @@ const Recipe = () => {
   return (
     <article className="recipe">
       <div className="recipe-carousel">
-        <section id="About">
+        <section id="About" className="recipe-about">
           <img src={recipe.imgURL} alt="A meaning full alt tag" />
           <div className="recipe-info">
             <h1>{recipe.title}</h1>
@@ -71,16 +71,16 @@ const Recipe = () => {
             >
               <BiEdit />
             </Link>
-          </div>
-          <div className="recipe-tags">
-            {recipe.tags &&
-              recipe.tags.map((tag, index) => {
-                return (
-                  <button key={index} className="recipe-tag">
-                    {tag}
-                  </button>
-                );
-              })}
+            <div className="recipe-tags">
+              {recipe.tags &&
+                recipe.tags.map((tag, index) => {
+                  return (
+                    <button key={index} className="recipe-tag">
+                      {tag}
+                    </button>
+                  );
+                })}
+            </div>
           </div>
         </section>
         <section id="Ingredients" className="recipe-ingredients">

@@ -140,11 +140,11 @@
   .recipe-ingredients {
     grid-column: 1;
     grid-row: 2;
+  }
+  .recipe-ingredients ul {
     border-right: solid 1px #15aabf;
-    border-top: solid 1px #15aabf;
   }
   .recipe-directions {
-    border-top: solid 1px #15aabf;
     grid-column: 2;
     grid-row: 2;
   }
@@ -163,6 +163,10 @@
     font-size: 2rem;
     right: 2rem;
     top: 2rem;
+    transition: color 0.3s ease;
+  }
+  .recipe-edit-icon:hover {
+    color: rgba(0, 0, 0, 0.634);
   }
   .recipe-carousel {
     flex-direction: column;

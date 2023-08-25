@@ -79,6 +79,10 @@
 .recipe-description {
   text-align: center;
   margin-bottom: 12px;
+
+  li.linethrough {
+    text-decoration: line-through;
+  }
 }
 
 .recipe-ingredients {
@@ -90,6 +94,16 @@
   li {
     padding: 12px;
     list-style: none;
+    transition: opacity 0.3s ease;
+  }
+
+  li:hover {
+    cursor: pointer;
+    opacity: 0.7;
+  }
+
+  li.linethrough {
+    text-decoration: line-through;
   }
 
   li:nth-child(odd) {
@@ -112,6 +126,16 @@
 
     display: flex;
     align-items: center;
+    transition: opacity 0.3s ease;
+  }
+
+  li:hover {
+    cursor: pointer;
+    opacity: 0.7;
+  }
+
+  li.linethrough {
+    text-decoration: line-through;
   }
 
   li:nth-child(odd) {

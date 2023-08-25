@@ -82,6 +82,9 @@
   text-align: center;
   margin-bottom: 12px;
 }
+.recipe-description li.linethrough {
+  text-decoration: line-through;
+}
 
 .recipe-ingredients h2 {
   padding: 12px;
@@ -90,6 +93,14 @@
 .recipe-ingredients li {
   padding: 12px;
   list-style: none;
+  transition: opacity 0.3s ease;
+}
+.recipe-ingredients li:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+.recipe-ingredients li.linethrough {
+  text-decoration: line-through;
 }
 .recipe-ingredients li:nth-child(odd) {
   background-color: rgba(174, 224, 231, 0.3019607843);
@@ -106,6 +117,14 @@
   padding: 12px;
   display: flex;
   align-items: center;
+  transition: opacity 0.3s ease;
+}
+.recipe-directions li:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+.recipe-directions li.linethrough {
+  text-decoration: line-through;
 }
 .recipe-directions li:nth-child(odd) {
   background-color: rgba(174, 224, 231, 0.3019607843);

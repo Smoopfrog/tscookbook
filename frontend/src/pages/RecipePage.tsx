@@ -1,13 +1,29 @@
-import { ReactNode, useState } from "react";
+import React, { ReactNode, useState } from "react";
 import { Recipe as RecipeModel } from "../models/recipe";
 import { useLoaderData, Link } from "react-router-dom";
 import { FaRegClock } from "react-icons/fa6";
 import { PiForkKnife } from "react-icons/pi";
 import { BiEdit } from "react-icons/bi";
 import "../Styles/Recipe.css";
+import RecipeListItem from "../Components/Buttons/RecipeListItem";
+
+type HTMLElementEvent<T extends HTMLElement> = Event & {
+  target: T;
+};
 
 const Recipe = () => {
   const [carouselPage, setCarouselPage] = useState("About");
+
+  const toggleLinethrough = (event: React.MouseEvent<HTMLLIElement>): void => {
+    console.log(event);
+    const target = event.target as HTMLLIElement;
+
+    if (target.className) {
+      target.style.removeProperty("text-decoration");
+    } else {
+      target.style.setProperty("text-decoration", "line-through");
+    }
+  };
 
   const handleClickScroll = (page: string) => {
     const element = document.getElementById(page);
@@ -28,10 +44,10 @@ const Recipe = () => {
   const ingredientComponents: ReactNode = recipe.ingredients?.map(
     (ingredient, index) => {
       return (
-        <li className="recipe-ingredient" key={index}>
+        <RecipeListItem classes="recipe-ingredient" key={index}>
           <span>{ingredient.amount} </span>
           {ingredient.name}
-        </li>
+        </RecipeListItem>
       );
     }
   );
@@ -39,10 +55,10 @@ const Recipe = () => {
   const directionComponents: ReactNode = recipe.directions?.map(
     (direction, index) => {
       return (
-        <li key={index}>
+        <RecipeListItem key={index} classes="recipe-direction">
           <span className="recipe-direction-index">{index + 1}.</span>
           <span className="recipe-direction-text">{direction.text}</span>
-        </li>
+        </RecipeListItem>
       );
     }
   );

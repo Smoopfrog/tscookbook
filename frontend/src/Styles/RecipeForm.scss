@@ -311,6 +311,11 @@
     cursor: pointer;
     background-color: $blue;
   }
+
+  button.in-view {
+    background-color: $blue;
+    color: whitesmoke;
+  }
 }
 
 // @media screen and (min-width: $breakpoint-small) {

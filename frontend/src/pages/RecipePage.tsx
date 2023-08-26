@@ -6,10 +6,37 @@ import { PiForkKnife } from "react-icons/pi";
 import { BiEdit } from "react-icons/bi";
 import "../Styles/Recipe.css";
 import RecipeListItem from "../Components/Buttons/RecipeListItem";
+import { useInView } from "react-intersection-observer";
 
 const Recipe = () => {
   const [carouselPage, setCarouselPage] = useState("About");
+  const [aboutRef] = useInView({
+    threshold: 0.7,
+    onChange: (inView) => {
+      if (inView) {
+        setCarouselPage("About");
+      }
+    },
+  });
 
+  const [ingredientsRef] = useInView({
+    threshold: 0.7,
+    onChange: (inView) => {
+      if (inView) {
+        setCarouselPage("Ingredients");
+      }
+    },
+  });
+
+  const [directionsRef] = useInView({
+    threshold: 0.7,
+    onChange: (inView) => {
+      if (inView) {
+        setCarouselPage("Directions");
+      }
+    },
+  });
+  
   const handleClickScroll = (page: string) => {
     const element = document.getElementById(page);
 
@@ -51,7 +78,7 @@ const Recipe = () => {
   return (
     <article className="recipe">
       <div className="recipe-carousel">
-        <section id="About" className="recipe-about">
+        <section ref={aboutRef} id="About" className="recipe-about">
           <img src={recipe.imgURL} alt="A meaning full alt tag" />
           <div className="recipe-info">
             <h1>{recipe.title}</h1>
@@ -84,23 +111,43 @@ const Recipe = () => {
             </div>
           </div>
         </section>
-        <section id="Ingredients" className="recipe-ingredients">
+        <section
+          ref={ingredientsRef}
+          id="Ingredients"
+          className="recipe-ingredients"
+        >
           <h2>Ingredients</h2>
           <ul className="recipe-ingredients-list">{ingredientComponents}</ul>
         </section>
-        <section id="Directions" className="recipe-directions">
+        <section
+          ref={directionsRef}
+          id="Directions"
+          className="recipe-directions"
+        >
           <h2>Directions</h2>
           <ol>{directionComponents}</ol>
         </section>
       </div>
       <footer className="recipe-form-footer">
-        <button onClick={() => handleClickScroll("About")} type="button">
+        <button
+          className={`${carouselPage === "About" && "in-view"}`}
+          onClick={() => handleClickScroll("About")}
+          type="button"
+        >
           About
         </button>
-        <button onClick={() => handleClickScroll("Ingredients")} type="button">
+        <button
+          className={`${carouselPage === "Ingredients" && "in-view"}`}
+          onClick={() => handleClickScroll("Ingredients")}
+          type="button"
+        >
           Ingredients
         </button>
-        <button onClick={() => handleClickScroll("Directions")} type="button">
+        <button
+          className={`${carouselPage === "Directions" && "in-view"}`}
+          onClick={() => handleClickScroll("Directions")}
+          type="button"
+        >
           Directions
         </button>
       </footer>

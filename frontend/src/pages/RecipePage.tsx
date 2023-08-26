@@ -14,17 +14,6 @@ type HTMLElementEvent<T extends HTMLElement> = Event & {
 const Recipe = () => {
   const [carouselPage, setCarouselPage] = useState("About");
 
-  const toggleLinethrough = (event: React.MouseEvent<HTMLLIElement>): void => {
-    console.log(event);
-    const target = event.target as HTMLLIElement;
-
-    if (target.className) {
-      target.style.removeProperty("text-decoration");
-    } else {
-      target.style.setProperty("text-decoration", "line-through");
-    }
-  };
-
   const handleClickScroll = (page: string) => {
     const element = document.getElementById(page);
 

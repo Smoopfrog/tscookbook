@@ -167,6 +167,9 @@
     grid-column: 2;
     grid-row: 2;
   }
+  .recipe-directions ol {
+    border-left: solid 1px #15aabf;
+  }
   .recipe-info {
     width: 60%;
   }

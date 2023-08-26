@@ -16,6 +16,7 @@ import {
 } from "react-icons/bs";
 import { useState } from "react";
 import Modal from "../Components/UI/Modal";
+import { useInView } from "react-intersection-observer";
 
 const RecipeForm = () => {
   const [carouselPage, setCarouselPage] = useState("About");
@@ -27,6 +28,33 @@ const RecipeForm = () => {
     user: User;
     recipe: Recipe;
   };
+
+  const [aboutRef] = useInView({
+    threshold: 0.7,
+    onChange: (inView) => {
+      if (inView) {
+        setCarouselPage("About");
+      }
+    },
+  });
+
+  const [ingredientsRef] = useInView({
+    threshold: 0.7,
+    onChange: (inView) => {
+      if (inView) {
+        setCarouselPage("Ingredients");
+      }
+    },
+  });
+
+  const [directionsRef] = useInView({
+    threshold: 0.7,
+    onChange: (inView) => {
+      if (inView) {
+        setCarouselPage("Directions");
+      }
+    },
+  });
 
   const handleClickScroll = (page: string) => {
     const element = document.getElementById(page);
@@ -137,10 +165,7 @@ const RecipeForm = () => {
         </button>
       </header>
       <div className="recipe-carousel">
-        <section
-          id="About"
-          className={`${carouselPage !== "About" && "hide-section"}`}
-        >
+        <section ref={aboutRef} id="About">
           <div className="recipe-input-div">
             <label>
               Name
@@ -240,10 +265,9 @@ const RecipeForm = () => {
           )}
         </section>
         <section
+          ref={ingredientsRef}
           id="Ingredients"
-          className={`recipe-form-ingredients ${
-            carouselPage !== "Ingredients" && "hide-section"
-          }`}
+          className="recipe-form-ingredients"
         >
           <h1>Ingredients</h1>
           <ul>
@@ -311,10 +335,9 @@ const RecipeForm = () => {
           </ul>
         </section>
         <section
+          ref={directionsRef}
           id="Directions"
-          className={`recipe-form-directions ${
-            carouselPage !== "Directions" && "hide-section"
-          }`}
+          className="recipe-form-directions"
         >
           <h1>Directions</h1>
           <ol>
@@ -369,13 +392,25 @@ const RecipeForm = () => {
       </div>
 
       <footer className="recipe-form-footer">
-        <button onClick={() => handleClickScroll("About")} type="button">
+        <button
+          className={` ${carouselPage === "About" && "in-view"}`}
+          onClick={() => handleClickScroll("About")}
+          type="button"
+        >
           About
         </button>
-        <button onClick={() => handleClickScroll("Ingredients")} type="button">
+        <button
+          className={` ${carouselPage === "Ingredients" && "in-view"}`}
+          onClick={() => handleClickScroll("Ingredients")}
+          type="button"
+        >
           Ingredients
         </button>
-        <button onClick={() => handleClickScroll("Directions")} type="button">
+        <button
+          className={` ${carouselPage === "Directions" && "in-view"}`}
+          onClick={() => handleClickScroll("Directions")}
+          type="button"
+        >
           Directions
         </button>
       </footer>

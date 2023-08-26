@@ -10,6 +10,7 @@ import { useInView } from "react-intersection-observer";
 
 const Recipe = () => {
   const [carouselPage, setCarouselPage] = useState("About");
+  
   const [aboutRef] = useInView({
     threshold: 0.7,
     onChange: (inView) => {
@@ -36,7 +37,7 @@ const Recipe = () => {
       }
     },
   });
-  
+
   const handleClickScroll = (page: string) => {
     const element = document.getElementById(page);
 

@@ -30,6 +30,7 @@
   scroll-snap-type: x mandatory;
 }
 .recipe-carousel section {
+  min-height: 100vh;
   min-width: 100%;
   scroll-snap-align: center;
 }
@@ -279,6 +280,9 @@
     min-width: 0;
     flex: 2;
     width: 100%;
+  }
+  .recipe-carousel section {
+    min-height: 0px;
   }
   .recipe-form-direction textarea {
     width: 50%;

@@ -116,7 +116,7 @@
 }
 
 .menu-aside {
-  position: absolute;
+  position: fixed;
   z-index: 1;
   display: flex;
   align-items: center;

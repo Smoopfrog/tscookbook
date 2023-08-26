@@ -7,10 +7,6 @@ import { BiEdit } from "react-icons/bi";
 import "../Styles/Recipe.css";
 import RecipeListItem from "../Components/Buttons/RecipeListItem";
 
-type HTMLElementEvent<T extends HTMLElement> = Event & {
-  target: T;
-};
-
 const Recipe = () => {
   const [carouselPage, setCarouselPage] = useState("About");
 
@@ -33,7 +29,7 @@ const Recipe = () => {
   const ingredientComponents: ReactNode = recipe.ingredients?.map(
     (ingredient, index) => {
       return (
-        <RecipeListItem classes="recipe-ingredient" key={index}>
+        <RecipeListItem key={index} classes="recipe-ingredient">
           <span>{ingredient.amount} </span>
           {ingredient.name}
         </RecipeListItem>

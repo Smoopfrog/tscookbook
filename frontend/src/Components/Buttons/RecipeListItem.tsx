@@ -3,10 +3,9 @@ import { useState } from "react";
 interface RecipeListItemProps {
   classes: string;
   children: React.ReactNode;
-  key: number;
 }
 
-const RecipeListItem = ({ classes, children, key }: RecipeListItemProps) => {
+const RecipeListItem = ({ classes, children }: RecipeListItemProps) => {
   const [linethrough, setLineThrough] = useState(false);
 
   const toggleLinethrough = () => {
@@ -16,7 +15,6 @@ const RecipeListItem = ({ classes, children, key }: RecipeListItemProps) => {
   return (
     <li
       className={`${classes} ${linethrough && "linethrough"}`}
-      key={key}
       onClick={toggleLinethrough}
     >
       {children}

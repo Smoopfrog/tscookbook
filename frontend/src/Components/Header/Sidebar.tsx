@@ -6,6 +6,7 @@ import {
   FaRegUser,
   FaSignOutAlt,
   FaTags,
+  FaDice,
 } from "react-icons/fa";
 import * as UsersApi from "../../api/users_api";
 import { useAppDispatch } from "../../hooks";
@@ -54,6 +55,13 @@ const Sidebar = ({ show, handleSidebar }: SidebarProps) => {
           handleMenuAside={handleSidebar}
         >
           <FaBook />
+        </SidebarLink>
+        <SidebarLink
+          name="Surprise me!"
+          route="/myrecipes/random"
+          handleMenuAside={handleSidebar}
+        >
+          <FaDice />
         </SidebarLink>
         <SidebarLink name="Tags" route="/tags" handleMenuAside={handleSidebar}>
           <FaTags />

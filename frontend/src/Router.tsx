@@ -1,4 +1,9 @@
-import { createBrowserRouter } from "react-router-dom";
+import {
+  Navigate,
+  createBrowserRouter,
+  redirect,
+  useNavigate,
+} from "react-router-dom";
 import App from "./App";
 import Recipe from "./pages/RecipePage";
 import RecipeForm from "./pages/RecipeForm";
@@ -56,7 +61,12 @@ export const router = createBrowserRouter([
         path: "/myrecipes/:recipeId",
         element: <Recipe />,
         loader: async ({ params }) => {
-          return RecipesApi.fetchRecipe(params.recipeId);
+          if (params.recipeId === "random") {
+            const recipeId = await RecipesApi.fetchRandomRecipe();
+            return redirect(`/myrecipes/${recipeId}`);
+          } else {
+            return RecipesApi.fetchRecipe(params.recipeId);
+          }
         },
       },
       {

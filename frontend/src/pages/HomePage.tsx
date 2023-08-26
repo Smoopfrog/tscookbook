@@ -28,7 +28,7 @@ const HomePage = () => {
           <Link className="nav-item" to="/newrecipe">
             New Recipe
           </Link>
-          <Link className="nav-item" to="/">
+          <Link className="nav-item" to="/myrecipes/random">
             Surprise Me!
           </Link>
           <Link className="nav-item" to="/tags">

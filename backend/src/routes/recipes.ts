@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.get("/", requiresAuth, RecipesController.getRecipes);
 
+router.get("/random", requiresAuth, RecipesController.getRandomRecipe);
+
 router.get("/:recipeId", requiresAuth, RecipesController.getRecipe);
 
 router.post("/", RecipesController.createRecipe);

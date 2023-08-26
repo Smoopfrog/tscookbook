@@ -12,7 +12,7 @@ if (env === "development") {
 
 const fetchData = async (input: RequestInfo, init?: RequestInit) => {
   const response = await fetch(input, init);
-  
+
   if (response.ok) {
     return response;
   } else {
@@ -36,6 +36,15 @@ export const fetchRecipe = async (recipeId?: string): Promise<Recipe> => {
     method: "GET",
     credentials: "include",
   });
+  return response.json();
+};
+
+export const fetchRandomRecipe = async (): Promise<Recipe> => {
+  const response = await fetchData(`${address}/api/recipes/random`, {
+    method: "GET",
+    credentials: "include",
+  });
+
   return response.json();
 };
 

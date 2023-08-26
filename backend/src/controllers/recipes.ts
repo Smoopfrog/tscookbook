@@ -45,6 +45,32 @@ export const getRecipe: RequestHandler = async (req, res, next) => {
   }
 };
 
+export const getRandomRecipe: RequestHandler = async (req, res, next) => {
+  const authenticatedUserId = req.session.userId;
+
+  try {
+    assertIsDefined(authenticatedUserId);
+
+    const count = await RecipeModel.find({
+      userId: authenticatedUserId,
+    }).count();
+
+    const random = Math.floor(Math.random() * count);
+
+    const recipe = await RecipeModel.findOne({ userId: authenticatedUserId })
+      .skip(random)
+      .exec();
+
+    if (!recipe) {
+      throw createHttpError(404, "Recipe not found");
+    }
+
+    res.status(200).json(recipe._id);
+  } catch (error) {
+    next(error);
+  }
+};
+
 interface CreateRecipeBody {
   title?: string;
   description?: string;

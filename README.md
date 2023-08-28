@@ -1,4 +1,4 @@
-# MERN Stack Recipe Web App
+# TSCookbook
 
 Welcome to Tscookbook repository! This project is a web application built using the MERN stack (MongoDB, Express.js, React, Node.js) and TypeScript. The app allows users to view, manage, and save recipes.
 
@@ -8,7 +8,7 @@ https://www.flavourfulplates.ca/
 
 ## Features
 
-- **User Authentication**: Users can sign up, log in, and log out securely. Sessions are managed using JSON Web Tokens (JWT).
+- **User Authentication**: Users can sign up, log in, and log out securely. Sessions are managed using Express session cookies.
 
 - **Recipe Display**: Browse through a collection of delicious recipes with images, descriptions, and ingredients.
 
@@ -47,7 +47,7 @@ npm install
 
 3. Configure environment variables:
 
-   - Create a `.env` file in the `backend` directory and set your MongoDB connection URI, JWT secret, and any other necessary variables.
+   - Create a `.env` file in the `backend` directory and set your MongoDB connection URI, session secret, and any other necessary variables.
 
    ```
    MONGO_DB_CONNECTION=your-mongodb-uri

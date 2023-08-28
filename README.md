@@ -1,47 +1,75 @@
-# Getting Started with Create React App
+# MERN Stack Recipe Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to Tscookbook repository! This project is a web application built using the MERN stack (MongoDB, Express.js, React, Node.js) and TypeScript. The app allows users to view, manage, and save recipes.
 
-## Available Scripts
+## Now Live
 
-In the project directory, you can run:
+https://www.flavourfulplates.ca/
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **User Authentication**: Users can sign up, log in, and log out securely. Sessions are managed using JSON Web Tokens (JWT).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Recipe Display**: Browse through a collection of delicious recipes with images, descriptions, and ingredients.
 
-### `npm test`
+- **Tags and Filters**: Easily find recipes using applying filters based on custom tags for cuisine, dietary preferences, and more.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **CRUD Operations**: Admin users can perform CRUD (Create, Read, Update, Delete) operations on recipes to keep the collection up to date.
 
-### `npm run build`
+## Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Frontend**: The frontend is built using React with TypeScript. It provides a user-friendly interface to interact with the recipes.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Backend**: The backend is powered by Node.js and Express.js, serving as the API gateway for the frontend. It handles user authentication, recipe management, and database interactions.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Database**: MongoDB is used to store the recipe data, user profiles, and authentication tokens.
 
-### `npm run eject`
+## Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Clone the repository:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+git clone https://github.com/Smoopfrog/tscookbook.git
+cd tscookbook
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+2. Install dependencies for both the frontend and backend:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+# Install frontend dependencies
+cd frontend
+npm install
 
-## Learn More
+# Install backend dependencies
+cd ../backend
+npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Configure environment variables:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-# tscookbook
+   - Create a `.env` file in the `backend` directory and set your MongoDB connection URI, JWT secret, and any other necessary variables.
+
+   ```
+   MONGO_DB_CONNECTION=your-mongodb-uri
+   SESSION_SECRET=your-secret-key
+   ```
+
+4. Start the development servers:
+
+```bash
+# Start the frontend development server
+cd frontend
+npm start
+
+# Start the backend development server
+cd ../backend
+npm start
+```
+
+5. Access the web app:
+
+Open your web browser and navigate to `http://localhost:3000` to access the recipe web app.
+
+---
+
+Thank you for checking out my MERN Stack Recipe Web App, Tscookbook! If you have any questions or suggestions, feel free to open an issue or contact us. Happy cooking! 🍳🥘

@@ -132,9 +132,6 @@ const RecipeForm = () => {
 
   const onSubmit = async (data: Recipe) => {
     try {
-      const selectedImage = data.image[0];
-      console.log(selectedImage);
-
       await RecipesApi.createRecipe(data);
       navigate("/myrecipes");
     } catch (error) {
@@ -210,12 +207,13 @@ const RecipeForm = () => {
           </div>
           <div className="recipe-input-div">
             <label>Image URL</label>
-            {/* <img src={file[0]} alt="something" /> */}
             {imagePreview && <img src={imagePreview} alt="Preview" />}
+            {recipe ? <img src={recipe.imgURL} alt="Preview" /> : null}
             <input
               type="file"
               accept="image/*"
               {...register("image")}
+              name="image"
               onChange={onImageChange}
             />
           </div>

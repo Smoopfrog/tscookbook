@@ -23,7 +23,6 @@ const TagsPage = () => {
   const {
     register,
     formState: { errors },
-    control,
     handleSubmit,
   } = useForm<Tag>();
 

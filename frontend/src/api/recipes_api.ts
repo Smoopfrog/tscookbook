@@ -56,7 +56,6 @@ export interface RecipeInput {
   category?: string;
   imgUrl?: string;
   image?: FileList;
-  imageName?: string;
   tags?: string[];
   ingredients?: { amount?: string; name: string }[];
   directions?: { text: string }[];
@@ -64,14 +63,13 @@ export interface RecipeInput {
 
 export const createRecipe = async (recipe: RecipeInput): Promise<Recipe> => {
   const formData = new FormData();
+
   if (recipe.image) {
     formData.append("image", recipe.image[0]);
-    recipe = { ...recipe, imageName: recipe.image[0].name };
   }
 
-  
   formData.append("recipe", JSON.stringify(recipe));
-  
+
   const response = await fetchData(`${address}/api/recipes`, {
     method: "POST",
     body: formData,
@@ -84,12 +82,17 @@ export const createRecipe = async (recipe: RecipeInput): Promise<Recipe> => {
 export interface UpdateRecipeInput {}
 
 export const updateRecipe = async (recipe: Recipe): Promise<Recipe> => {
+  const formData = new FormData();
+
+  if (recipe.image) {
+    formData.append("image", recipe.image[0]);
+  }
+
+  formData.append("recipe", JSON.stringify(recipe));
+
   const response = await fetchData(`${address}/api/recipes/${recipe._id}`, {
     method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(recipe),
+    body: formData,
     credentials: "include",
   });
 

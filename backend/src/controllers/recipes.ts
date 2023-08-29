@@ -80,7 +80,7 @@ export const getRandomRecipe: RequestHandler = async (req, res, next) => {
   }
 };
 
-interface CreateRecipeBody {
+interface CreateRecipeFormBody {
   title?: string;
   description?: string;
   category?: string;
@@ -92,14 +92,14 @@ interface CreateRecipeBody {
   directions?: { text: string }[];
 }
 
-interface CreateRecipeBodyBody {
-  recipe: CreateRecipeBody;
+interface CreateRecipeBody {
+  recipe: CreateRecipeFormBody;
 }
 
 export const createRecipe: RequestHandler<
   unknown,
   unknown,
-  CreateRecipeBodyBody,
+  CreateRecipeBody,
   unknown
 > = async (req, res, next) => {
   const recipe = JSON.parse(req.body.recipe as string);
@@ -115,13 +115,13 @@ export const createRecipe: RequestHandler<
   const directions = recipe.directions;
   const image = req.file;
 
-
   try {
     assertIsDefined(authenticatedUserId);
 
     if (!title) {
       throw createHttpError(400, "Recipe must have a title");
     }
+
     if (image) {
       const tempFilePath = `/tmp/${Date.now()}-${image.originalname}`;
       fs.writeFileSync(tempFilePath, image.buffer);
@@ -155,7 +155,7 @@ interface UpdateRecipeParams {
   recipeId: string;
 }
 
-interface UpdateRecipeBody {
+interface UpdateRecipeFormBody {
   _id: string;
   title: string;
   description?: string;
@@ -171,22 +171,29 @@ interface UpdateRecipeBody {
   __v: string;
 }
 
+interface UpdateRecipeBody {
+  recipe: UpdateRecipeFormBody;
+}
+
 export const updateRecipe: RequestHandler<
   UpdateRecipeParams,
   unknown,
-  UpdateRecipeBody,
+  any,
   unknown
 > = async (req, res, next) => {
   const authenticatedUserId = req.session.userId;
   const recipeId = req.params.recipeId;
-  const newTitle = req.body.title;
-  const newDescription = req.body.description;
-  const newPortion = req.body.portion;
-  const newCooktime = req.body.cooktime;
-  const newImgURL = req.body.imgURL;
-  const newTags = req.body.tags!;
-  const newIngredients = req.body.ingredients!;
-  const newDirections = req.body.directions!;
+  console.log(req.body);
+  const recipe = JSON.parse(req.body.recipe);
+  const newTitle = recipe.title;
+  const newDescription = recipe.description;
+  const newPortion = recipe.portion;
+  const newCooktime = recipe.cooktime;
+  let newImgURL = recipe.imgURL;
+  const newTags = recipe.tags!;
+  const newIngredients = recipe.ingredients!;
+  const newDirections = recipe.directions!;
+  const image = req.file;
 
   try {
     assertIsDefined(authenticatedUserId);
@@ -205,6 +212,17 @@ export const updateRecipe: RequestHandler<
       throw createHttpError(401, "Not authorized to access this recipe.");
     }
 
+    if (image) {
+      const tempFilePath = `/tmp/${Date.now()}-${image.originalname}`;
+      fs.writeFileSync(tempFilePath, image.buffer);
+
+      const result = await cloudinary.v2.uploader.upload(tempFilePath, {
+        resource_type: "auto",
+      });
+
+      newImgURL = result.secure_url;
+    }
+
     recipe.title = newTitle;
     recipe.description = newDescription;
     recipe.portion = newPortion;
@@ -215,6 +233,7 @@ export const updateRecipe: RequestHandler<
     recipe.directions = newDirections;
 
     const updatedRecipe = await recipe.save();
+
     res.status(200).json(updatedRecipe);
   } catch (error) {
     next(error);

@@ -16,7 +16,7 @@ router.get("/:recipeId", requiresAuth, RecipesController.getRecipe);
 
 router.post("/", upload.single("image"), RecipesController.createRecipe);
 
-router.patch("/:recipeId", RecipesController.updateRecipe);
+router.patch("/:recipeId", upload.single("image") as any, RecipesController.updateRecipe);
 
 router.delete("/:recipeId", requiresAuth, RecipesController.deleteRecipe);
 

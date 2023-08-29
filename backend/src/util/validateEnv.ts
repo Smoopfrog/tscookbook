@@ -5,4 +5,7 @@ export default cleanEnv(process.env, {
   PORT: port(),
   SESSION_SECRET: str(),
   NODE_ENV: str({ choices: ["development", "test", "production", "staging"] }),
+  CLOUDINARY_CLOUD_NAME: str(),
+  CLOUDINARY_API_KEY: str(),
+  CLOUDINARY_API_SECRET: str(),
 });

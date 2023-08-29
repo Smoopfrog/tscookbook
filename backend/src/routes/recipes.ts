@@ -14,7 +14,7 @@ router.get("/random", requiresAuth, RecipesController.getRandomRecipe);
 
 router.get("/:recipeId", requiresAuth, RecipesController.getRecipe);
 
-router.post("/", upload.single("files"), RecipesController.createRecipe);
+router.post("/", upload.single("image"), RecipesController.createRecipe);
 
 router.patch("/:recipeId", RecipesController.updateRecipe);
 

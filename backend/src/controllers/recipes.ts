@@ -3,6 +3,15 @@ import RecipeModel from "../models/recipe";
 import createHttpError from "http-errors";
 import mongoose from "mongoose";
 import { assertIsDefined } from "../util/assertIsDefined";
+import env from "../util/validateEnv";
+import cloudinary from "cloudinary";
+import fs from "fs";
+
+cloudinary.v2.config({
+  cloud_name: env.CLOUDINARY_CLOUD_NAME,
+  api_key: env.CLOUDINARY_API_KEY,
+  api_secret: env.CLOUDINARY_API_SECRET,
+});
 
 export const getRecipes: RequestHandler = async (req, res, next) => {
   const authenticatedUserId = req.session.userId;
@@ -86,6 +95,7 @@ interface CreateRecipeBody {
 interface CreateRecipeBodyBody {
   recipe: CreateRecipeBody;
 }
+
 export const createRecipe: RequestHandler<
   unknown,
   unknown,
@@ -99,18 +109,27 @@ export const createRecipe: RequestHandler<
   const category = recipe.category;
   const portion = recipe.portion;
   const cooktime = recipe.cooktime;
-  const imgURL = recipe.imgURL;
+  let imgURL = recipe.imgURL;
   const tags = recipe.tags;
   const ingredients = recipe.ingredients;
   const directions = recipe.directions;
-  console.log("req.file", req.file);
-  console.log("req.body", recipe);
+  const image = req.file;
+
 
   try {
     assertIsDefined(authenticatedUserId);
 
     if (!title) {
       throw createHttpError(400, "Recipe must have a title");
+    }
+    if (image) {
+      const tempFilePath = `/tmp/${Date.now()}-${image.originalname}`;
+      fs.writeFileSync(tempFilePath, image.buffer);
+
+      const result = await cloudinary.v2.uploader.upload(tempFilePath, {
+        resource_type: "auto",
+      });
+      imgURL = result.secure_url;
     }
 
     const newRecipe = await RecipeModel.create({

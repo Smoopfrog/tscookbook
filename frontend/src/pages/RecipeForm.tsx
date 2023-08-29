@@ -228,16 +228,7 @@ const RecipeForm = () => {
             <input placeholder="cooktime" {...register("cooktime")} />
           </div>
           <div className="recipe-input-div">
-            <label>Image URL</label>
-            {imagePreview && (
-              <div>
-                <img src={imagePreview} alt="Preview" />
-                <button onClick={removeUpload}>Remove</button>
-              </div>
-            )}
-            {showRecipePreview ? (
-              <img src={recipe.imgURL} alt="Preview" />
-            ) : null}
+            <label>Image</label>
             <input
               type="file"
               accept="image/*"
@@ -245,6 +236,17 @@ const RecipeForm = () => {
               name="image"
               onChange={onImageChange}
             />
+            {imagePreview && (
+              <>
+                <img className="recipe-img" src={imagePreview} alt="Preview" />
+                <button className="remove-img-btn" onClick={removeUpload}>
+                  Remove Image
+                </button>
+              </>
+            )}
+            {showRecipePreview ? (
+              <img className="recipe-img" src={recipe.imgURL} alt="Preview" />
+            ) : null}
           </div>
           <div className="recipe-input-div recipe-tags">
             <label>Tags</label>

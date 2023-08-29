@@ -62,6 +62,38 @@
     border-radius: 10px;
     font-size: 1rem;
   }
+
+  img {
+    max-height: 40vh;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.747) 0px 3px 7px 0px;
+    margin-bottom: 1rem;
+  }
+
+  .remove-img-btn,
+  input::file-selector-button {
+    align-self: center;
+    width: 80%;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #15aabf;
+    border-radius: 20px;
+    border: solid 1px #15aabf;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+
+  .remove-img-btn:hover {
+    cursor: pointer;
+    background-color: rgba(21, 171, 191, 0.7058823529);
+  }
+
+  input::file-selector-button {
+    // background-color: black;
+  }
 }
 
 .recipe-tags {

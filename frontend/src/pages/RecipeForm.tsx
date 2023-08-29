@@ -21,6 +21,21 @@ import { useInView } from "react-intersection-observer";
 const RecipeForm = () => {
   const [carouselPage, setCarouselPage] = useState("About");
   const [showModal, setShowModal] = useState(false);
+  const [imagePreview, setImagePreview] = useState<string | undefined>();
+
+  const onImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedImage = e.target.files && e.target.files[0];
+
+    if (selectedImage) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImagePreview(reader.result as string);
+      };
+      reader.readAsDataURL(selectedImage);
+    } else {
+      setImagePreview(undefined);
+    }
+  };
 
   const navigate = useNavigate();
 
@@ -31,7 +46,7 @@ const RecipeForm = () => {
 
   const [aboutRef] = useInView({
     threshold: 0.7,
-    onChange: (inView) => {
+    onChange: (inView: boolean) => {
       if (inView) {
         setCarouselPage("About");
       }
@@ -40,7 +55,7 @@ const RecipeForm = () => {
 
   const [ingredientsRef] = useInView({
     threshold: 0.7,
-    onChange: (inView) => {
+    onChange: (inView: boolean) => {
       if (inView) {
         setCarouselPage("Ingredients");
       }
@@ -49,7 +64,7 @@ const RecipeForm = () => {
 
   const [directionsRef] = useInView({
     threshold: 0.7,
-    onChange: (inView) => {
+    onChange: (inView: boolean) => {
       if (inView) {
         setCarouselPage("Directions");
       }
@@ -117,6 +132,9 @@ const RecipeForm = () => {
 
   const onSubmit = async (data: Recipe) => {
     try {
+      const selectedImage = data.image[0];
+      console.log(selectedImage);
+
       await RecipesApi.createRecipe(data);
       navigate("/myrecipes");
     } catch (error) {
@@ -192,7 +210,14 @@ const RecipeForm = () => {
           </div>
           <div className="recipe-input-div">
             <label>Image URL</label>
-            <input placeholder="Image URL" {...register("imgURL")} />
+            {/* <img src={file[0]} alt="something" /> */}
+            {imagePreview && <img src={imagePreview} alt="Preview" />}
+            <input
+              type="file"
+              accept="image/*"
+              {...register("image")}
+              onChange={onImageChange}
+            />
           </div>
           <div className="recipe-input-div recipe-tags">
             <label>Tags</label>

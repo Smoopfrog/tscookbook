@@ -83,22 +83,28 @@ interface CreateRecipeBody {
   directions?: { text: string }[];
 }
 
+interface CreateRecipeBodyBody {
+  recipe: CreateRecipeBody;
+}
 export const createRecipe: RequestHandler<
   unknown,
   unknown,
-  CreateRecipeBody,
+  CreateRecipeBodyBody,
   unknown
 > = async (req, res, next) => {
+  const recipe = JSON.parse(req.body.recipe as string);
   const authenticatedUserId = req.session.userId;
-  const title = req.body.title;
-  const description = req.body.description;
-  const category = req.body.category;
-  const portion = req.body.portion;
-  const cooktime = req.body.cooktime;
-  const imgURL = req.body.imgURL;
-  const tags = req.body.tags;
-  const ingredients = req.body.ingredients;
-  const directions = req.body.directions;
+  const title = recipe.title;
+  const description = recipe.description;
+  const category = recipe.category;
+  const portion = recipe.portion;
+  const cooktime = recipe.cooktime;
+  const imgURL = recipe.imgURL;
+  const tags = recipe.tags;
+  const ingredients = recipe.ingredients;
+  const directions = recipe.directions;
+  console.log("req.file", req.file);
+  console.log("req.body", recipe);
 
   try {
     assertIsDefined(authenticatedUserId);

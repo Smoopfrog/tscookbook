@@ -1,6 +1,10 @@
 import express from "express";
 import * as RecipesController from "../controllers/recipes";
 import { requiresAuth } from "../middleware/auth";
+import multer from "multer";
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 const router = express.Router();
 
@@ -10,7 +14,7 @@ router.get("/random", requiresAuth, RecipesController.getRandomRecipe);
 
 router.get("/:recipeId", requiresAuth, RecipesController.getRecipe);
 
-router.post("/", RecipesController.createRecipe);
+router.post("/", upload.single("files"), RecipesController.createRecipe);
 
 router.patch("/:recipeId", RecipesController.updateRecipe);
 

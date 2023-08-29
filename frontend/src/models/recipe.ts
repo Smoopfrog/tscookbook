@@ -5,6 +5,7 @@ export interface Recipe {
   portion?: string;
   cooktime?: string;
   category?: string;
+  image: FileList;
   imgURL?: string;
   tags?: string[];
   ingredients?: { amount?: string; name: string }[];

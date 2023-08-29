@@ -55,7 +55,7 @@ export interface RecipeInput {
   cooktime?: string;
   category?: string;
   imgUrl?: string;
-  image?: FileList;
+  image?: FileList | null;
   tags?: string[];
   ingredients?: { amount?: string; name: string }[];
   directions?: { text: string }[];
@@ -78,8 +78,6 @@ export const createRecipe = async (recipe: RecipeInput): Promise<Recipe> => {
 
   return response.json();
 };
-
-export interface UpdateRecipeInput {}
 
 export const updateRecipe = async (recipe: Recipe): Promise<Recipe> => {
   const formData = new FormData();

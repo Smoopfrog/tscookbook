@@ -2,7 +2,7 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { Recipe } from "../models/recipe";
 import { User } from "../models/user";
 import * as RecipesApi from "../api/recipes_api";
-import { MouseEvent } from "react";
+import { MouseEvent, useEffect } from "react";
 import { BiTrash } from "react-icons/bi";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import "../Styles/RecipeForm.css";
@@ -22,15 +22,20 @@ const RecipeForm = () => {
   const [carouselPage, setCarouselPage] = useState("About");
   const [showModal, setShowModal] = useState(false);
   const [imagePreview, setImagePreview] = useState<string | undefined>();
+  const [showRecipePreview, setShowRecipePreview] = useState<
+    boolean | undefined
+  >();
 
   const onImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedImage = e.target.files && e.target.files[0];
 
     if (selectedImage) {
       const reader = new FileReader();
+
       reader.onload = () => {
         setImagePreview(reader.result as string);
       };
+
       reader.readAsDataURL(selectedImage);
     } else {
       setImagePreview(undefined);
@@ -43,6 +48,16 @@ const RecipeForm = () => {
     user: User;
     recipe: Recipe;
   };
+
+  useEffect(() => {
+    if (imagePreview) {
+      setShowRecipePreview(false);
+    }
+
+    if (!imagePreview && recipe) {
+      setShowRecipePreview(true);
+    }
+  }, [imagePreview, recipe]);
 
   const [aboutRef] = useInView({
     threshold: 0.7,
@@ -85,22 +100,14 @@ const RecipeForm = () => {
     }
   };
 
-  const deleteRecipe = async (e: MouseEvent<HTMLButtonElement>) => {
-    try {
-      await RecipesApi.deleteRecipe(recipe._id);
-      navigate("/myrecipes");
-    } catch (error) {
-      alert(error);
-      console.log(error);
-    }
-  };
-
   const {
     register,
     formState: { errors },
     control,
     watch,
+    reset,
     handleSubmit,
+    getValues,
   } = useForm<Recipe>({
     defaultValues: recipe,
   });
@@ -130,6 +137,11 @@ const RecipeForm = () => {
     control,
   });
 
+  const removeUpload = () => {
+    reset({ ...getValues(), image: null });
+    setImagePreview(undefined);
+  };
+
   const onSubmit = async (data: Recipe) => {
     try {
       await RecipesApi.createRecipe(data);
@@ -147,6 +159,16 @@ const RecipeForm = () => {
     } catch (error) {
       console.log(error);
       alert(error);
+    }
+  };
+
+  const deleteRecipe = async (e: MouseEvent<HTMLButtonElement>) => {
+    try {
+      await RecipesApi.deleteRecipe(recipe._id);
+      navigate("/myrecipes");
+    } catch (error) {
+      alert(error);
+      console.log(error);
     }
   };
 
@@ -207,8 +229,15 @@ const RecipeForm = () => {
           </div>
           <div className="recipe-input-div">
             <label>Image URL</label>
-            {imagePreview && <img src={imagePreview} alt="Preview" />}
-            {recipe ? <img src={recipe.imgURL} alt="Preview" /> : null}
+            {imagePreview && (
+              <div>
+                <img src={imagePreview} alt="Preview" />
+                <button onClick={removeUpload}>Remove</button>
+              </div>
+            )}
+            {showRecipePreview ? (
+              <img src={recipe.imgURL} alt="Preview" />
+            ) : null}
             <input
               type="file"
               accept="image/*"

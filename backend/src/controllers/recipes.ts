@@ -183,7 +183,6 @@ export const updateRecipe: RequestHandler<
 > = async (req, res, next) => {
   const authenticatedUserId = req.session.userId;
   const recipeId = req.params.recipeId;
-  console.log(req.body);
   const recipe = JSON.parse(req.body.recipe);
   const newTitle = recipe.title;
   const newDescription = recipe.description;

@@ -24,6 +24,8 @@ https://www.flavourfulplates.ca/
 
 - **Database**: MongoDB is used to store the recipe data, user profiles, and authentication tokens.
 
+- **Image Handling**: Multer is integrated for handling image uploads on the server, and Cloudinary is used for image storage and management.
+
 ## Installation
 
 1. Clone the repository:
@@ -52,6 +54,9 @@ npm install
    ```
    MONGO_DB_CONNECTION=your-mongodb-uri
    SESSION_SECRET=your-secret-key
+   CLOUDINARY_CLOUD_NAME=your-cloudinary-cloud-name
+   CLOUDINARY_API_KEY=your-cloudinary-api-key
+   CLOUDINARY_API_SECRET=your-cloudinary-api-secret
    ```
 
 4. Start the development servers:

@@ -114,6 +114,7 @@ export const createRecipe: RequestHandler<
   const ingredients = recipe.ingredients;
   const directions = recipe.directions;
   const image = req.file;
+  console.log("Image file", image);
 
   try {
     assertIsDefined(authenticatedUserId);
@@ -129,6 +130,7 @@ export const createRecipe: RequestHandler<
       const result = await cloudinary.v2.uploader.upload(tempFilePath, {
         resource_type: "auto",
       });
+      console.log(result);
       imgURL = result.secure_url;
     }
 

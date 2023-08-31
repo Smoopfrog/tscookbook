@@ -232,7 +232,6 @@ const RecipeForm = () => {
             <input
               type="file"
               accept="image/*"
-              capture="user"
               {...register("image")}
               name="image"
               onChange={onImageChange}

@@ -143,6 +143,7 @@ const RecipeForm = () => {
   };
 
   const onSubmit = async (data: Recipe) => {
+    console.log(data);
     try {
       await RecipesApi.createRecipe(data);
       navigate("/myrecipes");

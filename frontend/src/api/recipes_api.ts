@@ -63,9 +63,11 @@ export interface RecipeInput {
 
 export const createRecipe = async (recipe: RecipeInput): Promise<Recipe> => {
   const formData = new FormData();
-  
+
   if (recipe.image) {
-    console.log("recipe", recipe.image[0])
+    console.log("recipe name", recipe.image[0].name);
+    console.log("recipe type", recipe.image[0].type);
+
     formData.append("image", recipe.image[0]);
   }
 

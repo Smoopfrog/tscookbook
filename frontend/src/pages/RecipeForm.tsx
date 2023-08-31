@@ -203,7 +203,35 @@ const RecipeForm = () => {
         </button>
       </header>
       <div className="recipe-carousel">
-        <section ref={aboutRef} id="About">
+        <section className="about-section" ref={aboutRef} id="About">
+          <div className="recipe-input-div recipe-input-image">
+            <label>Image</label>
+            <input
+              className="image-input"
+              type="file"
+              accept="image/*"
+              {...register("image")}
+              name="image"
+              onChange={onImageChange}
+            />
+            <div className="recipe-img-container">
+              {imagePreview && (
+                <>
+                  <img
+                    className="recipe-img"
+                    src={imagePreview}
+                    alt="Preview"
+                  />
+                  <button className="remove-img-btn" onClick={removeUpload}>
+                    Remove Image
+                  </button>
+                </>
+              )}
+              {showRecipePreview ? (
+                <img className="recipe-img" src={recipe.imgURL} alt="Preview" />
+              ) : null}
+            </div>
+          </div>
           <div className="recipe-input-div">
             <label>
               Name
@@ -227,27 +255,6 @@ const RecipeForm = () => {
           <div className="recipe-input-div">
             <label>Cooktime</label>
             <input placeholder="cooktime" {...register("cooktime")} />
-          </div>
-          <div className="recipe-input-div">
-            <label>Image</label>
-            <input
-              type="file"
-              accept="image/*"
-              {...register("image")}
-              name="image"
-              onChange={onImageChange}
-            />
-            {imagePreview && (
-              <>
-                <img className="recipe-img" src={imagePreview} alt="Preview" />
-                <button className="remove-img-btn" onClick={removeUpload}>
-                  Remove Image
-                </button>
-              </>
-            )}
-            {showRecipePreview ? (
-              <img className="recipe-img" src={recipe.imgURL} alt="Preview" />
-            ) : null}
           </div>
           <div className="recipe-input-div recipe-tags">
             <label>Tags</label>

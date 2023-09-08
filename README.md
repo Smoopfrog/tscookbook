@@ -46,7 +46,7 @@ npm install
 cd ../backend
 npm install
 ```
-
+TEST
 3. Configure environment variables:
 
    - Create a `.env` file in the `backend` directory and set your MongoDB connection URI, session secret, and any other necessary variables.
